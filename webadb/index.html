@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>adbweb</title>
+<style>
+  body { font-family: system-ui, sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
+  button { padding: .5rem 1rem; margin-right: .5rem; }
+  #status { margin: 1rem 0; padding: .5rem; background: #eee; }
+  #status.error { background: #fdd; color: #900; }
+  table { border-collapse: collapse; }
+  td { padding: .2rem 1rem .2rem 0; }
+  ul { font-family: monospace; font-size: .9rem; }
+</style>
+</head>
+<body>
+<h1>adbweb</h1>
+
+<button id="connect">Connect phone</button>
+<button id="list" disabled>List packages</button>
+
+<div id="status">Not connected.</div>
+
+<h2>Device</h2>
+<table id="info"></table>
+
+<h2>Packages <span id="count"></span></h2>
+<ul id="packages"></ul>
+
+<script type="module">
+// Libraries loaded from esm.sh (a CDN). Major version pinned to 2.
+let Adb, AdbDaemonTransport, AdbDaemonWebUsbDevice, AdbDaemonWebUsbDeviceManager, AdbWebCredentialStore;
+
+const $ = (id) => document.getElementById(id);
+let adb = null;
+
+function setStatus(text, isError = false) {
+  $("status").textContent = text;
+  $("status").className = isError ? "error" : "";
+}
+
+// Load libraries separately so a CDN failure gives a clear message
+try {
+  ({ Adb, AdbDaemonTransport } = await import("https://esm.sh/@yume-chan/adb@2"));
+  ({ AdbDaemonWebUsbDevice, AdbDaemonWebUsbDeviceManager } = await import("https://esm.sh/@yume-chan/adb-daemon-webusb@2"));
+  ({ default: AdbWebCredentialStore } = await import("https://esm.sh/@yume-chan/adb-credential-web@2"));
+} catch (e) {
+  setStatus("Could not load the Tango libraries from esm.sh: " + e.message, true);
+  $("connect").disabled = true;
+  throw e;
+}
+
+$("connect").addEventListener("click", async () => {
+  try {
+    if (!window.isSecureContext) {
+      throw new Error("Page must be opened via http://localhost or https:// — WebUSB is blocked otherwise.");
+    }
+    const Manager = AdbDaemonWebUsbDeviceManager.BROWSER;
+    if (!Manager) {
+      throw new Error("WebUSB not available. Use a Chromium-based browser (Chromium, Chrome, Brave).");
+    }
+
+    // Close any previous connection before making a new one
+    if (adb) { await adb.close().catch(() => {}); adb = null; }
+
+    setStatus("Choose your phone in the browser's device picker…");
+    const device = await Manager.requestDevice();
+    if (!device) {
+      setStatus("No device selected. If your phone wasn't in the list, check USB debugging is on.", true);
+      return;
+    }
+
+    let connection;
+    try {
+      connection = await device.connect();
+    } catch (e) {
+      if (e instanceof AdbDaemonWebUsbDevice.DeviceBusyError) {
+        throw new Error("Phone is in use by another program. Run `adb kill-server` in a terminal, then try again.");
+      }
+      if (e.name === "SecurityError" || e.name === "NetworkError") {
+        throw new Error(`USB access refused (${e.name}). On Linux, check udev rules for Android devices. Details: ${e.message}`);
+      }
+      throw e;
+    }
+
+    setStatus("Check your phone: tap \"Allow\" on the USB debugging prompt…");
+    const transport = await AdbDaemonTransport.authenticate({
+      serial: device.serial,
+      connection,
+      credentialStore: new AdbWebCredentialStore("adbweb"),
+    });
+    adb = new Adb(transport);
+
+    const props = {
+      Manufacturer: "ro.product.manufacturer",
+      Model: "ro.product.model",
+      "Android version": "ro.build.version.release",
+      "SDK level": "ro.build.version.sdk",
+    };
+    const rows = [["Serial", device.serial]];
+    for (const [label, key] of Object.entries(props)) {
+      rows.push([label, await adb.getProp(key)]);
+    }
+    $("info").innerHTML = "";
+    for (const [label, value] of rows) {
+      const tr = $("info").insertRow();
+      tr.insertCell().textContent = label;
+      tr.insertCell().textContent = value || "(empty)";
+    }
+
+    $("list").disabled = false;
+    setStatus("Connected.");
+  } catch (e) {
+    adb = null;
+    $("list").disabled = true;
+    setStatus("Connect failed: " + e.message, true);
+    console.error(e);
+  }
+});
+
+$("list").addEventListener("click", async () => {
+  try {
+    if (!adb) throw new Error("Not connected.");
+    setStatus("Listing packages…");
+    const output = await adb.subprocess.noneProtocol.spawnWaitText("pm list packages");
+
+    // Each good line looks like "package:com.example.app"
+    const lines = output.split("\n").map((l) => l.trim()).filter(Boolean);
+    const packages = lines.filter((l) => l.startsWith("package:")).map((l) => l.slice(8)).sort();
+    if (packages.length === 0) {
+      throw new Error("pm returned no packages. Raw output: " + (output.trim() || "(empty)"));
+    }
+
+    $("packages").innerHTML = "";
+    for (const name of packages) {
+      const li = document.createElement("li");
+      li.textContent = name;
+      $("packages").append(li);
+    }
+    $("count").textContent = `(${packages.length})`;
+    setStatus("Listed packages.");
+  } catch (e) {
+    setStatus("List failed: " + e.message + " — if the phone was unplugged, connect again.", true);
+    console.error(e);
+  }
+});
+</script>
+</body>
+</html>
