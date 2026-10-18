@@ -29,7 +29,7 @@
 <ul id="packages"></ul>
 
 <script type="module">
-// Libraries loaded from esm.sh (a CDN). Major version pinned to 2.
+// Libraries bundled into tango.js (one copy of each, no CDN). Rebuild with: npm run build
 let Adb, AdbDaemonTransport, AdbDaemonWebUsbDevice, AdbDaemonWebUsbDeviceManager, AdbWebCredentialStore;
 
 const $ = (id) => document.getElementById(id);
@@ -40,13 +40,12 @@ function setStatus(text, isError = false) {
   $("status").className = isError ? "error" : "";
 }
 
-// Load libraries separately so a CDN failure gives a clear message
+// Load the bundled libraries so a missing file gives a clear message
 try {
-  ({ Adb, AdbDaemonTransport } = await import("https://esm.sh/@yume-chan/adb@2"));
-  ({ AdbDaemonWebUsbDevice, AdbDaemonWebUsbDeviceManager } = await import("https://esm.sh/@yume-chan/adb-daemon-webusb@2"));
-  ({ default: AdbWebCredentialStore } = await import("https://esm.sh/@yume-chan/adb-credential-web@2"));
+  ({ Adb, AdbDaemonTransport, AdbDaemonWebUsbDevice, AdbDaemonWebUsbDeviceManager, AdbWebCredentialStore } =
+    await import("./tango.js"));
 } catch (e) {
-  setStatus("Could not load the Tango libraries from esm.sh: " + e.message, true);
+  setStatus("Could not load tango.js (is it next to index.html?): " + e.message, true);
   $("connect").disabled = true;
   throw e;
 }
@@ -85,11 +84,19 @@ $("connect").addEventListener("click", async () => {
     }
 
     setStatus("Check your phone: tap \"Allow\" on the USB debugging prompt…");
-    const transport = await AdbDaemonTransport.authenticate({
-      serial: device.serial,
-      connection,
-      credentialStore: new AdbWebCredentialStore("adbweb"),
-    });
+    console.log("USB connected to", device.serial, "- starting adb handshake");
+    const timeout = new Promise((_, reject) => setTimeout(() => reject(new Error(
+      "No answer from the phone after 30 seconds. Unplug and replug, unlock the screen, then try again. " +
+      "If no prompt ever appears: Developer options → Revoke USB debugging authorizations, then retry."
+    )), 30000));
+    const transport = await Promise.race([
+      AdbDaemonTransport.authenticate({
+        serial: device.serial,
+        connection,
+        credentialStore: new AdbWebCredentialStore("adbweb"),
+      }),
+      timeout,
+    ]);
     adb = new Adb(transport);
 
     const props = {

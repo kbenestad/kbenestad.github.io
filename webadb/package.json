@@ -1,0 +1,15 @@
+{
+  "name": "adbweb",
+  "private": true,
+  "scripts": {
+    "build": "esbuild tango-entry.js --bundle --format=esm --target=es2022 --minify --outfile=tango.js"
+  },
+  "dependencies": {
+    "@yume-chan/adb": "2.6.4",
+    "@yume-chan/adb-credential-web": "2.1.0",
+    "@yume-chan/adb-daemon-webusb": "2.3.2"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  }
+}
