@@ -1,157 +1,80 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="fjord">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>adbweb</title>
-<style>
-  body { font-family: system-ui, sans-serif; max-width: 800px; margin: 2rem auto; padding: 0 1rem; }
-  button { padding: .5rem 1rem; margin-right: .5rem; }
-  #status { margin: 1rem 0; padding: .5rem; background: #eee; }
-  #status.error { background: #fdd; color: #900; }
-  table { border-collapse: collapse; }
-  td { padding: .2rem 1rem .2rem 0; }
-  ul { font-family: monospace; font-size: .9rem; }
-</style>
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>webadb</title>
+<link rel="stylesheet" href="./kbenestad-fjord/tokens.css">
+<link rel="stylesheet" href="./kbenestad-fjord/components/bundle.css">
+<style>html,body{height:100%;margin:0}.k{height:100%}.win.app{height:100%;box-shadow:none;border:0;border-radius:0}.view{padding:var(--space-6);gap:var(--space-4);flex-direction:column;display:flex}.k [hidden]{display:none!important}.bar{justify-content:space-between;align-items:center;gap:var(--space-2);flex-wrap:wrap;display:flex}.badges{gap:var(--space-1);flex-wrap:wrap;display:flex}.k summary>span{align-items:center;gap:var(--space-2);overflow-wrap:anywhere;flex-wrap:wrap;min-width:0;display:flex}.center{padding:var(--space-16);justify-content:center;display:flex}</style>
+<script>
+  // follow the system light/dark setting within the Fjord family
+  (function () {
+    var m = matchMedia('(prefers-color-scheme: dark)');
+    function set() { document.documentElement.dataset.theme = m.matches ? 'fjord-dark' : 'fjord'; }
+    set(); m.addEventListener('change', set);
+  })();
+</script>
+  <script type="module" crossorigin src="./assets/index-6U4MVUDq.js"></script>
 </head>
 <body>
-<h1>adbweb</h1>
+<div class="k">
+  <div class="win app">
+    <nav class="pane sidebar" id="nav" data-collapse="rail" aria-label="Sections" data-i18n-label="nav.sections">
+      <header class="hb"><div class="t start" data-i18n="app.title">webadb</div><button class="btn ico flat sidebar-toggle" data-toggle="nav" aria-controls="nav" aria-expanded="true" aria-label="Collapse sidebar" data-i18n-label="nav.collapse"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg></button></header>
+      <div class="pane-body">
+        <a class="nav" href="#device" data-view="device" title="Device" data-i18n-title="nav.device"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg> <span class="lbl" data-i18n="nav.device">Device</span></a>
+        <a class="nav" href="#packages" data-view="packages" title="Packages" data-i18n-title="nav.packages"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></svg> <span class="lbl" data-i18n="nav.packages">Packages</span> <span class="ct" id="pkg-count"></span></a>
+      </div>
+    </nav>
+    <section class="pane main">
+      <header class="hb">
+        <button class="btn ico flat sidebar-toggle reveal narrow-only" data-toggle="nav" aria-controls="nav" aria-expanded="true" aria-label="Show sidebar" data-i18n-label="nav.show"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg></button>
+        <div class="t"><span id="title">webadb</span><small id="subtitle"></small></div>
+        <button class="btn ico flat" id="disconnect" hidden aria-label="Disconnect phone" data-i18n-label="action.disconnect"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v10"/><path d="M18.4 6.6a9 9 0 1 1-12.77.04"/></svg></button>
+        <button class="btn ico flat" popovertarget="mm" aria-label="Main menu" data-i18n-label="menu.main"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg></button>
+      </header>
+      <div class="pane-body">
+        <div class="view" id="error-box" hidden></div>
 
-<button id="connect">Connect phone</button>
-<button id="list" disabled>List packages</button>
+        <div class="view" id="view-unsupported" hidden>
+          <div class="status">
+            <svg class="status-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+            <h2 data-i18n="unsupported.title">This browser can't reach USB devices</h2>
+            <p data-i18n="unsupported.text">Open this page in a Chromium-based browser, such as Brave, Chromium, Edge or Chrome. Firefox and Safari don't support WebUSB.</p>
+          </div>
+        </div>
 
-<div id="status">Not connected.</div>
+        <div class="view" id="view-connect" hidden>
+          <div class="status">
+            <svg class="status-ic" viewBox="0 0 24 24" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
+            <h2 data-i18n="connect.title">Connect a phone</h2>
+            <p data-i18n="connect.text">Turn on USB debugging on the phone, plug it in, then choose it in the list the browser shows.</p>
+            <button class="btn pri pill" id="connect" data-i18n="action.connect">Connect phone</button>
+          </div>
+        </div>
 
-<h2>Device</h2>
-<table id="info"></table>
+        <div class="view" id="view-loading" hidden>
+          <div class="center"><span class="spin lg" role="status" aria-label="Loading" data-i18n-label="state.loading"></span></div>
+        </div>
 
-<h2>Packages <span id="count"></span></h2>
-<ul id="packages"></ul>
+        <div class="view" id="view-device" hidden></div>
 
-<script type="module">
-// Libraries bundled into tango.js (one copy of each, no CDN). Rebuild with: npm run build
-let Adb, AdbDaemonTransport, AdbDaemonWebUsbDevice, AdbDaemonWebUsbDeviceManager, AdbWebCredentialStore;
-
-const $ = (id) => document.getElementById(id);
-let adb = null;
-
-function setStatus(text, isError = false) {
-  $("status").textContent = text;
-  $("status").className = isError ? "error" : "";
-}
-
-// Load the bundled libraries so a missing file gives a clear message
-try {
-  ({ Adb, AdbDaemonTransport, AdbDaemonWebUsbDevice, AdbDaemonWebUsbDeviceManager, AdbWebCredentialStore } =
-    await import("./tango.js"));
-} catch (e) {
-  setStatus("Could not load tango.js (is it next to index.html?): " + e.message, true);
-  $("connect").disabled = true;
-  throw e;
-}
-
-$("connect").addEventListener("click", async () => {
-  try {
-    if (!window.isSecureContext) {
-      throw new Error("Page must be opened via http://localhost or https:// — WebUSB is blocked otherwise.");
-    }
-    const Manager = AdbDaemonWebUsbDeviceManager.BROWSER;
-    if (!Manager) {
-      throw new Error("WebUSB not available. Use a Chromium-based browser (Chromium, Chrome, Brave).");
-    }
-
-    // Close any previous connection before making a new one
-    if (adb) { await adb.close().catch(() => {}); adb = null; }
-
-    setStatus("Choose your phone in the browser's device picker…");
-    const device = await Manager.requestDevice();
-    if (!device) {
-      setStatus("No device selected. If your phone wasn't in the list, check USB debugging is on.", true);
-      return;
-    }
-
-    let connection;
-    try {
-      connection = await device.connect();
-    } catch (e) {
-      if (e instanceof AdbDaemonWebUsbDevice.DeviceBusyError) {
-        throw new Error("Phone is in use by another program. Run `adb kill-server` in a terminal, then try again.");
-      }
-      if (e.name === "SecurityError" || e.name === "NetworkError") {
-        throw new Error(`USB access refused (${e.name}). On Linux, check udev rules for Android devices. Details: ${e.message}`);
-      }
-      throw e;
-    }
-
-    setStatus("Check your phone: tap \"Allow\" on the USB debugging prompt…");
-    console.log("USB connected to", device.serial, "- starting adb handshake");
-    const timeout = new Promise((_, reject) => setTimeout(() => reject(new Error(
-      "No answer from the phone after 30 seconds. Unplug and replug, unlock the screen, then try again. " +
-      "If no prompt ever appears: Developer options → Revoke USB debugging authorizations, then retry."
-    )), 30000));
-    const transport = await Promise.race([
-      AdbDaemonTransport.authenticate({
-        serial: device.serial,
-        connection,
-        credentialStore: new AdbWebCredentialStore("adbweb"),
-      }),
-      timeout,
-    ]);
-    adb = new Adb(transport);
-
-    const props = {
-      Manufacturer: "ro.product.manufacturer",
-      Model: "ro.product.model",
-      "Android version": "ro.build.version.release",
-      "SDK level": "ro.build.version.sdk",
-    };
-    const rows = [["Serial", device.serial]];
-    for (const [label, key] of Object.entries(props)) {
-      rows.push([label, await adb.getProp(key)]);
-    }
-    $("info").innerHTML = "";
-    for (const [label, value] of rows) {
-      const tr = $("info").insertRow();
-      tr.insertCell().textContent = label;
-      tr.insertCell().textContent = value || "(empty)";
-    }
-
-    $("list").disabled = false;
-    setStatus("Connected.");
-  } catch (e) {
-    adb = null;
-    $("list").disabled = true;
-    setStatus("Connect failed: " + e.message, true);
-    console.error(e);
-  }
-});
-
-$("list").addEventListener("click", async () => {
-  try {
-    if (!adb) throw new Error("Not connected.");
-    setStatus("Listing packages…");
-    const output = await adb.subprocess.noneProtocol.spawnWaitText("pm list packages");
-
-    // Each good line looks like "package:com.example.app"
-    const lines = output.split("\n").map((l) => l.trim()).filter(Boolean);
-    const packages = lines.filter((l) => l.startsWith("package:")).map((l) => l.slice(8)).sort();
-    if (packages.length === 0) {
-      throw new Error("pm returned no packages. Raw output: " + (output.trim() || "(empty)"));
-    }
-
-    $("packages").innerHTML = "";
-    for (const name of packages) {
-      const li = document.createElement("li");
-      li.textContent = name;
-      $("packages").append(li);
-    }
-    $("count").textContent = `(${packages.length})`;
-    setStatus("Listed packages.");
-  } catch (e) {
-    setStatus("List failed: " + e.message + " — if the phone was unplugged, connect again.", true);
-    console.error(e);
-  }
-});
-</script>
+        <div class="view" id="view-packages" hidden>
+          <div class="bar">
+            <span class="muted" id="pkg-summary"></span>
+            <button class="btn flat" data-expand-all="pkgs" data-label-expand="Expand all" data-label-collapse="Collapse all" aria-controls="pkgs" id="expand-all">Expand all</button>
+          </div>
+          <div class="list" id="pkgs"></div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <div class="menu" popover id="mm" role="menu">
+    <button role="menuitemradio" aria-checked="true" data-set-format="intl" popovertarget="mm" popovertargetaction="hide" data-i18n="settings.formatIntl">International format</button>
+    <button role="menuitemradio" aria-checked="false" data-set-format="scandi" popovertarget="mm" popovertargetaction="hide" data-i18n="settings.formatScandi">Scandinavian format</button>
+  </div>
+</div>
+<script src="./kbenestad-fjord/components/bundle.js"></script>
 </body>
 </html>

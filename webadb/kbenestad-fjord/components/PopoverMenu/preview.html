@@ -1,0 +1,24 @@
+<!-- @dsCard group="Actions" height=300 width=560 -->
+<!doctype html>
+<html><head><meta charset="utf-8"></head>
+<body style="margin:0;background:var(--bg)">
+<div class="k" style="height:280px;padding:24px">
+  <div class="win" style="height:100%">
+    <header class="hb">
+      <div class="t">Invoices</div>
+      <button class="btn ico flat" popovertarget="m1" aria-label="Main menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg></button>
+    </header>
+    <div style="flex:1;background:var(--view)"></div>
+  </div>
+  <div class="menu" popover id="m1" role="menu">
+    <button role="menuitem">New invoice <span class="kbd">Ctrl+N</span></button>
+    <button role="menuitem">Export all as PDF</button>
+    <hr>
+    <button role="menuitem">Preferences <span class="kbd">Ctrl+,</span></button>
+    <button role="menuitem">About Invoices</button>
+    <hr>
+    <button role="menuitem" class="bad">Delete all drafts</button>
+  </div>
+</div>
+<script>document.getElementById('m1').showPopover();</script>
+</body></html>
