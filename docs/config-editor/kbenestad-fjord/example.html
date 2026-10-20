@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en" data-theme="fjord">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Fjord example</title>
+<!-- 1. tokens, 2. component styles (also loads ../fonts/), then markup, then 3. behaviour -->
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components/bundle.css">
+<style>html,body{margin:0;height:100%} .k{height:100%} .win.app{height:100%;border:0;border-radius:0;box-shadow:none}</style>
+<script>
+  // follow the system light/dark setting within the Fjord family
+  (function () {
+    var m = matchMedia('(prefers-color-scheme: dark)');
+    function set() { document.documentElement.dataset.theme = m.matches ? 'fjord-dark' : 'fjord'; }
+    set(); m.addEventListener('change', set);
+  })();
+</script>
+</head>
+<body>
+<div class="k">
+  <div class="win app has-tabbar">
+    <nav class="pane sidebar" id="nav" data-collapse="rail" aria-label="Folders" data-i18n-label="nav.folders">
+      <header class="hb"><div class="t start" data-i18n="app.title">Files</div><button class="btn ico flat sidebar-toggle" data-toggle="nav" aria-controls="nav" aria-expanded="true" aria-label="Collapse sidebar" data-i18n-label="nav.collapse"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg></button></header>
+      <div class="pane-body">
+          <a class="nav on" href="#" aria-current="page" title="Documents" data-i18n-title="nav.documents"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg> <span class="lbl" data-i18n="nav.documents">Documents</span> <span class="ct">24</span></a>
+          <a class="nav" href="#" title="Invoices" data-i18n-title="nav.invoices"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17V7"/><path d="M16 8h-6a2 2 0 0 0 0 4h4a2 2 0 0 1 0 4H8"/><path d="M4 3a1 1 0 0 1 1-1 1.3 1.3 0 0 1 .7.2l.933.6a1.3 1.3 0 0 0 1.4 0l.934-.6a1.3 1.3 0 0 1 1.4 0l.933.6a1.3 1.3 0 0 0 1.4 0l.933-.6a1.3 1.3 0 0 1 1.4 0l.934.6a1.3 1.3 0 0 0 1.4 0l.933-.6A1.3 1.3 0 0 1 19 2a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1 1.3 1.3 0 0 1-.7-.2l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.934.6a1.3 1.3 0 0 1-1.4 0l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-1.4 0l-.934-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-.7.2 1 1 0 0 1-1-1z"/></svg> <span class="lbl" data-i18n="nav.invoices">Invoices</span> <span class="ct">12</span></a>
+          <a class="nav" href="#" title="Contracts" data-i18n-title="nav.contracts"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.364 13.634a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506l4.013-4.009a1 1 0 0 0-3.004-3.004z"/><path d="M14.487 7.858A1 1 0 0 1 14 7V2"/><path d="M20 19.645V20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l2.516 2.516"/><path d="M8 18h1"/></svg> <span class="lbl" data-i18n="nav.contracts">Contracts</span></a>
+          <a class="nav" href="#" title="Archive" data-i18n-title="nav.archive"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></svg> <span class="lbl" data-i18n="nav.archive">Archive</span></a>
+      </div>
+      <div class="pane-foot"><a class="nav" href="#" title="Settings" data-i18n-title="nav.settings"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 5H3"/><path d="M12 19H3"/><path d="M14 3v4"/><path d="M16 17v4"/><path d="M21 12h-9"/><path d="M21 19h-5"/><path d="M21 5h-7"/><path d="M8 10v4"/><path d="M8 12H3"/></svg> <span class="lbl" data-i18n="nav.settings">Settings</span></a></div>
+    </nav>
+    <section class="pane main">
+      <header class="hb">
+        <button class="btn ico flat sidebar-toggle reveal narrow-only" data-toggle="nav" aria-controls="nav" aria-expanded="true" aria-label="Show sidebar" data-i18n-label="nav.show"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg></button>
+        <div class="t"><span data-i18n="nav.documents">Documents</span><small id="count">24 items</small></div>
+        <button class="btn ico flat" popovertarget="mm" aria-label="Main menu" data-i18n-label="menu.main"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg></button>
+      </header>
+      <div class="pane-body" style="padding:var(--space-6);display:flex;flex-direction:column;gap:var(--space-4)">
+        <div style="display:flex;flex-wrap:wrap;gap:var(--space-2)">
+          <button class="btn pri" data-dialog-open="new" data-i18n="folder.new">New folder</button>
+          <button class="btn" id="archive" data-i18n="file.archive">Archive file</button>
+        </div>
+        <div class="list">
+            <div class="row" style="background:var(--sel)"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/></svg><div class="tt"><div>Contract — Fjordline.pdf</div><div><data data-fmt="number" value="2.4">2.4</data> MB · <data data-fmt="date" value="2026-10-14">2026-10-14</data></div></div></div>
+            <div class="row"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/></svg><div class="tt"><div>Invoice INV-0143.pdf</div><div><data data-fmt="number" value="180">180</data> kB · <data data-fmt="date" value="2026-10-06">2026-10-06</data></div></div></div>
+            <div class="row"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/></svg><div class="tt"><div>Meeting notes.md</div><div><data data-fmt="number" value="6">6</data> kB · <data data-fmt="date" value="2026-10-02">2026-10-02</data></div></div></div>
+        </div>
+      </div>
+      <nav class="tabbar" aria-label="Folders" data-i18n-label="nav.folders">
+        <a class="tab on" href="#" aria-current="page"><span class="tab-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span><span data-i18n="nav.documents">Documents</span></a>
+        <a class="tab" href="#"><span class="tab-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17V7"/><path d="M16 8h-6a2 2 0 0 0 0 4h4a2 2 0 0 1 0 4H8"/><path d="M4 3a1 1 0 0 1 1-1 1.3 1.3 0 0 1 .7.2l.933.6a1.3 1.3 0 0 0 1.4 0l.934-.6a1.3 1.3 0 0 1 1.4 0l.933.6a1.3 1.3 0 0 0 1.4 0l.933-.6a1.3 1.3 0 0 1 1.4 0l.934.6a1.3 1.3 0 0 0 1.4 0l.933-.6A1.3 1.3 0 0 1 19 2a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1 1.3 1.3 0 0 1-.7-.2l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.934.6a1.3 1.3 0 0 1-1.4 0l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-1.4 0l-.934-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-.7.2 1 1 0 0 1-1-1z"/></svg></span><span data-i18n="nav.invoices">Invoices</span></a>
+        <a class="tab" href="#"><span class="tab-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.364 13.634a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506l4.013-4.009a1 1 0 0 0-3.004-3.004z"/><path d="M14.487 7.858A1 1 0 0 1 14 7V2"/><path d="M20 19.645V20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l2.516 2.516"/><path d="M8 18h1"/></svg></span><span data-i18n="nav.contracts">Contracts</span></a>
+        <a class="tab" href="#"><span class="tab-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></svg></span><span data-i18n="nav.archive">Archive</span></a>
+        <a class="tab" href="#"><span class="tab-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 5H3"/><path d="M12 19H3"/><path d="M14 3v4"/><path d="M16 17v4"/><path d="M21 12h-9"/><path d="M21 19h-5"/><path d="M21 5h-7"/><path d="M8 10v4"/><path d="M8 12H3"/></svg></span><span data-i18n="nav.settings">Settings</span></a>
+      </nav>
+    </section>
+  </div>
+  <div class="menu" popover id="mm" role="menu">
+    <button role="menuitemradio" aria-checked="true" data-set-format="intl" popovertarget="mm" popovertargetaction="hide" data-i18n="settings.formatIntl">International format</button>
+    <button role="menuitemradio" aria-checked="false" data-set-format="scandi" popovertarget="mm" popovertargetaction="hide" data-i18n="settings.formatScandi">Scandinavian format</button>
+    <hr>
+    <button role="menuitem" popovertarget="mm" popovertargetaction="hide" data-i18n="menu.about">About</button>
+  </div>
+  <dialog class="dlg" id="new" aria-labelledby="new-t">
+    <div class="grab"></div>
+    <header class="hb"><button class="btn flat" data-dialog-close data-i18n="action.cancel">Cancel</button><div class="t" id="new-t" data-i18n="folder.new">New folder</div><button class="btn pri" data-dialog-close value="create" data-i18n="action.create">Create</button></header>
+    <div class="dlg-body"><div class="fld"><label for="fname" data-i18n="folder.name">Name</label><input id="fname" class="inp" value="Ærlig talt — Øvre Årdal"></div></div>
+  </dialog>
+</div>
+<script src="components/bundle.js"></script>
+<script>
+  // Interface text, by key. In an app this block is the file locales/en.js, loaded with a <script> after bundle.js.
+  // To add a language later: copy it to locales/nb.js, translate the values, set <html lang="nb">,
+  // and load locales/nb.js after locales/en.js. Untranslated keys keep their English.
+  kBenestadFjord.i18n.add({
+    "nav.documents": "Documents",
+    "nav.invoices": "Invoices",
+    "nav.contracts": "Contracts",
+    "nav.archive": "Archive",
+    "nav.settings": "Settings",
+    "app.title": "Files",
+    "nav.folders": "Folders",
+    "nav.collapse": "Collapse sidebar",
+    "nav.show": "Show sidebar",
+    "menu.main": "Main menu",
+    "files.count": {
+      "one": "{count} item",
+      "other": "{count} items"
+    },
+    "folder.new": "New folder",
+    "file.archive": "Archive file",
+    "settings.formatIntl": "International format",
+    "settings.formatScandi": "Scandinavian format",
+    "menu.about": "About",
+    "action.cancel": "Cancel",
+    "action.create": "Create",
+    "folder.name": "Name",
+    "file.archived": "File moved to Archive",
+    "action.undo": "Undo"
+  });
+</script>
+<script>
+  var t = kBenestadFjord.i18n.t;
+  document.getElementById('count').textContent = t('files.count', { count: 24 });
+
+  // formats: international by default, Scandinavian as a setting (remembered in this browser)
+  function renderFormats() {
+    document.querySelectorAll('[data-fmt]').forEach(function (el) {
+      var kind = el.dataset.fmt, v = el.getAttribute('value');
+      el.textContent = kBenestadFjord.format[kind](kind === 'number' ? Number(v) : v);
+    });
+    var cur = document.documentElement.getAttribute('data-format') || 'intl';
+    document.querySelectorAll('[data-set-format]').forEach(function (b) { b.setAttribute('aria-checked', String(b.dataset.setFormat === cur)); });
+  }
+  function setFormat(f) {
+    if (f === 'scandi') document.documentElement.setAttribute('data-format', 'scandi');
+    else document.documentElement.removeAttribute('data-format');
+    try { localStorage.setItem('fjord-format', f); } catch (e) {}
+    renderFormats();
+  }
+  try { if (localStorage.getItem('fjord-format') === 'scandi') document.documentElement.setAttribute('data-format', 'scandi'); } catch (e) {}
+  renderFormats();
+  document.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-set-format]');
+    if (b) setFormat(b.dataset.setFormat);
+  });
+
+  document.getElementById('archive').addEventListener('click', function () {
+    kBenestadFjord.toast(t('file.archived'), { action: t('action.undo') });
+  });
+</script>
+</body>
+</html>
