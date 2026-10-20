@@ -1,0 +1,302 @@
+/* kBenestad Fjord — component styles. Colours, radii and the shadow come from tokens.css.
+   Scope: put class="k" on the app root; every rule below applies inside it. */
+/* fonts: shipped in ../fonts/ (downloaded from Bunny Fonts, latin subset); nothing loads from a CDN */
+@font-face{font-family:"Schibsted Grotesk";font-style:normal;font-weight:400;font-display:swap;src:url(../fonts/schibsted-grotesk-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"Schibsted Grotesk";font-style:normal;font-weight:500;font-display:swap;src:url(../fonts/schibsted-grotesk-latin-500-normal.woff2) format("woff2")}
+@font-face{font-family:"Schibsted Grotesk";font-style:normal;font-weight:600;font-display:swap;src:url(../fonts/schibsted-grotesk-latin-600-normal.woff2) format("woff2")}
+@font-face{font-family:"Schibsted Grotesk";font-style:normal;font-weight:700;font-display:swap;src:url(../fonts/schibsted-grotesk-latin-700-normal.woff2) format("woff2")}
+@font-face{font-family:"JetBrains Mono";font-style:normal;font-weight:400;font-display:swap;src:url(../fonts/jetbrains-mono-latin-400-normal.woff2) format("woff2")}
+@font-face{font-family:"JetBrains Mono";font-style:normal;font-weight:500;font-display:swap;src:url(../fonts/jetbrains-mono-latin-500-normal.woff2) format("woff2")}
+.k{
+  font-family:var(--font-sans); color:var(--ink); background:var(--bg); font-size:15px; line-height:1.45;
+  -webkit-font-smoothing:antialiased; box-sizing:border-box;
+}
+.k *{box-sizing:border-box}
+.k h1,.k h2,.k h3,.k h4,.k p{margin:0}
+.k .mono{font-family:var(--font-mono);font-size:13px}
+.k .muted{color:var(--muted)}
+.k .cap{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.k .num{font-variant-numeric:tabular-nums}
+/* window chrome (Adwaita-like) */
+.k .win{background:var(--view);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--shadow);display:flex;flex-direction:column}
+.k .hb{height:52px;flex:none;display:flex;align-items:center;gap:8px;padding:0 10px;background:var(--head);border-bottom:1px solid var(--line)}
+.k .hb .t{flex:1;text-align:center;font-weight:700;font-size:15px}
+.k .hb .t small{display:block;font-weight:400;font-size:12px;color:var(--muted)}
+.k .nav{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:var(--rs);color:var(--ink2);font-size:14px;text-decoration:none}
+.k .nav.on{background:var(--sel);color:var(--accink);font-weight:600}
+.k .nav .ct{margin-left:auto;font-size:12px;color:var(--muted)}
+
+/* buttons */
+.k .btn{font:inherit;font-size:14px;font-weight:600;height:36px;padding:0 16px;border-radius:var(--rs);border:0;background:var(--sunk);color:var(--ink);display:inline-flex;align-items:center;justify-content:center;gap:8px;cursor:pointer;white-space:nowrap}
+.k .btn.pri{background:var(--acc);color:var(--onacc)}
+.k .btn.pill{border-radius:var(--pill);height:44px;padding:0 24px}
+.k .btn.flat{background:transparent}
+.k .btn.bad{background:var(--badfill);color:#fff}
+.k .btn.out{background:transparent;box-shadow:inset 0 0 0 1px var(--line2)}
+.k .btn.ico{width:36px;padding:0}
+.k .btn:disabled{opacity:.45}
+.k .btn svg,.k .ic{width:16px;height:16px;flex:none;stroke:currentColor;fill:none;stroke-width:1.75;stroke-linecap:round;stroke-linejoin:round}
+
+/* fields */
+.k .fld{display:flex;flex-direction:column;gap:6px;min-width:0}
+.k .fld label,.k .lbl{font-size:13px;font-weight:600;color:var(--ink2)}
+.k .inp{font:inherit;font-size:15px;height:40px;padding:0 12px;border-radius:var(--rs);border:1px solid var(--line2);background:var(--view);color:var(--ink);width:100%}
+.k .inp.focus{border-color:var(--acc);box-shadow:0 0 0 3px var(--halo)}
+.k .inp.err{border-color:var(--bad);box-shadow:0 0 0 3px var(--badsoft)}
+.k textarea.inp{height:84px;padding:10px 12px;resize:none}
+.k .help{font-size:12.5px;color:var(--muted)}
+.k .help.err{color:var(--bad);font-weight:600}
+.k .chk{display:flex;align-items:center;gap:10px;font-size:14px}
+.k .chk input{width:18px;height:18px;accent-color:var(--acc);margin:0}
+.k .sw{width:44px;height:26px;border-radius:13px;background:var(--line2);position:relative;flex:none}
+.k .sw::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;box-shadow:0 1px 2px rgba(0,0,0,.2)}
+.k .sw.on{background:var(--acc)}
+.k .sw.on::after{left:21px;background:var(--onacc)}
+
+/* boxed list (Adwaita) */
+.k .list{background:var(--card);border:1px solid var(--cardline);border-radius:var(--r);overflow:hidden}
+.k .row{display:flex;align-items:center;gap:12px;min-height:54px;padding:8px 16px;border-top:1px solid var(--line)}
+.k .row:first-child{border-top:0}
+.k .row .tt{flex:1;min-width:0}
+.k .row .tt div:last-child{font-size:13px;color:var(--muted)}
+.k .card{background:var(--card);border:1px solid var(--cardline);border-radius:var(--r);padding:20px}
+
+/* callouts */
+.k .co{display:flex;gap:12px;padding:14px 16px;border-radius:var(--rs);font-size:14px;background:var(--accsoft);color:var(--accink)}
+.k .co b{display:block;margin-bottom:2px}
+.k .co .ic{margin-top:2px;width:18px;height:18px}
+.k .co.ok{background:var(--oksoft);color:var(--ok)}
+.k .co.warn{background:var(--warnsoft);color:var(--warn)}
+.k .co.bad{background:var(--badsoft);color:var(--bad)}
+.k .co p{color:var(--ink2)}
+
+/* badges / tags */
+.k .bdg{display:inline-flex;align-items:center;gap:6px;height:24px;padding:0 10px;border-radius:var(--pill);font-size:12.5px;font-weight:600;background:var(--sunk);color:var(--ink2);white-space:nowrap}
+.k .bdg::before{content:"";width:6px;height:6px;border-radius:50%;background:currentColor}
+.k .bdg.acc{background:var(--accsoft);color:var(--accink)}
+.k .bdg.ok{background:var(--oksoft);color:var(--ok)}
+.k .bdg.warn{background:var(--warnsoft);color:var(--warn)}
+.k .bdg.bad{background:var(--badsoft);color:var(--bad)}
+
+/* tabs / segmented */
+.k .seg{display:inline-flex;background:var(--sunk);border-radius:var(--rs);padding:3px;gap:2px}
+.k .seg a{font-size:14px;font-weight:600;padding:6px 14px;border-radius:calc(var(--rs) - 2px);color:var(--ink2);text-decoration:none}
+.k .seg a.on{background:var(--view);color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.08)}
+.k .tabs{display:flex;gap:24px;border-bottom:1px solid var(--line)}
+.k .tabs a{padding:10px 0;font-size:14px;font-weight:600;color:var(--muted);text-decoration:none;border-bottom:2px solid transparent;margin-bottom:-1px}
+.k .tabs a.on{color:var(--ink);border-color:var(--acc)}
+
+/* accordion */
+.k details{border-top:1px solid var(--line)}
+.k details:first-child{border-top:0}
+.k summary{list-style:none;display:flex;align-items:center;justify-content:space-between;padding:14px 16px;font-weight:600;cursor:pointer}
+.k summary::-webkit-details-marker{display:none}
+.k summary::after{content:"";width:8px;height:8px;border-right:1.75px solid var(--muted);border-bottom:1.75px solid var(--muted);transform:rotate(45deg);margin-top:-4px}
+.k details[open] summary::after{transform:rotate(225deg);margin-top:4px}
+.k details p{padding:0 16px 16px;color:var(--ink2);font-size:14px}
+
+/* table */
+.k .tbl{width:100%;border-collapse:collapse;font-size:14px}
+.k .tbl th{text-align:left;font-size:12px;font-weight:600;letter-spacing:.04em;text-transform:uppercase;color:var(--muted);padding:10px 14px;border-bottom:1px solid var(--line);background:var(--sunk)}
+.k .tbl td{padding:12px 14px;border-bottom:1px solid var(--line);color:var(--ink2)}
+.k .tbl tr:last-child td{border-bottom:0}
+.k .tbl .r{text-align:right;font-variant-numeric:tabular-nums}
+.k .tbl tr.sel td{background:var(--sel)}
+
+/* theme radii: tokens.json holds Fjord's; Isbre and Rim differ (from the Nordic Expression Directions kit) */
+[data-theme="isbre"],[data-theme="isbre-dark"]{--r:8px;--rs:6px}
+[data-theme="rim"],[data-theme="rim-dark"]{--r:4px;--rs:3px;--pill:4px}
+
+/* app layouts: one window, panes side by side, each with its own header bar.
+   .win.app > .pane.sidebar | .pane.mid | .pane.main | .pane.details  (use the ones you need, in this order) */
+.k .win.app{flex-direction:row;position:relative;container:fjwin/inline-size} /* breakpoints below follow the window's width, not the screen's */
+.k .pane{display:flex;flex-direction:column;min-width:0;min-height:0}
+.k .pane > .pane-body{flex:1;min-height:0;overflow:auto}
+.k .pane.main{flex:1;background:var(--view)}
+.k .pane.sidebar{width:240px;flex:none;background:var(--side);border-right:1px solid var(--line)}
+.k .pane.mid{width:300px;flex:none;background:var(--view);border-right:1px solid var(--line)}
+.k .pane.details{width:280px;flex:none;background:var(--side);border-left:1px solid var(--line)}
+.k .pane.sidebar .hb,.k .pane.details .hb{background:var(--side)}
+.k .pane.sidebar > .pane-body{padding:10px 8px;display:flex;flex-direction:column;gap:2px}
+.k .pane.details > .pane-body{padding:20px}
+.k .pane.is-collapsed{display:none}
+.k .hb .t.start{text-align:left;padding-left:6px}
+.k .meta{display:grid;grid-template-columns:auto 1fr;gap:10px 16px;margin:0;font-size:14px}
+.k .meta dt{color:var(--muted)}
+.k .meta dd{margin:0;color:var(--ink2);min-width:0;overflow-wrap:anywhere}
+@container fjwin (max-width:720px){
+  .k .win.app .pane.sidebar,.k .win.app .pane.mid{position:absolute;top:0;bottom:0;left:0;z-index:2;box-shadow:var(--shadow)}
+  .k .win.app .pane.details{position:absolute;top:0;bottom:0;right:0;z-index:2;box-shadow:var(--shadow)}
+}
+
+/* dialogs: native <dialog>, opened with showModal() */
+.k dialog{border:1px solid var(--line);padding:0;background:var(--view);color:var(--ink);border-radius:var(--r);box-shadow:var(--shadow);max-width:calc(100vw - 32px)}
+.k dialog::backdrop{background:var(--scrim)}
+.k dialog.alert{width:372px;text-align:center}
+.k dialog.alert .msg{padding:32px 24px 0;display:flex;flex-direction:column;gap:8px}
+.k dialog.alert h2{font-size:18px;font-weight:600}
+.k dialog.alert p{color:var(--ink2);font-size:15px}
+.k dialog.alert .acts{display:flex;gap:12px;padding:24px}
+.k dialog.alert .acts .btn{flex:1}
+.k dialog.alert .acts.stack{flex-direction:column}
+.k dialog.dlg{width:480px;max-height:80vh;flex-direction:column;overflow:hidden}
+.k dialog.dlg[open]{display:flex}
+.k dialog.dlg .hb{background:var(--view);border-bottom:1px solid var(--line)}
+.k dialog.dlg .dlg-body{flex:1;overflow:auto;padding:24px;display:flex;flex-direction:column;gap:18px}
+.k dialog.dlg .grab{display:none;width:36px;height:4px;border-radius:2px;background:var(--line2);margin:8px auto 0;flex:none}
+.k dialog.dlg.sheet{width:100%;max-width:100%;max-height:90vh;margin:auto 0 0;border-radius:var(--r) var(--r) 0 0;border-bottom:0}
+.k dialog.dlg.sheet .grab{display:block}
+@media (max-width:600px){
+  .k dialog.dlg{width:100%;max-width:100%;max-height:90vh;margin:auto 0 0;border-radius:var(--r) var(--r) 0 0;border-bottom:0}
+  .k dialog.dlg .grab{display:block}
+}
+.k .btn.reveal[aria-expanded="true"]{display:none}
+
+/* popover menu: <div class="menu" popover id="…"> opened by <button popovertarget="…"> */
+.k .menu{margin:0;inset:auto;position:fixed;min-width:200px;padding:6px;background:var(--view);color:var(--ink);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--shadow)}
+.k .menu[popover]:popover-open{display:flex;flex-direction:column;gap:2px}
+.k .menu button,.k .menu a{font:inherit;font-size:14px;display:flex;align-items:center;gap:10px;height:36px;padding:0 12px;border:0;border-radius:var(--rs);background:transparent;color:var(--ink);text-align:left;text-decoration:none;cursor:pointer;width:100%}
+.k .menu button:hover,.k .menu a:hover{background:var(--sunk)}
+.k .menu :focus-visible{outline-offset:-2px}
+.k .menu .kbd{margin-left:auto;font-family:var(--font-mono);font-size:12px;color:var(--muted)}
+.k .menu .bad{color:var(--bad)}
+.k .menu hr{border:0;border-top:1px solid var(--line);margin:4px 6px}
+
+/* toast: brief confirmation at the bottom, inverted colours */
+.k .toasts{position:fixed;left:0;right:0;bottom:24px;display:flex;flex-direction:column;align-items:center;gap:8px;pointer-events:none;z-index:10}
+.k .toast{pointer-events:auto;display:flex;align-items:center;gap:12px;min-height:44px;padding:4px 6px 4px 18px;max-width:calc(100vw - 32px);border-radius:var(--pill);background:var(--ink);color:var(--view);font-size:14px;box-shadow:var(--shadow)}
+.k .toast .btn{background:transparent;color:var(--view);height:36px;padding:0 14px}
+.k .toast .btn.ico{width:36px;padding:0}
+
+/* status page: empty states, no results, offline */
+.k .status{display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:12px;padding:48px 24px;max-width:420px;margin:0 auto}
+.k .status .status-ic{width:64px;height:64px;stroke:var(--muted);fill:none;stroke-width:1.25;stroke-linecap:round;stroke-linejoin:round;margin-bottom:8px}
+.k .status h2{font-size:26px;font-weight:600;letter-spacing:-0.01em}
+.k .status p{color:var(--muted)}
+.k .status .btn{margin-top:12px}
+
+/* search bar: drops down under the header bar */
+.k .searchbar{flex:none;display:flex;justify-content:center;padding:8px 12px;background:var(--head);border-bottom:1px solid var(--line)}
+.k .searchbar[hidden]{display:none}
+.k .search{position:relative;width:100%;max-width:400px}
+.k .search .ic{position:absolute;left:12px;top:12px;color:var(--muted);pointer-events:none}
+.k .search .inp{padding-left:38px}
+
+/* loading: spinner and progress bar */
+.k .spin{width:16px;height:16px;flex:none;border-radius:50%;border:2px solid var(--line);border-top-color:var(--acc);animation:k-spin .8s linear infinite}
+.k .spin.lg{width:32px;height:32px;border-width:3px}
+@keyframes k-spin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.k .spin{animation-duration:2.4s}}
+.k progress{appearance:none;-webkit-appearance:none;width:100%;height:6px;border:0;border-radius:var(--pill);background:var(--view);box-shadow:inset 0 0 0 1px var(--line);overflow:hidden;color:var(--acc)}
+.k progress::-webkit-progress-bar{background:transparent}
+.k progress::-webkit-progress-value{background:var(--acc);border-radius:var(--pill)}
+.k progress::-moz-progress-bar{background:var(--acc);border-radius:var(--pill)}
+.k .btn .spin{border-color:transparent;border-top-color:currentColor}
+.k .btn[aria-pressed="true"]{background:var(--line)}
+
+/* focus: one ring for everything focusable by keyboard; accink passes 3:1 on every surface in every theme */
+.k :focus-visible{outline:2px solid var(--accink);outline-offset:2px}
+.k .inp:focus,.k .inp:focus-visible{outline:none;border-color:var(--acc);box-shadow:0 0 0 3px var(--halo)}
+.k .inp.err:focus{border-color:var(--bad);box-shadow:0 0 0 3px var(--badsoft)}
+.k .list > :focus-visible,.k .pane.mid .row:focus-visible{outline-offset:-2px}
+
+/* hover and pressed: shades of the element's own colour, so they work in every theme */
+.k .btn{transition:background-color .12s}
+.k .btn:hover:not(:disabled){background:color-mix(in srgb,var(--sunk),currentColor 8%)}
+.k .btn:active:not(:disabled){background:color-mix(in srgb,var(--sunk),currentColor 14%)}
+.k .btn.flat:hover:not(:disabled),.k .btn.out:hover:not(:disabled),.k .toast .btn:hover{background:color-mix(in srgb,currentColor 8%,transparent)}
+.k .btn.flat:active:not(:disabled),.k .btn.out:active:not(:disabled),.k .toast .btn:active{background:color-mix(in srgb,currentColor 14%,transparent)}
+.k .btn.pri:hover:not(:disabled),.k .btn.pri:active:not(:disabled){background:var(--acch)}
+.k .btn.bad:hover:not(:disabled){background:color-mix(in srgb,var(--badfill),#000 12%)}
+.k .btn.bad:active:not(:disabled){background:color-mix(in srgb,var(--badfill),#000 20%)}
+.k .btn[aria-pressed="true"]:hover{background:color-mix(in srgb,var(--line),currentColor 8%)}
+.k .btn:disabled{cursor:not-allowed}
+.k .nav:hover:not(.on),.k .seg a:hover:not(.on){background:color-mix(in srgb,currentColor 7%,transparent)}
+.k .tabs a:hover:not(.on){color:var(--ink)}
+.k summary:hover{background:color-mix(in srgb,currentColor 4%,transparent)}
+@media (prefers-reduced-motion:reduce){.k .btn{transition:none}}
+.k .searchbar.is-collapsed{display:none}
+
+/* sidebar groups: <details class="nav-group"><summary class="nav">icon <span class="lbl">Packages</span></summary><div class="nav-sub">…</div></details> */
+.k .nav-group{border:0}
+.k .nav-group > summary.nav{padding:8px 10px;font-weight:inherit;justify-content:flex-start;border-radius:var(--rs)}
+.k .nav-group > summary.nav::after{margin-left:auto;width:6px;height:6px;margin-top:-3px}
+.k .nav-group[open] > summary.nav::after{margin-top:3px}
+.k .nav-group > summary.nav:hover{background:color-mix(in srgb,currentColor 7%,transparent)}
+.k .nav-sub{display:flex;flex-direction:column;gap:2px;padding:2px 0 4px 26px}
+.k .nav-sub .nav{padding:6px 10px}
+
+/* sidebar footer: pinned below the scrolling items */
+.k .pane-foot{flex:none;display:flex;flex-direction:column;gap:2px;padding:8px;border-top:1px solid var(--line)}
+
+/* icon-only sidebar: add data-collapse="rail" to a .pane.sidebar; collapsing then leaves a 56px strip of icons */
+.k .pane.sidebar.is-collapsed[data-collapse="rail"]{display:flex;width:56px}
+.k .pane.sidebar.is-collapsed[data-collapse="rail"] .lbl,
+.k .pane.sidebar.is-collapsed[data-collapse="rail"] .ct,
+.k .pane.sidebar.is-collapsed[data-collapse="rail"] .hb .t,
+.k .pane.sidebar.is-collapsed[data-collapse="rail"] .nav-sub,
+.k .pane.sidebar.is-collapsed[data-collapse="rail"] .nav-group > summary.nav::after{display:none}
+.k .pane.sidebar.is-collapsed[data-collapse="rail"] .hb{justify-content:center;padding:0}
+.k .pane.sidebar.is-collapsed[data-collapse="rail"] > .pane-body,
+.k .pane.sidebar.is-collapsed[data-collapse="rail"] .pane-foot{padding-left:8px;padding-right:8px}
+.k .pane.sidebar.is-collapsed[data-collapse="rail"] .nav{justify-content:center;padding:10px 0}
+.k .btn.narrow-only{display:none}
+
+/* bottom panel inside .pane.main (a terminal, a log): collapsing keeps its title strip visible */
+.k .panel-bottom{flex:none;display:flex;flex-direction:column;border-top:1px solid var(--line);background:var(--head)}
+.k .panel-head{flex:none;display:flex;align-items:center;gap:8px;height:40px;padding:0 6px 0 16px;font-size:13px;font-weight:600;color:var(--ink2)}
+.k .panel-head .t{flex:1}
+.k .panel-body{height:240px;overflow:auto}
+.k .panel-bottom.is-collapsed .panel-body{display:none}
+.k .panel-bottom .panel-toggle svg{transition:transform .15s}
+.k .panel-bottom.is-collapsed .panel-toggle svg{transform:rotate(180deg)}
+.k .term{margin:0;min-height:100%;padding:12px 16px;background:var(--term-bg);color:var(--term-fg);font-family:var(--font-mono);font-size:13px;line-height:1.5;white-space:pre-wrap;overflow-wrap:anywhere}
+.k .term .prompt{color:var(--term-accent)}
+
+/* accordion content other than a single paragraph */
+.k details > .acc-body{padding:0 16px 16px}
+
+@container fjwin (max-width:720px){
+  .k .win.app .pane.sidebar.is-collapsed[data-collapse="rail"]{display:none}
+  .k .btn.narrow-only{display:inline-flex}
+}
+@media (prefers-reduced-motion:reduce){.k .panel-bottom .panel-toggle svg{transition:none}}
+
+/* code: inline code copies on click; code blocks carry a copy button */
+.k :not(pre) > code{font-family:var(--font-mono);font-size:.9em;padding:.1em .35em;border-radius:4px;background:var(--sunk);color:var(--ink);cursor:copy;overflow-wrap:anywhere}
+.k :not(pre) > code:hover{background:var(--line)}
+.k :not(pre) > code:focus-visible{outline-offset:1px}
+.k :not(pre) > code.is-copied{background:var(--accsoft);color:var(--accink)}
+.k .codeblock{position:relative;min-width:0;background:var(--sunk);border:1px solid var(--line);border-radius:var(--rs)}
+.k .codeblock pre{margin:0;padding:12px 52px 12px 14px;overflow-x:auto;font-family:var(--font-mono);font-size:13px;line-height:1.5;color:var(--ink);white-space:pre}
+.k .codeblock pre code{font:inherit;background:none;padding:0;color:inherit}
+.k .codeblock .copy{position:absolute;top:4px;right:4px}
+.k .copy .i-done{display:none}
+.k .copy.is-copied .i-copy{display:none}
+.k .copy.is-copied .i-done{display:inline}
+.k .copy.is-copied{color:var(--ok)}
+
+/* bottom bar: phone navigation, 3 to 5 tabs; a last "More" tab opens a dialog.dlg, which is a bottom drawer on phones
+   <nav class="tabbar" aria-label="Main"><a class="tab on" aria-current="page" href="…"><span class="tab-ic"><svg class="ic">…</svg></span>Home</a>…</nav> */
+.k .tabbar{flex:none;display:flex;gap:2px;padding:6px 4px calc(6px + env(safe-area-inset-bottom));background:var(--head);border-top:1px solid var(--line)}
+.k .tab{flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;gap:4px;padding:2px 0;font:inherit;font-size:12px;font-weight:600;line-height:1.2;color:var(--muted);text-decoration:none;background:none;border:0;cursor:pointer;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.k .tab-ic{display:flex;align-items:center;justify-content:center;width:56px;height:30px;border-radius:var(--pill);transition:background-color .12s}
+.k .tab .ic{width:20px;height:20px}
+.k .tab:hover:not(.on) .tab-ic{background:color-mix(in srgb,currentColor 8%,transparent)}
+.k .tab.on{color:var(--accink)}
+.k .tab.on .tab-ic{background:var(--sel)}
+.k .tab:focus-visible{outline-offset:-2px;border-radius:var(--rs)}
+.k dialog.dlg .nav{min-height:44px}
+@media (prefers-reduced-motion:reduce){.k .tab-ic{transition:none}}
+
+/* layouts with a BottomBar: .has-tabbar on .win.app, .sidebar-toggle on each button that shows or hides the sidebar.
+   Window wider than 600px: the sidebar shows and the bar hides; 600px and narrower: the bar replaces the sidebar. */
+.k .win.app.has-tabbar .tabbar{display:none}
+@container fjwin (max-width:600px){
+  .k .win.app.has-tabbar .tabbar{display:flex}
+  .k .win.app.has-tabbar .pane.sidebar,.k .win.app.has-tabbar .sidebar-toggle{display:none}
+}
+
+/* toasts clear the BottomBar while it shows: always in a phone-only window, at 600px and narrower in a .has-tabbar one */
+.k:has(.win.app:not(.has-tabbar) .tabbar) .toasts{bottom:calc(80px + env(safe-area-inset-bottom))}
+@media (max-width:600px){.k:has(.win.app.has-tabbar .tabbar) .toasts{bottom:calc(80px + env(safe-area-inset-bottom))}}

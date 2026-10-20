@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="en" data-theme="fjord">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Config editor</title>
+<link rel="stylesheet" href="kbenestad-fjord/tokens.css">
+<link rel="stylesheet" href="kbenestad-fjord/components/bundle.css">
+<style>
+  html, body { margin: 0; height: 100%; }
+  .k { height: 100%; }
+  .win.app { height: 100%; border: 0; border-radius: 0; box-shadow: none; }
+  .k [hidden] { display: none !important; } /* .btn's display would override hidden */
+  .view { padding: var(--space-6); display: flex; flex-direction: column; gap: var(--space-4); max-width: 880px; width: 100%; box-sizing: border-box; margin: 0 auto; }
+  .source { display: flex; flex-direction: column; gap: var(--space-3); }
+  .source-row { display: flex; flex-wrap: wrap; align-items: flex-end; gap: var(--space-2); }
+  .source-row .fld { flex: 1; min-width: 240px; }
+  .acts-row { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+  .bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: var(--space-2); }
+  .group { display: flex; flex-direction: column; gap: var(--space-3); }
+  .group > .group-body { display: flex; flex-direction: column; gap: var(--space-3); }
+  .ghead { display: flex; align-items: center; justify-content: space-between; gap: var(--space-2); }
+  .ghead h3 { margin: 0; font-size: 15px; }
+  .entry { display: flex; align-items: flex-start; gap: var(--space-2); }
+  .entry > .fld, .entry > .group { flex: 1; min-width: 0; }
+  .entry > .btn { margin-top: 22px; }
+  .entry > .group + .btn { margin-top: 0; }
+  .addrow { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }
+  .addrow .inp { width: auto; min-width: 140px; }
+  .nullval { color: var(--muted); font-family: var(--font-mono, monospace); }
+  .co p { margin: 0; }
+</style>
+<script>
+  // follow the system light/dark setting within the Fjord family
+  (function () {
+    var m = matchMedia('(prefers-color-scheme: dark)');
+    function set() { document.documentElement.dataset.theme = m.matches ? 'fjord-dark' : 'fjord'; }
+    set(); m.addEventListener('change', set);
+  })();
+</script>
+</head>
+<body>
+<div class="k">
+  <div class="win app">
+    <section class="pane main">
+      <header class="hb">
+        <div class="t"><span data-i18n="app.title">Config editor</span><small id="subtitle"></small></div>
+      </header>
+      <div class="pane-body">
+        <div class="view">
+          <div class="card source">
+            <div class="source-row">
+              <div class="fld">
+                <label for="cfg-url" data-i18n="source.address">Config address</label>
+                <input id="cfg-url" class="inp" type="text" placeholder="https://kbenestad.github.io/webadb/config.json" spellcheck="false">
+                <span class="help" data-i18n="source.addressHelp">A web address, or one relative to this page.</span>
+              </div>
+              <div class="acts-row">
+                <button class="btn" id="cfg-load" data-i18n="action.load">Load</button>
+                <button class="btn out" id="cfg-open" data-i18n="action.openFile">Open file</button>
+              </div>
+            </div>
+            <div class="list">
+              <details id="schema-box"><summary data-i18n="schema.title">Schema (optional)</summary>
+                <div class="acc-body source">
+                  <p data-i18n="schema.text">A JSON Schema gives the fields names, help text, allowed values and limits. Without one, the editor shows the file as it is.</p>
+                  <div class="source-row">
+                    <div class="fld">
+                      <label for="sch-url" data-i18n="schema.address">Schema address</label>
+                      <input id="sch-url" class="inp" type="text" placeholder="https://kbenestad.github.io/webadb/config.schema.json" spellcheck="false">
+                    </div>
+                    <div class="acts-row">
+                      <button class="btn" id="sch-load" data-i18n="action.load">Load</button>
+                      <button class="btn out" id="sch-open" data-i18n="action.openFile">Open file</button>
+                      <button class="btn flat" id="sch-clear" hidden data-i18n="action.removeSchema">Remove schema</button>
+                    </div>
+                  </div>
+                  <span class="help" id="sch-state"></span>
+                </div>
+              </details>
+            </div>
+          </div>
+          <input type="file" id="cfg-file" accept=".json,application/json" hidden>
+          <input type="file" id="sch-file" accept=".json,application/json" hidden>
+
+          <div id="notice"></div>
+          <div id="problems"></div>
+
+          <div id="empty" class="status">
+            <svg class="status-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/></svg>
+            <h2 data-i18n="empty.title">No config loaded</h2>
+            <p data-i18n="empty.text">Enter the address of a config file above, or open one from this computer.</p>
+          </div>
+
+          <div id="editor" class="group" hidden></div>
+
+          <div class="bar" id="savebar" hidden>
+            <span class="bdg" id="dirty"></span>
+            <button class="btn pri" id="save" data-i18n="action.save">Save file</button>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+  <dialog class="alert" id="discard" aria-labelledby="discard-h">
+    <div class="msg"><h2 id="discard-h" data-i18n="discard.title">Discard your changes?</h2><p data-i18n="discard.text">Loading another file replaces what you have changed and not saved. This cannot be undone.</p></div>
+    <div class="acts"><button class="btn" data-dialog-close value="keep" data-i18n="action.keepEditing">Keep editing</button><button class="btn bad" data-dialog-close value="discard" data-i18n="action.discard">Discard</button></div>
+  </dialog>
+</div>
+<script src="kbenestad-fjord/components/bundle.js"></script>
+<script src="locales/en.js"></script>
+<script src="editor.js"></script>
+</body>
+</html>

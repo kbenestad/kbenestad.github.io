@@ -6,7 +6,7 @@
 <title>webadb</title>
 <link rel="stylesheet" href="./kbenestad-fjord/tokens.css">
 <link rel="stylesheet" href="./kbenestad-fjord/components/bundle.css">
-<style>html,body{height:100%;margin:0}.k{height:100%}.win.app{height:100%;box-shadow:none;border:0;border-radius:0}.view{padding:var(--space-6);gap:var(--space-4);flex-direction:column;display:flex}.k [hidden]{display:none!important}.bar{justify-content:space-between;align-items:center;gap:var(--space-2);flex-wrap:wrap;display:flex}.badges{gap:var(--space-1);flex-wrap:wrap;display:flex}.k summary>span{align-items:center;gap:var(--space-2);overflow-wrap:anywhere;flex-wrap:wrap;min-width:0;display:flex}.center{padding:var(--space-16);justify-content:center;display:flex}</style>
+<style>html,body{height:100%;margin:0}.k{height:100%}.win.app{height:100%;box-shadow:none;border:0;border-radius:0}.view{padding:var(--space-6);gap:var(--space-4);flex-direction:column;display:flex}.k [hidden]{display:none!important}.bar{justify-content:space-between;align-items:center;gap:var(--space-2);flex-wrap:wrap;display:flex}.badges{gap:var(--space-1);flex-wrap:wrap;display:flex}.k summary>span{align-items:center;gap:var(--space-2);overflow-wrap:anywhere;flex-wrap:wrap;min-width:0;display:flex}.pname{font-weight:600}.filters{gap:var(--space-3);grid-template-columns:repeat(auto-fit,minmax(160px,1fr));display:grid}.center{padding:var(--space-16);justify-content:center;display:flex}</style>
 <script>
   // follow the system light/dark setting within the Fjord family
   (function () {
@@ -15,7 +15,7 @@
     set(); m.addEventListener('change', set);
   })();
 </script>
-  <script type="module" crossorigin src="./assets/index-6U4MVUDq.js"></script>
+  <script type="module" crossorigin src="./assets/index-Ej9dUxUn.js"></script>
 </head>
 <body>
 <div class="k">
@@ -30,10 +30,13 @@
     <section class="pane main">
       <header class="hb">
         <button class="btn ico flat sidebar-toggle reveal narrow-only" data-toggle="nav" aria-controls="nav" aria-expanded="true" aria-label="Show sidebar" data-i18n-label="nav.show"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg></button>
+        <button class="btn ico flat" id="search-toggle" data-toggle="sb" aria-pressed="false" aria-expanded="false" aria-controls="sb" hidden aria-label="Search" data-i18n-label="action.search"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg></button>
         <div class="t"><span id="title">webadb</span><small id="subtitle"></small></div>
         <button class="btn ico flat" id="disconnect" hidden aria-label="Disconnect phone" data-i18n-label="action.disconnect"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2v10"/><path d="M18.4 6.6a9 9 0 1 1-12.77.04"/></svg></button>
-        <button class="btn ico flat" popovertarget="mm" aria-label="Main menu" data-i18n-label="menu.main"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5h16"/><path d="M4 12h16"/><path d="M4 19h16"/></svg></button>
       </header>
+      <div class="searchbar is-collapsed" id="sb" hidden>
+        <div class="search"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg><input class="inp" type="search" id="pkg-search" placeholder="Search packages" aria-label="Search packages" data-i18n-placeholder="pkg.search" data-i18n-label="pkg.search"></div>
+      </div>
       <div class="pane-body">
         <div class="view" id="error-box" hidden></div>
 
@@ -50,6 +53,8 @@
             <svg class="status-ic" viewBox="0 0 24 24" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
             <h2 data-i18n="connect.title">Connect a phone</h2>
             <p data-i18n="connect.text">Turn on USB debugging on the phone, plug it in, then choose it in the list the browser shows.</p>
+            <label class="chk"><input type="checkbox" id="live-list"> <span data-i18n="list.live">Download the latest debloat list</span></label>
+            <span class="help" data-i18n="list.liveHelp">Gets the newest list from GitHub when you connect, and GitHub sees the request. Off: uses the copy on this site.</span>
             <button class="btn pri pill" id="connect" data-i18n="action.connect">Connect phone</button>
           </div>
         </div>
@@ -65,15 +70,33 @@
             <span class="muted" id="pkg-summary"></span>
             <button class="btn flat" data-expand-all="pkgs" data-label-expand="Expand all" data-label-collapse="Collapse all" aria-controls="pkgs" id="expand-all">Expand all</button>
           </div>
+          <div class="filters">
+            <div class="fld"><label for="f-type" data-i18n="pkg.type">Type</label><select id="f-type" class="inp"></select></div>
+            <div class="fld"><label for="f-state" data-i18n="pkg.state">State</label><select id="f-state" class="inp"></select></div>
+            <div class="fld" data-labels><label for="f-removal" data-i18n="pkg.removal">Removal</label><select id="f-removal" class="inp"></select></div>
+            <div class="fld" data-labels><label for="f-list" data-i18n="pkg.list">Category</label><select id="f-list" class="inp"></select></div>
+          </div>
+          <div class="bar">
+            <label class="chk"><input type="checkbox" id="show-labels" checked> <span data-i18n="labels.show">Show debloat labels</span></label>
+            <span class="muted" id="pkg-source"></span>
+            <button class="btn flat" data-dialog-open="labels-dlg" data-i18n="labels.explain">What do the labels mean?</button>
+          </div>
           <div class="list" id="pkgs"></div>
+          <div class="status" id="pkgs-empty" hidden>
+            <svg class="status-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.34-4.34"/><circle cx="11" cy="11" r="8"/></svg>
+            <h2 data-i18n="pkg.noMatch">No packages match</h2>
+            <p data-i18n="pkg.noMatchText">Change the search or the filters to see more.</p>
+            <button class="btn" id="clear-filters" data-i18n="action.clearFilters">Clear filters</button>
+          </div>
         </div>
       </div>
     </section>
   </div>
-  <div class="menu" popover id="mm" role="menu">
-    <button role="menuitemradio" aria-checked="true" data-set-format="intl" popovertarget="mm" popovertargetaction="hide" data-i18n="settings.formatIntl">International format</button>
-    <button role="menuitemradio" aria-checked="false" data-set-format="scandi" popovertarget="mm" popovertargetaction="hide" data-i18n="settings.formatScandi">Scandinavian format</button>
-  </div>
+  <dialog class="dlg" id="labels-dlg" aria-labelledby="labels-t">
+    <div class="grab"></div>
+    <header class="hb"><div class="t" id="labels-t" data-i18n="labels.title">Debloat labels</div><button class="btn pri" data-dialog-close data-i18n="action.close">Close</button></header>
+    <div class="dlg-body" id="labels-body"></div>
+  </dialog>
 </div>
 <script src="./kbenestad-fjord/components/bundle.js"></script>
 </body>

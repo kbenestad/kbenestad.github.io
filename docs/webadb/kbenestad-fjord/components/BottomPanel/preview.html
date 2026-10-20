@@ -1,0 +1,22 @@
+<!-- @dsCard group="Layout" height=420 width=960 -->
+<!doctype html>
+<html><head><meta charset="utf-8"></head>
+<body style="margin:0;background:var(--bg)">
+<div class="k" style="padding:24px">
+  <div class="win app" style="height:380px">
+    <section class="pane main">
+      <header class="hb"><div class="t">Pixel 7a</div></header>
+      <div class="pane-body" style="padding:var(--space-6)"><p class="muted">Main content scrolls here; the panel stays at the bottom.</p></div>
+      <section class="panel-bottom" id="term1" aria-label="Terminal">
+        <div class="panel-head"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19h8"/><path d="m4 17 6-6-6-6"/></svg><span class="t">Terminal</span><button class="btn ico flat panel-toggle" data-toggle="term1" aria-controls="term1" aria-expanded="true" aria-label="Collapse terminal"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></button></div>
+        <div class="panel-body"><pre class="term"><span class="prompt">lynx:/ $</span> getprop ro.build.version.release
+14
+<span class="prompt">lynx:/ $</span> dumpsys battery | grep temperature
+  temperature: 312
+<span class="prompt">lynx:/ $</span> </pre></div>
+      </section>
+    </section>
+  </div>
+</div>
+<script>/* behaviour comes from components/bundle.js */</script>
+</body></html>
