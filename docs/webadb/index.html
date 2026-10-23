@@ -20,7 +20,7 @@
     apply(); m.addEventListener('change', apply);
   })();
 </script>
-  <script type="module" crossorigin src="./assets/index-BnTtb5-t.js"></script>
+  <script type="module" crossorigin src="./assets/index-h7cA6RIq.js"></script>
 </head>
 <body>
 <div class="k">
@@ -61,6 +61,13 @@
           <div class="status">
             <svg class="status-ic" viewBox="0 0 24 24" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg>
             <h2 data-i18n="connect.title">Connect a phone</h2>
+            <div class="folder-step" id="folder-step" hidden>
+              <h3 data-i18n="folder.title">Data folder (optional)</h3>
+              <p data-i18n="folder.help">Keeps one settings file per phone, and the files folder used for installs and backups.</p>
+              <p id="folder-info" hidden></p>
+              <button class="btn" id="folder-choose" data-i18n="folder.choose">Choose folder</button>
+            </div>
+            <h3 data-i18n="connect.step">Phone</h3>
             <p data-i18n="connect.text">Turn on USB debugging on the phone, plug it in, then choose it in the list the browser shows.</p>
             <label class="chk"><input type="checkbox" id="live-list"> <span data-i18n="list.live">Download the latest debloat list</span></label>
             <span class="help" data-i18n="list.liveHelp">Gets the newest list from GitHub when you connect, and GitHub sees the request. Off: uses the copy on this site.</span>

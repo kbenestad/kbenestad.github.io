@@ -10,3 +10,4 @@
 | v0.5.0 | 2026-10-23 | new Device page with gauges, tabs and downloadable reports (HTML, Markdown, JSON) |
 | v0.6.0 | 2026-10-23 | Shell is locked behind the Allow unsafe operations setting again; Shell asks before running a command and accepts "adb shell" commands; Allow unsafe operations setting;  Shell shows a warning until it is ticked; Shell panel to run commands on the phone |
 | v0.6.1 | 2026-10-23 | Shell is a sidebar section instead of a bottom panel |
+| v0.7.0 | 2026-10-23 | optional data folder with per-phone profile files;  debloat labels off by default |
