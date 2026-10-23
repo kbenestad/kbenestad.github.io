@@ -1,5 +1,8 @@
-kBenestad Fjord
-Copied: 2026-10-19 (Bangkok time)
-Source: design system artifact "kBenestad Fjord", version 1792420071-7dc8, last change 2026-10-19T14:27:42Z
-Icons: Lucide 1.52.0
-Fonts: Schibsted Grotesk, JetBrains Mono (latin subset, via Bunny Fonts)
+kBenestad
+Copied: 2026-10-23 (Bangkok time)
+Source: design system artifact "kBenestad" (https://claude.ai/artifact/CKTiHF9TKM14PtqmJ7FQaF), version 1792719784-3045, last change 2026-10-23T00:00:00Z
+Replaces: "kBenestad Fjord" 1792420071-7dc8 (superseded 2026-10-21; the folder keeps its old name)
+Icons: Lucide 1.52.0 (unchanged)
+Fonts: Schibsted Grotesk and JetBrains Mono (as before), plus the stand-alone looks' typefaces (latin subset)
+Not in the artifact's file listing, so not updated here: AGENTS.md and example.html (still from the 2026-10-19 copy), the OFL licence texts of the new typefaces
+tokens.css: not in the artifact; rebuilt from tokens.json by a script that reproduces the previous tokens.css byte for byte when fed the previous tokens.json

@@ -1,0 +1,17 @@
+<!-- @dsCard group="Feedback" height=330 width=560 -->
+<!doctype html>
+<html><head><meta charset="utf-8"></head>
+<body style="margin:0;background:var(--bg)">
+<div class="k" style="padding:24px;display:flex;flex-direction:column;gap:20px">
+  <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap">
+    <div class="gauge" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="72" aria-label="Score"><span class="gv">72<small>%</small></span><span class="gl">Score</span></div>
+    <div class="gauge ok" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="38" aria-label="CPU"><span class="gv">38<small>%</small></span><span class="gl">CPU</span></div>
+    <div class="gauge warn" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="81" aria-label="Memory"><span class="gv">81<small>%</small></span><span class="gl">Memory</span></div>
+    <div class="gauge bad sm" role="meter" aria-valuemin="0" aria-valuemax="100" aria-valuenow="96" aria-label="Disk"><span class="gv">96<small>%</small></span></div>
+  </div>
+  <div class="fld"><label for="m1">Battery — 82%</label><meter id="m1" min="0" max="100" low="20" high="50" optimum="100" value="82">82%</meter></div>
+  <div class="fld"><label for="m2">Disk — 41 of 64 GB</label><meter id="m2" min="0" max="64" low="40" high="56" optimum="0" value="41">41 GB</meter></div>
+  <div class="fld"><label for="m3">Budget — 9 400 of 10 000 kr</label><meter id="m3" min="0" max="10000" low="7000" high="9000" optimum="0" value="9400">9 400 kr</meter></div>
+</div>
+<script>/* the dials fill from their aria values via components/bundle.js */</script>
+</body></html>

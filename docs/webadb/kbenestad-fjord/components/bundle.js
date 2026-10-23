@@ -1,4 +1,4 @@
-/* kBenestad Fjord — shared behaviour. Load once per app, after the stylesheets.
+/* kBenestad — shared behaviour. Load once per app, after the stylesheets.
    Works by attributes, so markup added later needs no setup:
      data-toggle="<id>"       toggles .is-collapsed on that element (panes, search bar)
      popovertarget="<id>"     on a .menu[popover]: placed under its button
@@ -7,13 +7,17 @@
      data-expand-all="<id>"   opens all <details> inside that element, or closes them if all are open
                               (optional data-label-expand / data-label-collapse: button text for each action)
      data-copy                on a button inside .codeblock: copies that block's code
+     data-tip="text"          a tooltip on hover (mouse or pen) and keyboard focus; data-tip="" uses the aria-label.
+                              On touch, tapping an element that has no action of its own shows or hides the tooltip.
      <code> outside <pre>     copies itself on click, or Enter when focused
    On load, every plain <pre> inside .k (not .term, not data-no-copy) gets a copy button.
-   Script API: window.kBenestadFjord.toast(text, {action, onAction, timeout})
-               window.kBenestadFjord.enhance(root)  run after adding code to the page
-               window.kBenestadFjord.format.date / dateLong / dateCompact / time / dateTime / number / money /
+   On load, every .gauge with aria-valuenow fills its dial from its aria values.
+   Script API: window.kBenestad.toast(text, {action, onAction, timeout})
+               window.kBenestad.enhance(root)  run after adding code to the page
+               window.kBenestad.gauge(el)      run after changing a .gauge's aria-valuenow
+               window.kBenestad.format.date / dateLong / dateCompact / time / dateTime / number / money /
                                          weekNumber / weekStart  (see "formats" below)
-               window.kBenestadFjord.i18n.add(messages) / t(key, vars) / translate(root)  (see "language" below) */
+               window.kBenestad.i18n.add(messages) / t(key, vars) / translate(root)  (see "language" below) */
 (function () {
   'use strict';
 
@@ -25,16 +29,16 @@
   // i18n.add({key: "text"}) loads strings for the language in <html lang> and applies them to the page.
   // A key with no string loaded keeps its English, so an English-only app needs no strings at all.
   // t(key, vars): "{name}" slots are filled from vars; a value {one: "…", other: "…"} picks a plural from vars.count.
-  // The system's own text uses the same keys (fjord.*), so its messages translate too.
+  // The system's own text uses the same keys (k.*), so its messages translate too.
   var messages = {};
   var BUILTIN = {
-    'fjord.copied': 'Copied to clipboard',
-    'fjord.copyFailed': 'Could not copy. Select the text and copy it by hand.',
-    'fjord.copy': 'Copy',
-    'fjord.copyCode': 'Copy code',
-    'fjord.dismiss': 'Dismiss',
-    'fjord.am': 'AM',
-    'fjord.pm': 'PM'
+    'k.copied': 'Copied to clipboard',
+    'k.copyFailed': 'Could not copy. Select the text and copy it by hand.',
+    'k.copy': 'Copy',
+    'k.copyCode': 'Copy code',
+    'k.dismiss': 'Dismiss',
+    'k.am': 'AM',
+    'k.pm': 'PM'
   };
   function lang() { return document.documentElement.getAttribute('lang') || 'en'; }
   function has(key) { return Object.prototype.hasOwnProperty.call(messages, key) || Object.prototype.hasOwnProperty.call(BUILTIN, key); }
@@ -48,7 +52,7 @@
     }
     return String(v).replace(/\{(\w+)\}/g, function (m, k) { return vars && vars[k] != null ? vars[k] : m; });
   }
-  var I18N_ATTRS = [['data-i18n-label', 'aria-label'], ['data-i18n-placeholder', 'placeholder'], ['data-i18n-title', 'title']];
+  var I18N_ATTRS = [['data-i18n-label', 'aria-label'], ['data-i18n-placeholder', 'placeholder'], ['data-i18n-title', 'title'], ['data-i18n-tip', 'data-tip']];
   function translate(root) {
     root = root || document;
     root.querySelectorAll('[data-i18n]').forEach(function (el) { var k = el.getAttribute('data-i18n'); if (has(k)) el.textContent = t(k); });
@@ -191,7 +195,7 @@
     }
     var x = document.createElement('button');
     x.className = 'btn ico';
-    x.setAttribute('aria-label', t('fjord.dismiss'));
+    x.setAttribute('aria-label', t('k.dismiss'));
     x.innerHTML = '<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18 6 6 18"/><path d="m6 6 12 12"/></svg>';
     x.addEventListener('click', remove);
     el.appendChild(x);
@@ -222,12 +226,12 @@
     setTimeout(function () { el.classList.remove('is-copied'); }, 1500);
   }
   function copyFrom(el, text) {
-    copyText(text).then(function () { flash(el); toast(t('fjord.copied'), { timeout: 2000 }); },
-      function () { toast(t('fjord.copyFailed')); });
+    copyText(text).then(function () { flash(el); toast(t('k.copied'), { timeout: 2000 }); },
+      function () { toast(t('k.copyFailed')); });
   }
   function copyButton() {
     var b = document.createElement('button');
-    b.type = 'button'; b.className = 'btn ico flat copy'; b.setAttribute('data-copy', ''); b.setAttribute('aria-label', t('fjord.copyCode'));
+    b.type = 'button'; b.className = 'btn ico flat copy'; b.setAttribute('data-copy', ''); b.setAttribute('aria-label', t('k.copyCode'));
     b.innerHTML = ICON_COPY + ICON_DONE;
     return b;
   }
@@ -247,8 +251,16 @@
     root.querySelectorAll('.k code').forEach(function (c) {
       if (!isInline(c) || c.hasAttribute('tabindex')) return;
       c.setAttribute('tabindex', '0');
-      c.setAttribute('title', t('fjord.copy'));
+      c.setAttribute('title', t('k.copy'));
     });
+    // a dial reads its fill from its own aria values, so the number is written once
+    root.querySelectorAll('.k .gauge[aria-valuenow]').forEach(gaugeFill);
+  }
+
+  function gaugeFill(g) {
+    var min = +(g.getAttribute('aria-valuemin') || 0), max = +(g.getAttribute('aria-valuemax') || 100);
+    var p = (+g.getAttribute('aria-valuenow') - min) / (max - min);
+    g.style.setProperty('--p', Math.max(0, Math.min(1, p)));
   }
 
   document.addEventListener('click', function (e) {
@@ -268,6 +280,64 @@
       copyFrom(e.target, e.target.textContent);
     }
   });
+
+  // ---- tooltips ----
+  // One shared popover in the top layer, so a pane's or window's edge never clips it. Shows after a short pause
+  // on hover, at once on keyboard focus. Touch has no hover: a tap on an element with no action of its own shows
+  // the tooltip (another tap, or a tap anywhere else, hides it); on a button or link the tap does its job and shows nothing, so a tooltip must never be
+  // the only place something is said.
+  var tip = null, tipFor = null, tipTimer = 0;
+  function tipText(el) { return el.getAttribute('data-tip') || el.getAttribute('aria-label') || ''; }
+  function showTip(el) {
+    var text = tipText(el);
+    if (!text || !el.isConnected) return;
+    if (!tip) {
+      tip = document.createElement('div');
+      tip.className = 'tip'; tip.id = 'k-tip'; tip.setAttribute('role', 'tooltip'); tip.setAttribute('popover', 'manual');
+    }
+    (el.closest('.k') || document.body).appendChild(tip);
+    tip.textContent = text;
+    if (!tip.matches(':popover-open')) tip.showPopover();
+    var b = el.getBoundingClientRect(), w = tip.offsetWidth, h = tip.offsetHeight;
+    var top = b.bottom + 6 + h > innerHeight - 8 ? b.top - 6 - h : b.bottom + 6;
+    tip.style.top = Math.max(8, top) + 'px';
+    tip.style.left = Math.max(8, Math.min(b.left + b.width / 2 - w / 2, innerWidth - w - 8)) + 'px';
+    // a tooltip that only repeats the accessible name would be read out twice
+    if (text !== el.getAttribute('aria-label')) el.setAttribute('aria-describedby', 'k-tip');
+    tipFor = el;
+  }
+  function hideTip() {
+    clearTimeout(tipTimer);
+    if (tipFor && tipFor.getAttribute('aria-describedby') === 'k-tip') tipFor.removeAttribute('aria-describedby');
+    if (tip && tip.matches(':popover-open')) tip.hidePopover();
+    tipFor = null;
+  }
+  document.addEventListener('pointerover', function (e) {
+    if (e.pointerType === 'touch') return;
+    var el = e.target.closest && e.target.closest('[data-tip]');
+    if (el === tipFor) return;
+    hideTip();
+    if (el) tipTimer = setTimeout(function () { showTip(el); }, 500);
+  });
+  document.addEventListener('pointerout', function (e) {
+    var el = e.target.closest && e.target.closest('[data-tip]');
+    if (el && !el.contains(e.relatedTarget) && document.activeElement !== el) hideTip();
+  });
+  document.addEventListener('focusin', function (e) {
+    var el = e.target.closest && e.target.closest('[data-tip]');
+    if (el && el.matches(':focus-visible')) { hideTip(); showTip(el); }
+  });
+  document.addEventListener('focusout', function (e) { if (tipFor && tipFor.contains(e.target)) hideTip(); });
+  var lastPointer = '', tipWasFor = null;
+  document.addEventListener('pointerdown', function (e) { lastPointer = e.pointerType; tipWasFor = tipFor; hideTip(); });
+  var ACTION = 'button, a[href], input, select, textarea, summary, label, [role="button"], [data-toggle], [data-dialog-open]';
+  document.addEventListener('click', function (e) {
+    if (lastPointer !== 'touch') return;
+    var el = e.target.closest && e.target.closest('[data-tip]');
+    if (el && el !== tipWasFor && !el.closest(ACTION)) showTip(el);
+  });
+  document.addEventListener('scroll', hideTip, true);
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && tipFor) hideTip(); });
 
   // ---- formats ----
   // International by default; <html data-format="scandi"> switches the whole app to Scandinavian.
@@ -320,7 +390,7 @@
     },
     time: function (v) {
       var d = toDate(v), h = d.getHours(), m = pad(d.getMinutes());
-      if (attr('data-clock') === '12') return ((h % 12) || 12) + ':' + m + ' ' + t(h < 12 ? 'fjord.am' : 'fjord.pm');
+      if (attr('data-clock') === '12') return ((h % 12) || 12) + ':' + m + ' ' + t(h < 12 ? 'k.am' : 'k.pm');
       return pad(h) + ':' + m;
     },
     dateTime: function (v) { return format.date(v) + ' ' + format.time(v); },
@@ -343,5 +413,7 @@
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', init);
   else init();
 
-  window.kBenestadFjord = { toast: toast, collapse: setCollapsed, enhance: enhance, copy: copyText, format: format, i18n: i18n };
+  window.kBenestad = { toast: toast, gauge: gaugeFill, collapse: setCollapsed, enhance: enhance, copy: copyText, format: format, i18n: i18n };
+  // older names from the separate Fjord and Skjærgård systems, kept so existing code keeps working
+  window.kBenestadFjord = window.kBenestadSkjaergard = window.kBenestad;
 })();

@@ -8,14 +8,19 @@
 <link rel="stylesheet" href="./kbenestad-fjord/components/bundle.css">
 <style>html,body{height:100%;margin:0}.k{height:100%}.win.app{height:100%;box-shadow:none;border:0;border-radius:0}.view{padding:var(--space-6);gap:var(--space-4);flex-direction:column;display:flex}.k [hidden]{display:none!important}.bar{justify-content:space-between;align-items:center;gap:var(--space-2);flex-wrap:wrap;display:flex}.badges{gap:var(--space-1);flex-wrap:wrap;display:flex}.k summary>span{align-items:center;gap:var(--space-2);overflow-wrap:anywhere;flex-wrap:wrap;min-width:0;display:flex}.pname{font-weight:600}.filters{gap:var(--space-3);grid-template-columns:repeat(auto-fit,minmax(160px,1fr));display:grid}.dash{gap:var(--space-4);grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));display:grid}.dash,.wrap{width:100%;max-width:1000px;margin-inline:auto}.readout .display{overflow-wrap:anywhere}.stack{gap:var(--space-3);flex-direction:column;display:flex}.card-h{align-items:center;gap:var(--space-2);display:flex}.k a.lnk{color:var(--accink)}.readout{align-items:center;gap:var(--space-2) var(--space-3);flex-wrap:wrap;display:flex}.center{padding:var(--space-16);justify-content:center;display:flex}</style>
 <script>
-  // follow the system light/dark setting within the Fjord family
+  // light, dark or follow the system, within the Fjord look; the choice is kept in this browser
   (function () {
-    var m = matchMedia('(prefers-color-scheme: dark)');
-    function set() { document.documentElement.dataset.theme = m.matches ? 'fjord-dark' : 'fjord'; }
-    set(); m.addEventListener('change', set);
+    var KEY = 'webadb.colorMode', m = matchMedia('(prefers-color-scheme: dark)');
+    function mode() { try { var v = localStorage.getItem(KEY); return v === 'light' || v === 'dark' ? v : 'system'; } catch (e) { return 'system'; } }
+    function apply() { document.documentElement.dataset.theme = mode() === 'dark' || (mode() === 'system' && m.matches) ? 'fjord-dark' : 'fjord'; }
+    window.colorMode = {
+      get: mode,
+      set: function (v) { try { if (v === 'system') localStorage.removeItem(KEY); else localStorage.setItem(KEY, v); } catch (e) {} apply(); },
+    };
+    apply(); m.addEventListener('change', apply);
   })();
 </script>
-  <script type="module" crossorigin src="./assets/index-CLLgj7Ks.js"></script>
+  <script type="module" crossorigin src="./assets/index-rnhhG6qp.js"></script>
 </head>
 <body>
 <div class="k">
@@ -25,6 +30,9 @@
       <div class="pane-body">
         <a class="nav" href="#device" data-view="device" title="Device" data-i18n-title="nav.device"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg> <span class="lbl" data-i18n="nav.device">Device</span></a>
         <a class="nav" href="#packages" data-view="packages" title="Packages" data-i18n-title="nav.packages"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></svg> <span class="lbl" data-i18n="nav.packages">Packages</span> <span class="ct" id="pkg-count"></span></a>
+      </div>
+      <div class="pane-foot">
+        <a class="nav" href="#" id="open-appearance" data-dialog-open="appearance-dlg" title="Appearance" data-i18n-title="settings.appearance"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M10 5H3"/><path d="M12 19H3"/><path d="M14 3v4"/><path d="M16 17v4"/><path d="M21 12h-9"/><path d="M21 19h-5"/><path d="M21 5h-7"/><path d="M8 10v4"/><path d="M8 12H3"/></svg> <span class="lbl" data-i18n="settings.appearance">Appearance</span></a>
       </div>
     </nav>
     <section class="pane main">
@@ -92,6 +100,16 @@
       </div>
     </section>
   </div>
+  <dialog class="dlg" id="appearance-dlg" aria-labelledby="appearance-t">
+    <div class="grab"></div>
+    <header class="hb"><div class="t" id="appearance-t" data-i18n="settings.appearance">Appearance</div><button class="btn pri" data-dialog-close data-i18n="action.close">Close</button></header>
+    <div class="dlg-body">
+      <label class="chk"><input type="radio" name="color-mode" value="system"> <span data-i18n="settings.mode.system">Follow the system</span></label>
+      <label class="chk"><input type="radio" name="color-mode" value="light"> <span data-i18n="settings.mode.light">Light</span></label>
+      <label class="chk"><input type="radio" name="color-mode" value="dark"> <span data-i18n="settings.mode.dark">Dark</span></label>
+      <span class="help" data-i18n="settings.mode.help">Kept in this browser only.</span>
+    </div>
+  </dialog>
   <dialog class="dlg" id="labels-dlg" aria-labelledby="labels-t">
     <div class="grab"></div>
     <header class="hb"><div class="t" id="labels-t" data-i18n="labels.title">Debloat labels</div><button class="btn pri" data-dialog-close data-i18n="action.close">Close</button></header>

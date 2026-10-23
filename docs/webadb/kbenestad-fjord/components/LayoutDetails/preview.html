@@ -1,11 +1,11 @@
-<!-- @dsCard group="Layout" height=640 width=1400 -->
+<!-- @dsCard group="Layout" height=1280 width=1400 -->
 <!doctype html>
 <html><head><meta charset="utf-8"></head>
 <body style="margin:0">
 <div class="k" style="padding:24px">
   <div style="display:flex;gap:var(--space-6);align-items:flex-start">
     <figure style="margin:0;display:flex;flex-direction:column;gap:var(--space-2);flex:1;min-width:0">
-      <figcaption class="cap">Desktop window</figcaption>
+      <figcaption class="cap">Desktop window, light</figcaption>
     <div class="win app has-tabbar" style="height:560px;min-width:0">
       <nav class="pane sidebar" id="nav3" aria-label="Folders">
         <header class="hb"><div class="t start">Files</div><button class="btn ico flat sidebar-toggle" data-toggle="nav3" aria-controls="nav3" aria-expanded="true" aria-label="Hide sidebar"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg></button></header>
@@ -41,7 +41,7 @@
     </div>
     </figure>
     <figure style="margin:0;display:flex;flex-direction:column;gap:var(--space-2);flex:none">
-      <figcaption class="cap">Phone window, 390px</figcaption>
+      <figcaption class="cap">Phone window, 390px, light</figcaption>
     <div class="win app has-tabbar" style="height:560px;width:390px;flex:none">
       <nav class="pane sidebar" id="nav3p" aria-label="Folders">
         <header class="hb"><div class="t start">Files</div><button class="btn ico flat sidebar-toggle" data-toggle="nav3p" aria-controls="nav3p" aria-expanded="true" aria-label="Hide sidebar"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg></button></header>
@@ -78,5 +78,93 @@
     </figure>
   </div>
 </div>
-<script>/* behaviour comes from components/bundle.js */</script>
+
+<div class="k" data-theme="skjaergard-dark" data-dark-half style="padding:24px;background:var(--bg);color:var(--ink)">
+  <div style="display:flex;gap:var(--space-6);align-items:flex-start">
+    <figure style="margin:0;display:flex;flex-direction:column;gap:var(--space-2);flex:1;min-width:0">
+      <figcaption class="cap">Desktop window, dark</figcaption>
+    <div class="win app has-tabbar" style="height:560px;min-width:0">
+      <nav class="pane sidebar" id="nav3d" aria-label="Folders">
+        <header class="hb"><div class="t start">Files</div><button class="btn ico flat sidebar-toggle" data-toggle="nav3d" aria-controls="nav3d" aria-expanded="true" aria-label="Hide sidebar"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg></button></header>
+        <div class="pane-body">
+          <a class="nav on" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg> Documents <span class="ct">24</span></a>
+          <a class="nav" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17V7"/><path d="M16 8h-6a2 2 0 0 0 0 4h4a2 2 0 0 1 0 4H8"/><path d="M4 3a1 1 0 0 1 1-1 1.3 1.3 0 0 1 .7.2l.933.6a1.3 1.3 0 0 0 1.4 0l.934-.6a1.3 1.3 0 0 1 1.4 0l.933.6a1.3 1.3 0 0 0 1.4 0l.933-.6a1.3 1.3 0 0 1 1.4 0l.934.6a1.3 1.3 0 0 0 1.4 0l.933-.6A1.3 1.3 0 0 1 19 2a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1 1.3 1.3 0 0 1-.7-.2l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.934.6a1.3 1.3 0 0 1-1.4 0l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-1.4 0l-.934-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-.7.2 1 1 0 0 1-1-1z"/></svg> Invoices <span class="ct">12</span></a>
+          <a class="nav" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.364 13.634a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506l4.013-4.009a1 1 0 0 0-3.004-3.004z"/><path d="M14.487 7.858A1 1 0 0 1 14 7V2"/><path d="M20 19.645V20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l2.516 2.516"/><path d="M8 18h1"/></svg> Contracts</a>
+          <a class="nav" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></svg> Archive</a>
+        </div>
+      </nav>
+      <section class="pane main">
+        <header class="hb"><button class="btn ico flat sidebar-toggle reveal" data-toggle="nav3d" aria-controls="nav3d" aria-expanded="true" aria-label="Show sidebar"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg></button><div class="t">Documents<small>24 items</small></div><button class="btn ico flat" data-toggle="det3d" aria-controls="det3d" aria-expanded="true" aria-label="Hide details"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M15 3v18"/></svg></button></header>
+        <div class="pane-body" style="padding:24px"><div class="list"><div class="row" style="background:var(--sel)"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/></svg><div class="tt"><div>Contract — Fjordline.pdf</div><div>2.4 MB · 2026-10-14</div></div></div><div class="row"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/></svg><div class="tt"><div>Invoice INV-0143.pdf</div><div>180 kB · 2026-10-06</div></div></div><div class="row"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/></svg><div class="tt"><div>Meeting notes.md</div><div>6 kB · 2026-10-02</div></div></div></div></div>
+        <nav class="tabbar" aria-label="Folders">
+          <a class="tab on" href="#" aria-current="page"><span class="tab-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span>Documents</a>
+          <a class="tab" href="#"><span class="tab-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17V7"/><path d="M16 8h-6a2 2 0 0 0 0 4h4a2 2 0 0 1 0 4H8"/><path d="M4 3a1 1 0 0 1 1-1 1.3 1.3 0 0 1 .7.2l.933.6a1.3 1.3 0 0 0 1.4 0l.934-.6a1.3 1.3 0 0 1 1.4 0l.933.6a1.3 1.3 0 0 0 1.4 0l.933-.6a1.3 1.3 0 0 1 1.4 0l.934.6a1.3 1.3 0 0 0 1.4 0l.933-.6A1.3 1.3 0 0 1 19 2a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1 1.3 1.3 0 0 1-.7-.2l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.934.6a1.3 1.3 0 0 1-1.4 0l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-1.4 0l-.934-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-.7.2 1 1 0 0 1-1-1z"/></svg></span>Invoices</a>
+          <a class="tab" href="#"><span class="tab-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.364 13.634a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506l4.013-4.009a1 1 0 0 0-3.004-3.004z"/><path d="M14.487 7.858A1 1 0 0 1 14 7V2"/><path d="M20 19.645V20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l2.516 2.516"/><path d="M8 18h1"/></svg></span>Contracts</a>
+          <a class="tab" href="#"><span class="tab-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></svg></span>Archive</a>
+        </nav>
+      </section>
+      <aside class="pane details" id="det3d" aria-label="Details">
+        <header class="hb"><div class="t start">Details</div></header>
+        <div class="pane-body">
+          <dl class="meta">
+            <dt>Name</dt><dd>Contract — Fjordline.pdf</dd>
+            <dt>Size</dt><dd>2.4 MB</dd>
+            <dt>Modified</dt><dd>2026-10-14 09:12</dd>
+            <dt>Owner</dt><dd>[OWNER]</dd>
+            <dt>Path</dt><dd class="mono">/Documents/Contracts</dd>
+          </dl>
+        </div>
+      </aside>
+    </div>
+    </figure>
+    <figure style="margin:0;display:flex;flex-direction:column;gap:var(--space-2);flex:none">
+      <figcaption class="cap">Phone window, 390px, dark</figcaption>
+    <div class="win app has-tabbar" style="height:560px;width:390px;flex:none">
+      <nav class="pane sidebar" id="nav3pd" aria-label="Folders">
+        <header class="hb"><div class="t start">Files</div><button class="btn ico flat sidebar-toggle" data-toggle="nav3pd" aria-controls="nav3pd" aria-expanded="true" aria-label="Hide sidebar"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg></button></header>
+        <div class="pane-body">
+          <a class="nav on" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg> Documents <span class="ct">24</span></a>
+          <a class="nav" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17V7"/><path d="M16 8h-6a2 2 0 0 0 0 4h4a2 2 0 0 1 0 4H8"/><path d="M4 3a1 1 0 0 1 1-1 1.3 1.3 0 0 1 .7.2l.933.6a1.3 1.3 0 0 0 1.4 0l.934-.6a1.3 1.3 0 0 1 1.4 0l.933.6a1.3 1.3 0 0 0 1.4 0l.933-.6a1.3 1.3 0 0 1 1.4 0l.934.6a1.3 1.3 0 0 0 1.4 0l.933-.6A1.3 1.3 0 0 1 19 2a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1 1.3 1.3 0 0 1-.7-.2l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.934.6a1.3 1.3 0 0 1-1.4 0l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-1.4 0l-.934-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-.7.2 1 1 0 0 1-1-1z"/></svg> Invoices <span class="ct">12</span></a>
+          <a class="nav" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.364 13.634a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506l4.013-4.009a1 1 0 0 0-3.004-3.004z"/><path d="M14.487 7.858A1 1 0 0 1 14 7V2"/><path d="M20 19.645V20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l2.516 2.516"/><path d="M8 18h1"/></svg> Contracts</a>
+          <a class="nav" href="#"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></svg> Archive</a>
+        </div>
+      </nav>
+      <section class="pane main">
+        <header class="hb"><button class="btn ico flat sidebar-toggle reveal" data-toggle="nav3pd" aria-controls="nav3pd" aria-expanded="true" aria-label="Show sidebar"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M9 3v18"/></svg></button><div class="t">Documents<small>24 items</small></div><button class="btn ico flat" data-toggle="det3pd" aria-controls="det3pd" aria-expanded="true" aria-label="Hide details"><svg viewBox="0 0 24 24" aria-hidden="true"><rect width="18" height="18" x="3" y="3" rx="2"/><path d="M15 3v18"/></svg></button></header>
+        <div class="pane-body" style="padding:24px"><div class="list"><div class="row" style="background:var(--sel)"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/></svg><div class="tt"><div>Contract — Fjordline.pdf</div><div>2.4 MB · 2026-10-14</div></div></div><div class="row"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/></svg><div class="tt"><div>Invoice INV-0143.pdf</div><div>180 kB · 2026-10-06</div></div></div><div class="row"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/></svg><div class="tt"><div>Meeting notes.md</div><div>6 kB · 2026-10-02</div></div></div></div></div>
+        <nav class="tabbar" aria-label="Folders">
+          <a class="tab on" href="#" aria-current="page"><span class="tab-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg></span>Documents</a>
+          <a class="tab" href="#"><span class="tab-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 17V7"/><path d="M16 8h-6a2 2 0 0 0 0 4h4a2 2 0 0 1 0 4H8"/><path d="M4 3a1 1 0 0 1 1-1 1.3 1.3 0 0 1 .7.2l.933.6a1.3 1.3 0 0 0 1.4 0l.934-.6a1.3 1.3 0 0 1 1.4 0l.933.6a1.3 1.3 0 0 0 1.4 0l.933-.6a1.3 1.3 0 0 1 1.4 0l.934.6a1.3 1.3 0 0 0 1.4 0l.933-.6A1.3 1.3 0 0 1 19 2a1 1 0 0 1 1 1v18a1 1 0 0 1-1 1 1.3 1.3 0 0 1-.7-.2l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.934.6a1.3 1.3 0 0 1-1.4 0l-.933-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-1.4 0l-.934-.6a1.3 1.3 0 0 0-1.4 0l-.933.6a1.3 1.3 0 0 1-.7.2 1 1 0 0 1-1-1z"/></svg></span>Invoices</a>
+          <a class="tab" href="#"><span class="tab-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.364 13.634a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506l4.013-4.009a1 1 0 0 0-3.004-3.004z"/><path d="M14.487 7.858A1 1 0 0 1 14 7V2"/><path d="M20 19.645V20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l2.516 2.516"/><path d="M8 18h1"/></svg></span>Contracts</a>
+          <a class="tab" href="#"><span class="tab-ic"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></svg></span>Archive</a>
+        </nav>
+      </section>
+      <aside class="pane details" id="det3pd" aria-label="Details">
+        <header class="hb"><div class="t start">Details</div></header>
+        <div class="pane-body">
+          <dl class="meta">
+            <dt>Name</dt><dd>Contract — Fjordline.pdf</dd>
+            <dt>Size</dt><dd>2.4 MB</dd>
+            <dt>Modified</dt><dd>2026-10-14 09:12</dd>
+            <dt>Owner</dt><dd>[OWNER]</dd>
+            <dt>Path</dt><dd class="mono">/Documents/Contracts</dd>
+          </dl>
+        </div>
+      </aside>
+    </div>
+    </figure>
+  </div>
+</div>
+<script>
+/* the dark half follows the family shown: skjaergard → skjaergard-dark, fjord → fjord-dark, and so on */
+(function () {
+  function sync() {
+    var t = document.documentElement.getAttribute('data-theme') || 'skjaergard';
+    var dark = /-dark$/.test(t) ? t : t + '-dark';
+    document.querySelectorAll('[data-dark-half]').forEach(function (el) { el.setAttribute('data-theme', dark); });
+  }
+  sync();
+  new MutationObserver(sync).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+})();
+</script>
 </body></html>

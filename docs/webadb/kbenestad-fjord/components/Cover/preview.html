@@ -1,0 +1,38 @@
+<!-- @dsCard height=288 -->
+<!doctype html>
+<html><head><meta charset="utf-8">
+
+<style>
+  body{margin:0;background:var(--bg)}
+  .cv{position:relative;width:960px;height:288px;overflow:hidden;background:var(--bg);font-family:var(--font-sans)}
+  .cv svg{position:absolute;left:480px;top:0}
+  .tint{fill:var(--p200)} .brand{fill:var(--acc)} .deep{fill:var(--p500)} .ink{fill:var(--ink)} .cut{fill:var(--bg)}
+  .blk{rx:var(--r)} .pl{rx:16px}
+  .txt{position:absolute;left:40px;bottom:40px;max-width:440px}
+  .nm{font-size:80px;line-height:.95;font-weight:700;letter-spacing:-0.02em;color:var(--ink)}
+  .tg{margin-top:12px;font-size:14px;color:var(--muted)}
+</style></head>
+<body>
+<div class="cv">
+  <!--
+    blocks: tint p200 480x48, brand acc 456x96, mid p500 376x40, ink 216x40; corners radius r (12px)
+    arrangement: unequal horizontal strata, each stepping right and bleeding off the right edge, like water layers in a fjord
+    pattern: pills (the system's pill buttons and badges) cut in the ground colour into the brand band; kBenestad is soft and calm, so rounded units, few of them
+    steps: 16 / 24 / 40px gaps; pill height 32 (rx 16 = half); radius r
+  -->
+  <svg width="480" height="288" viewBox="0 0 480 288" aria-hidden="true">
+    <rect class="tint blk" x="0" y="24" width="500" height="48"/>
+    <rect class="brand blk" x="40" y="88" width="456" height="96"/>
+    <rect class="cut pl" x="72" y="120" width="96" height="32"/>
+    <rect class="cut pl" x="184" y="120" width="48" height="32"/>
+    <rect class="cut pl" x="248" y="120" width="72" height="32"/>
+    <rect class="deep blk" x="120" y="200" width="376" height="40"/>
+    <rect class="ink blk" x="280" y="256" width="216" height="48"/>
+  </svg>
+  <div class="txt">
+    <div class="nm">kBenestad</div>
+    <div class="tg">Calm, clear, cold.</div>
+  </div>
+</div>
+<script>/* static cover */</script>
+</body></html>

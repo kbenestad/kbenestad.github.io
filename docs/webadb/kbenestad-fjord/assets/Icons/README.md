@@ -1,10 +1,13 @@
 # Icons
 
-Fjord's starter icons, from Lucide 1.52.0 (lucide.dev), copied unchanged except for `stroke-width="1.75"` and the class attribute removed.
+kBenestad's minimum icon set, from Lucide 1.52.0 (lucide.dev), copied unchanged except for `stroke-width="1.75"` and the class attribute removed. These are the icons kBenestad's own components and layouts use.
 
+- **Lucide is incorporated by reference.** Every icon in Lucide 1.52.0 counts as part of kBenestad; only the minimum set is copied here.
+- **Every app imports this whole set** into its own `assets/icons/` folder, with this README for the licence notice.
+- **Apps vendor what else they need**: copy the SVG from the same Lucide release into the app's `assets/icons/`, set `stroke-width="1.75"`, remove the class attribute. Don't add an app's icons here; an icon joins this set only when a kBenestad component uses it.
 - Use them inline, so `stroke: currentColor` picks up the text colour: paste the SVG's inner elements into `<svg class="ic" viewBox="0 0 24 24" aria-hidden="true">…</svg>`. The `.ic` class sets size, stroke width and caps.
-- Only icons an app actually uses live here. Need another one? Copy it from the same Lucide release, set `stroke-width="1.75"`, add it to this folder, then use it.
-- Never load icons from a CDN.
+- Never load icons from a CDN, and never at runtime from lucide.dev or npm.
+- Moving to a newer Lucide release is a kBenestad change: update the version here and in the main README, and re-copy the minimum set from that release.
 
 ## Licence
 

@@ -17,3 +17,4 @@ A 36px action button; `.btn` plus one modifier.
 - One `.pri` per view. Never two pills side by side.
 - Labels are verbs in sentence case: "Save", "Export PDF", not "OK".
 - `disabled` drops opacity to .45; say why nearby rather than leaving a dead button unexplained.
+- A link that leads somewhere (a page, not an action) can wear the same classes: `<a class="btn pri" href="…">`. It looks exactly like a button, with no underline. Use `<button>` for actions on the page.
