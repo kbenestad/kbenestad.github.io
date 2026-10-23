@@ -6,7 +6,7 @@
 <title>webadb</title>
 <link rel="stylesheet" href="./kbenestad-fjord/tokens.css">
 <link rel="stylesheet" href="./kbenestad-fjord/components/bundle.css">
-<style>html,body{height:100%;margin:0}.k{height:100%}.win.app{height:100%;box-shadow:none;border:0;border-radius:0}.view{padding:var(--space-6);gap:var(--space-4);flex-direction:column;display:flex}.k [hidden]{display:none!important}.bar{justify-content:space-between;align-items:center;gap:var(--space-2);flex-wrap:wrap;display:flex}.badges{gap:var(--space-1);flex-wrap:wrap;display:flex}.k summary>span{align-items:center;gap:var(--space-2);overflow-wrap:anywhere;flex-wrap:wrap;min-width:0;display:flex}.pname{font-weight:600}.filters{gap:var(--space-3);grid-template-columns:repeat(auto-fit,minmax(160px,1fr));display:grid}.dash{gap:var(--space-4);grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));display:grid}.dash,.wrap{width:100%;max-width:1000px;margin-inline:auto}.readout .display{overflow-wrap:anywhere}.stack{gap:var(--space-3);flex-direction:column;display:flex}.card-h{align-items:center;gap:var(--space-2);display:flex}.k a.lnk{color:var(--accink)}.readout{align-items:center;gap:var(--space-2) var(--space-3);flex-wrap:wrap;display:flex}.center{padding:var(--space-16);justify-content:center;display:flex}</style>
+<style>html,body{height:100%;margin:0}.k{height:100%}.win.app{height:100%;box-shadow:none;border:0;border-radius:0}.view{padding:var(--space-6);gap:var(--space-4);flex-direction:column;display:flex}.k [hidden]{display:none!important}.bar{justify-content:space-between;align-items:center;gap:var(--space-2);flex-wrap:wrap;display:flex}.badges{gap:var(--space-1);flex-wrap:wrap;display:flex}.k summary>span{align-items:center;gap:var(--space-2);overflow-wrap:anywhere;flex-wrap:wrap;min-width:0;display:flex}.pname{font-weight:600}.filters{gap:var(--space-3);grid-template-columns:repeat(auto-fit,minmax(160px,1fr));display:grid}.dash{gap:var(--space-4);grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));display:grid}.dash,.wrap{width:100%;max-width:1000px;margin-inline:auto}.readout .display{overflow-wrap:anywhere}.stack{gap:var(--space-3);flex-direction:column;display:flex}.card-h{align-items:center;gap:var(--space-2);display:flex}.k a.lnk{color:var(--accink)}.readout{align-items:center;gap:var(--space-2) var(--space-3);flex-wrap:wrap;display:flex}.vhead{flex-direction:column;gap:2px;min-width:0;display:flex}.fine{color:var(--muted);margin:0;font-size:13px}.seg.scroll{align-self:flex-start;max-width:100%;overflow-x:auto}.seg a{white-space:nowrap}.tiles{gap:var(--space-3);grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));display:grid}.tiles.two{grid-template-columns:repeat(2,minmax(0,1fr))}.tile{padding:var(--space-4);text-align:center;flex-direction:column;align-items:center;gap:6px;display:flex}.small-h{color:var(--muted);margin:0;font-size:14px}.minis{gap:var(--space-2);grid-template-columns:repeat(auto-fill,minmax(210px,1fr));display:grid}.mini{border:1px solid var(--line);border-radius:var(--r);flex-direction:column;align-items:flex-start;gap:4px;padding:8px 12px;font-size:13px;display:flex}.mini .mn{color:var(--muted);font-size:12px}.mini .mv{color:var(--ink);line-height:1.3}.expl summary{gap:var(--space-3)}.expl .sn{font-weight:600}.expl .sv{align-items:center;gap:var(--space-2);font-variant-numeric:tabular-nums;overflow-wrap:anywhere;flex-wrap:wrap;justify-content:flex-end;margin-left:auto;display:flex}.expl summary:after{flex:none}.acc-body{gap:var(--space-3);flex-direction:column;padding:4px 16px 16px;display:flex}.fmt{gap:var(--space-2);grid-template-columns:repeat(auto-fit,minmax(110px,1fr));display:grid}@media (width<=600px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.tile{padding:var(--space-3)}.view{padding:var(--space-4)}}.center{padding:var(--space-16);justify-content:center;display:flex}</style>
 <script>
   // light, dark or follow the system, within the Fjord look; the choice is kept in this browser
   (function () {
@@ -20,7 +20,7 @@
     apply(); m.addEventListener('change', apply);
   })();
 </script>
-  <script type="module" crossorigin src="./assets/index-rnhhG6qp.js"></script>
+  <script type="module" crossorigin src="./assets/index-BkWXQgyK.js"></script>
 </head>
 <body>
 <div class="k">
@@ -108,6 +108,19 @@
       <label class="chk"><input type="radio" name="color-mode" value="light"> <span data-i18n="settings.mode.light">Light</span></label>
       <label class="chk"><input type="radio" name="color-mode" value="dark"> <span data-i18n="settings.mode.dark">Dark</span></label>
       <span class="help" data-i18n="settings.mode.help">Kept in this browser only.</span>
+    </div>
+  </dialog>
+  <dialog class="dlg" id="report-dlg" aria-labelledby="report-t">
+    <div class="grab"></div>
+    <header class="hb"><div class="t" id="report-t" data-i18n="report.title">Download report</div><button class="btn flat" data-dialog-close data-i18n="action.close">Close</button></header>
+    <div class="dlg-body">
+      <label class="chk"><input type="checkbox" id="report-sensitive"> <span data-i18n="report.include">Include sensitive details</span></label>
+      <span class="help" data-i18n="report.includeHelp">Serial number and device name. Off by default. Wi-Fi name and IP addresses are always included.</span>
+      <div class="fmt">
+        <button class="btn out" type="button" data-report="html" data-i18n="report.html">HTML</button>
+        <button class="btn out" type="button" data-report="md" data-i18n="report.md">Markdown</button>
+        <button class="btn out" type="button" data-report="json" data-i18n="report.json">JSON</button>
+      </div>
     </div>
   </dialog>
   <dialog class="dlg" id="labels-dlg" aria-labelledby="labels-t">

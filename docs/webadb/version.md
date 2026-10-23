@@ -7,3 +7,4 @@
 | v0.2.1  | 2026-10-20 | Connect button shows which step is waiting (B006) |
 | v0.3.0 | 2026-10-21 | Device cards have icons;  Network card can detect the public IP address on click; Device page redesigned as cards with battery, storage, temperature and network |
 | v0.4.0 | 2026-10-23 | light, dark or system colour mode (Appearance) |
+| v0.5.0 | 2026-10-23 | new Device page with gauges, tabs and downloadable reports (HTML, Markdown, JSON) |
