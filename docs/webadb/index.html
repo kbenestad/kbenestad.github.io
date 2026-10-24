@@ -20,7 +20,7 @@
     apply(); m.addEventListener('change', apply);
   })();
 </script>
-  <script type="module" crossorigin src="./assets/index-0VH_sEu2.js"></script>
+  <script type="module" crossorigin src="./assets/index-BF9AAxU6.js"></script>
 </head>
 <body>
 <div class="k">
@@ -64,15 +64,16 @@
             <h3 data-i18n="folder.title">Data folder</h3>
             <p id="folder-none" data-rich="folder.helpNone">If you wish to transfer data to/from the phone (including installing APKs), you need to set a data folder. In your chosen folder, the following sub-folders will be created:</p>
             <ul id="folder-none-list">
-              <li data-rich="folder.profiles">`profiles`: Contains the profile of each connected phone.</li>
-              <li data-rich="folder.files">`files`: This folder will be mounted as the root for WebADB. Data you wish to transfer to and from your phone will be in this folder (including APKs).</li>
+              <li data-rich="folder.profiles">*profiles*: Contains the profile of each connected phone.</li>
+              <li data-rich="folder.files">*files*: This folder will be mounted as the root for WebADB. Data you wish to transfer to and from your phone will be in this folder (including APKs).</li>
             </ul>
             <p id="folder-set" data-rich="folder.helpSet" hidden>If you wish to transfer data to/from the phone (including installing APKs), you need to set a data folder. Your current data folder is:</p>
             <p id="folder-path" hidden></p>
-            <h3 data-i18n="usb.title">Turn on USB debugging</h3>
-            <p data-rich="usb.dev">Enable Developer Options and go to **Settings > About phone** and tap `Build number` seven times.</p>
-            <p data-rich="usb.enable">Then go to **Settings > System > Developer options** and enable `Use Developer options` and then `USB debugging`.</p>
-            <p data-rich="usb.revoke">If you have problems connecting to your phone, you can try to tap `Revoke USB debugging authorisations`.</p>
+            <p class="fine" id="folder-note" data-rich="folder.pathNote" hidden>Due to browser limitations, it is not possible to show the complete path. Please click the *Change data folder* button below to inspect the current path.</p>
+            <h3 data-i18n="usb.title">Phone</h3>
+            <p data-rich="usb.dev">Enable Developer Options and go to **Settings > About phone** and tap *Build number* seven times.</p>
+            <p data-rich="usb.enable">Then go to **Settings > System > Developer options** and enable *Use Developer options* and then *USB debugging*.</p>
+            <p data-rich="usb.revoke">If you have problems connecting to your phone, you can try to tap *Revoke USB debugging authorisations*.</p>
             <div class="btns">
               <button class="btn" id="folder-choose" data-i18n="folder.choose" hidden>Set data folder</button>
               <button class="btn pri" id="connect" data-i18n="action.connect">Connect phone</button>
