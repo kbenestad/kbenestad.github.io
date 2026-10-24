@@ -20,7 +20,7 @@
     apply(); m.addEventListener('change', apply);
   })();
 </script>
-  <script type="module" crossorigin src="./assets/index-DDumFEu7.js"></script>
+  <script type="module" crossorigin src="./assets/index-BQDoo5Kv.js"></script>
 </head>
 <body>
 <div class="k">
@@ -130,6 +130,16 @@
       </div>
     </section>
   </div>
+  <dialog class="dlg" id="rename-dlg" aria-labelledby="rename-t">
+    <div class="grab"></div>
+    <form method="dialog">
+      <header class="hb"><div class="t" id="rename-t" data-i18n="pkg.rename">Rename</div><button class="btn" type="button" data-dialog-close data-i18n="action.cancel">Cancel</button></header>
+      <div class="dlg-body">
+        <div class="fld"><label for="rename-input" data-i18n="pkg.nameLabel">Name</label><input id="rename-input" class="inp" autocomplete="off"><span class="help" data-i18n="pkg.nameHelp">Saved in this phone's profile in the data folder.</span></div>
+        <div class="btns"><button class="btn pri" value="save" data-i18n="action.save">Save</button><button class="btn" value="reset" data-i18n="pkg.nameReset">Use the default name</button></div>
+      </div>
+    </form>
+  </dialog>
   <dialog class="alert" id="pkg-confirm" aria-labelledby="pkg-confirm-t">
     <div class="msg"><h2 id="pkg-confirm-t"></h2><p data-i18n="pkg.confirm.text">Only this user is changed. You can reverse it here.</p></div>
     <div class="acts stack"><button class="btn" data-dialog-close value="no" data-i18n="pkg.confirm.no">No</button><button class="btn bad" id="pkg-confirm-yes" data-dialog-close value="yes"></button></div>
