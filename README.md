@@ -15,7 +15,8 @@ webadb shows advice from the [Universal Android Debloater Next Generation](https
 
 The workflow `.github/workflows/update-debloat-list.yml` keeps that one file current:
 
-- **When:** every night at 04:17 UTC, and whenever you start it by hand.
+- **When:** every night at 23:17 UTC (00:17 in Europe in winter, 01:17 in summer; 06:17 in
+  Bangkok), and whenever you start it by hand. GitHub may start it a few minutes late.
 - **What:** it downloads the newest `uad_lists.json` from UAD-ng, checks that it is valid JSON
   with more than 1 000 entries, and replaces the file. If nothing changed it does nothing.
   If something changed it commits `Update debloat list (UAD-ng <commit>)` to `main`.
