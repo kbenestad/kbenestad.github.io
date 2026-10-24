@@ -14,3 +14,4 @@
 | v0.8.0 | 2026-10-24 | Preferences shows the app version and last updated date; Shell no longer freezes on commands that wait for input or print a lot, and Stop always frees the screen; Shell shows a muted suggestion;  Tab accepts it |
 | v0.8.1 | 2026-10-24 | connection error says adb kill-server is for a terminal and only if adb is installed, and suggests unplugging and replugging the phone |
 | v0.8.2 | 2026-10-24 | removed the Download the latest debloat list option;  the list comes from this site only; Connect screen rewritten with data folder and USB debugging steps, buttons centred |
+| v0.8.3 | 2026-10-24 | Connect phone and data folder buttons are the same height |
