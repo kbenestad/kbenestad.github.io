@@ -1,4 +1,4 @@
-# Keeps the debloat list on the live site current. Every Monday (and on demand from the
+# Keeps the debloat list on the live site current. Every night (and on demand from the
 # Actions tab) it downloads the newest list from the Universal Android Debloater Next
 # Generation project and, if it changed, commits it to docs/webadb/data/uad_lists.json.
 # See README.md ("Debloat list") for what this does and how to check it.
@@ -6,7 +6,7 @@ name: Update debloat list
 
 on:
   schedule:
-    - cron: '17 4 * * 1'
+    - cron: '17 4 * * *'
   workflow_dispatch:
 
 permissions:
