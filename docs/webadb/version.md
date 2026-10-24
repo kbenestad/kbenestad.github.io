@@ -12,3 +12,4 @@
 | v0.6.1 | 2026-10-23 | Shell is a sidebar section instead of a bottom panel |
 | v0.7.0 | 2026-10-23 | optional data folder with per-phone profile files;  debloat labels off by default |
 | v0.8.0 | 2026-10-24 | Preferences shows the app version and last updated date; Shell no longer freezes on commands that wait for input or print a lot, and Stop always frees the screen; Shell shows a muted suggestion;  Tab accepts it |
+| v0.8.1 | 2026-10-24 | connection error says adb kill-server is for a terminal and only if adb is installed, and suggests unplugging and replugging the phone |
