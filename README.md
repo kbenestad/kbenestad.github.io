@@ -15,7 +15,8 @@ webadb shows advice from the [Universal Android Debloater Next Generation](https
 
 The workflow `.github/workflows/update-debloat-list.yml` keeps that one file current:
 
-- **When:** every Monday at 04:17 UTC, and whenever you start it by hand.
+- **When:** every night at 23:17 UTC (00:17 in Europe in winter, 01:17 in summer; 06:17 in
+  Bangkok), and whenever you start it by hand. GitHub may start it a few minutes late.
 - **What:** it downloads the newest `uad_lists.json` from UAD-ng, checks that it is valid JSON
   with more than 1 000 entries, and replaces the file. If nothing changed it does nothing.
   If something changed it commits `Update debloat list (UAD-ng <commit>)` to `main`.
@@ -36,9 +37,6 @@ Things to know:
   a change, tell me: the fix is to give the workflow a personal access token instead.
 - **Scheduled workflows pause** after 60 days without any activity in the repo. Run it by hand
   (or make any commit) to wake it up.
-- **Visitors can also ask for the very latest list.** On the connect screen of webadb there is
-  a tick box "Download the latest debloat list". When ticked, the browser fetches it straight
-  from GitHub instead of from this site. GitHub then sees the request. It is off by default.
 - **Licence.** The list is GPL-3.0 (see `docs/webadb/data/LICENSE-GPL-3.0.txt`).
 
 ## Putting a new webadb build on the site
