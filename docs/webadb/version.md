@@ -16,3 +16,4 @@
 | v0.8.2 | 2026-10-24 | removed the Download the latest debloat list option;  the list comes from this site only; Connect screen rewritten with data folder and USB debugging steps, buttons centred |
 | v0.8.3 | 2026-10-24 | Connect phone and data folder buttons are the same height |
 | v0.8.4 | 2026-10-24 | Connect screen shows a note under the data folder, heading is Phone, and former code text is italic |
+| v0.8.5 | 2026-10-24 | Signal level help text says the carrier sets each threshold; Battery temperature help text uses °C on every figure; Device page help text clarified;  network type shows 4G (LTE) and 5G instead of LTE and NR |
