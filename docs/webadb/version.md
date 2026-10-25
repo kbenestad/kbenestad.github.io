@@ -21,3 +21,4 @@
 | v0.10.0 | 2026-10-24 | Packages shows and changes apps for every user on the phone |
 | v0.11.0 | 2026-10-24 | Rename an app in Packages;  the name is kept in the phone's profile |
 | v0.12.0 | 2026-10-24 | Packages can uninstall and install apps per user, act on several ticked apps at once, and filter by developer and name; Packages rows and details line up in columns, as in the sketch |
+| v0.13.0 | 2026-10-25 | Rename a developer in Packages;  the name is kept in the phone's profile |
