@@ -30,3 +30,4 @@
 | v0.18.0 | 2026-10-25 | Comments can be edited (marked as edited, earlier versions stay visible) and follow a file when it is renamed or moved in Files; Review comments on files: signed with your own key kept in the data folder (optional generated passphrase), saved on the phone, a Comments section with filters, and a Reviewed by label in Files |
 | v0.19.0 | 2026-10-25 | Settings section to read and change phone settings by topic (display, sound, connectivity, privacy, input, developer, power) with a list of every key, per-user values, a connection check provider choice, a snapshot to compare against, and risky changes locked behind unsafe operations |
 | v0.19.1 | 2026-10-25 | the off button in the top bar appears when Connect phone is pressed and aborts the connection attempt |
+| v0.20.0 | 2026-10-25 | Files details pane, text editor, image viewer, context menu, batch rename |
