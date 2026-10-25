@@ -27,3 +27,4 @@
 | v0.15.0 | 2026-10-25 | Logs shows a list of hidden values and finds them by label;  Save as report makes an HTML log viewer with filters;  Crashes and One app filters are quieter;  Logs keep up to 300 000 lines |
 | v0.16.0 | 2026-10-25 | Performance section with live dials for CPU, memory, temperature, storage and battery, and line charts of the last 5, 15 or 60 minutes |
 | v0.17.0 | 2026-10-25 | Files section to browse the phone, see file details, download or share files, keep notes on files, and (with unsafe operations on) upload, rename, move, copy and delete |
+| v0.18.0 | 2026-10-25 | Comments can be edited (marked as edited, earlier versions stay visible) and follow a file when it is renamed or moved in Files; Review comments on files: signed with your own key kept in the data folder (optional generated passphrase), saved on the phone, a Comments section with filters, and a Reviewed by label in Files |
