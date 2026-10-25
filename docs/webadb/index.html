@@ -6,7 +6,7 @@
 <title>webadb</title>
 <link rel="stylesheet" href="./kbenestad-fjord/tokens.css">
 <link rel="stylesheet" href="./kbenestad-fjord/components/bundle.css">
-<style>html,body{height:100%;margin:0}.k{height:100%}.win.app{height:100%;box-shadow:none;border:0;border-radius:0}.view{padding:var(--space-6);gap:var(--space-4);flex-direction:column;display:flex}.k [hidden]{display:none!important}.bar{justify-content:space-between;align-items:center;gap:var(--space-2);flex-wrap:wrap;display:flex}.badges{gap:var(--space-1);flex-wrap:wrap;display:flex}.k summary>span{align-items:center;gap:var(--space-2);overflow-wrap:anywhere;flex-wrap:wrap;min-width:0;display:flex}.pname{font-weight:600}.sr{clip-path:inset(50%);white-space:nowrap;width:1px;height:1px;position:absolute;overflow:hidden}.ustates{gap:var(--space-1) var(--space-3);flex-wrap:wrap;grid-column:2;font-size:13px;display:flex}.ustate.enabled{color:var(--ok)}.ustate.disabled,.ustate.uninstalled{color:var(--bad);text-decoration:line-through}#pkgs{--pcol:11rem}#pkgs .psel{width:18px;height:18px;accent-color:var(--acc,currentColor);flex:none;align-self:flex-start;margin:3px 12px 0 0}#pkgs .acc-body{padding-left:46px}.batch{z-index:2;align-items:center;gap:var(--space-2) var(--space-4);padding:var(--space-3) var(--space-4);background:var(--sunk);border:1px solid var(--line);border-radius:var(--r);flex-wrap:wrap;display:flex;position:sticky;top:0}.batch #batch-count{font-weight:600}.fld.inline{align-items:center;gap:var(--space-2);flex-direction:row}.fld.inline label{white-space:nowrap}#pkgs summary>.prow{grid-template-columns:var(--pcol) minmax(0, 1fr);gap:2px var(--space-3);flex:1;align-items:baseline;min-width:0;display:grid}.pdev{overflow-wrap:anywhere;grid-area:1/1;font-weight:400}.ptitle{align-items:center;gap:var(--space-2);flex-wrap:wrap;grid-area:1/2;min-width:0;display:flex}.pid{overflow-wrap:anywhere;grid-area:2/2;font-size:13px;font-weight:400}#pkgs .acc-body{gap:var(--space-4)}#pkgs .meta{grid-template-columns:var(--pcol) minmax(0, 1fr);column-gap:var(--space-3)}.utable{gap:var(--space-2);flex-direction:column;display:flex}.urow{grid-template-columns:var(--pcol) 8.5rem auto;column-gap:var(--space-3);justify-content:start;align-items:center;display:grid}.urow .uname{overflow-wrap:anywhere;min-width:0}.urow .bdg{justify-self:start}.uact{gap:var(--space-2);flex-wrap:wrap;display:flex}.pcols{gap:var(--space-4);grid-template-columns:minmax(0,1fr) auto;align-items:start;display:grid}.pcols .meta{margin:0}.pcols .sizes{grid-template-columns:auto auto;justify-content:end}.pcols .sizes dd{text-align:right;font-variant-numeric:tabular-nums}.pactions{justify-content:space-between;gap:var(--space-2);flex-wrap:wrap;display:flex}@media (width<=600px){#pkgs{--pcol:6.5rem}.pcols{grid-template-columns:minmax(0,1fr)}.pcols .sizes{justify-content:start}.pcols .sizes dd{text-align:left}.urow{grid-template-columns:var(--pcol) auto auto}}.filters{gap:var(--space-3);grid-template-columns:repeat(auto-fit,minmax(160px,1fr));display:grid}.dash{gap:var(--space-4);grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));display:grid}.dash,.wrap{width:100%;max-width:1000px;margin-inline:auto}.readout .display{overflow-wrap:anywhere}.stack{gap:var(--space-3);flex-direction:column;display:flex}.card-h{align-items:center;gap:var(--space-2);display:flex}.k a.lnk{color:var(--accink)}.readout{align-items:center;gap:var(--space-2) var(--space-3);flex-wrap:wrap;display:flex}#view-shell .term{border-radius:var(--radius-m,8px);height:min(60vh,520px);overflow:auto}#shell-form{gap:var(--space-2);display:flex}.ghostwrap{flex:1;min-width:0;position:relative}#shell-cmd{box-sizing:border-box;width:100%;font-family:var(--font-mono)}#shell-ghost{white-space:pre;pointer-events:none;font-family:var(--font-mono);color:var(--muted);align-items:center;font-size:15px;display:flex;position:absolute;inset:0;overflow:hidden}#shell-ghost-typed{visibility:hidden}#view-logs .term{border-radius:var(--radius-m,8px);height:min(60vh,520px);overflow:auto}#view-logs .row-actions{gap:var(--space-2);flex-wrap:wrap;display:flex}#log-out .lv-E,#log-out .lv-F{font-weight:700}#log-out .lv-V,#log-out .lv-D{opacity:.75}.charts{gap:var(--space-4);grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr));display:grid}.chart{width:100%;height:auto;display:block}.cores{gap:var(--space-2) var(--space-4);grid-template-columns:repeat(auto-fill,minmax(min(220px,100%),1fr));display:grid}.core{align-items:center;gap:var(--space-2);grid-template-columns:4.5rem minmax(0,1fr) 3.5rem;font-size:13px;display:grid}.core meter{width:100%}.core .mono{text-align:right}.vhead{flex-direction:column;gap:2px;min-width:0;display:flex}.fine{color:var(--muted);margin:0;font-size:13px}.seg.scroll{align-self:flex-start;max-width:100%;overflow-x:auto}.seg a{white-space:nowrap}.tiles{gap:var(--space-3);grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));display:grid}.tiles.two{grid-template-columns:repeat(2,minmax(0,1fr))}.tile{padding:var(--space-4);text-align:center;flex-direction:column;align-items:center;gap:6px;display:flex}.small-h{color:var(--muted);margin:0;font-size:14px}.minis{gap:var(--space-2);grid-template-columns:repeat(auto-fill,minmax(210px,1fr));display:grid}.mini{border:1px solid var(--line);border-radius:var(--r);flex-direction:column;align-items:flex-start;gap:4px;padding:8px 12px;font-size:13px;display:flex}.mini .mn{color:var(--muted);font-size:12px}.mini .mv{color:var(--ink);line-height:1.3}.expl summary{gap:var(--space-3)}.expl .sn{font-weight:600}.expl .sv{align-items:center;gap:var(--space-2);font-variant-numeric:tabular-nums;overflow-wrap:anywhere;flex-wrap:wrap;justify-content:flex-end;margin-left:auto;display:flex}.expl summary:after{flex:none}.acc-body{gap:var(--space-3);flex-direction:column;padding:4px 16px 16px;display:flex}.fmt{gap:var(--space-2);grid-template-columns:repeat(auto-fit,minmax(110px,1fr));display:grid}@media (width<=600px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.tile{padding:var(--space-3)}.view{padding:var(--space-4)}}.k .status.left h3,.k .status.left p,.k .status.left ul{text-align:left;align-self:stretch;margin:0}.k .status.left h3{margin-top:var(--space-2)}.k .status.left ul{padding-left:var(--space-5);color:var(--muted)}.k .status.left #folder-path{color:var(--ink);overflow-wrap:anywhere;font-weight:600}.btns{justify-content:center;gap:var(--space-2);margin-top:var(--space-3);flex-wrap:wrap;display:flex}.btns .btn{margin:0}.center{padding:var(--space-16);justify-content:center;display:flex}</style>
+<style>html,body{height:100%;margin:0}.k{height:100%}.win.app{height:100%;box-shadow:none;border:0;border-radius:0}.view{padding:var(--space-6);gap:var(--space-4);flex-direction:column;display:flex}.k [hidden]{display:none!important}.bar{justify-content:space-between;align-items:center;gap:var(--space-2);flex-wrap:wrap;display:flex}.badges{gap:var(--space-1);flex-wrap:wrap;display:flex}.k summary>span{align-items:center;gap:var(--space-2);overflow-wrap:anywhere;flex-wrap:wrap;min-width:0;display:flex}.pname{font-weight:600}.sr{clip-path:inset(50%);white-space:nowrap;width:1px;height:1px;position:absolute;overflow:hidden}.ustates{gap:var(--space-1) var(--space-3);flex-wrap:wrap;grid-column:2;font-size:13px;display:flex}.ustate.enabled{color:var(--ok)}.ustate.disabled,.ustate.uninstalled{color:var(--bad);text-decoration:line-through}#pkgs{--pcol:11rem}#pkgs .psel{width:18px;height:18px;accent-color:var(--acc,currentColor);flex:none;align-self:flex-start;margin:3px 12px 0 0}#pkgs .acc-body{padding-left:46px}.batch{z-index:2;align-items:center;gap:var(--space-2) var(--space-4);padding:var(--space-3) var(--space-4);background:var(--sunk);border:1px solid var(--line);border-radius:var(--r);flex-wrap:wrap;display:flex;position:sticky;top:0}.batch #batch-count{font-weight:600}.fld.inline{align-items:center;gap:var(--space-2);flex-direction:row}.fld.inline label{white-space:nowrap}#pkgs summary>.prow{grid-template-columns:var(--pcol) minmax(0, 1fr);gap:2px var(--space-3);flex:1;align-items:baseline;min-width:0;display:grid}.pdev{overflow-wrap:anywhere;grid-area:1/1;font-weight:400}.ptitle{align-items:center;gap:var(--space-2);flex-wrap:wrap;grid-area:1/2;min-width:0;display:flex}.pid{overflow-wrap:anywhere;grid-area:2/2;font-size:13px;font-weight:400}#pkgs .acc-body{gap:var(--space-4)}#pkgs .meta{grid-template-columns:var(--pcol) minmax(0, 1fr);column-gap:var(--space-3)}.utable{gap:var(--space-2);flex-direction:column;display:flex}.urow{grid-template-columns:var(--pcol) 8.5rem auto;column-gap:var(--space-3);justify-content:start;align-items:center;display:grid}.urow .uname{overflow-wrap:anywhere;min-width:0}.urow .bdg{justify-self:start}.uact{gap:var(--space-2);flex-wrap:wrap;display:flex}.pcols{gap:var(--space-4);grid-template-columns:minmax(0,1fr) auto;align-items:start;display:grid}.pcols .meta{margin:0}.pcols .sizes{grid-template-columns:auto auto;justify-content:end}.pcols .sizes dd{text-align:right;font-variant-numeric:tabular-nums}.pactions{justify-content:space-between;gap:var(--space-2);flex-wrap:wrap;display:flex}@media (width<=600px){#pkgs{--pcol:6.5rem}.pcols{grid-template-columns:minmax(0,1fr)}.pcols .sizes{justify-content:start}.pcols .sizes dd{text-align:left}.urow{grid-template-columns:var(--pcol) auto auto}}.filters{gap:var(--space-3);grid-template-columns:repeat(auto-fit,minmax(160px,1fr));display:grid}.dash{gap:var(--space-4);grid-template-columns:repeat(auto-fit,minmax(min(280px,100%),1fr));display:grid}.dash,.wrap{width:100%;max-width:1000px;margin-inline:auto}.readout .display{overflow-wrap:anywhere}.stack{gap:var(--space-3);flex-direction:column;display:flex}.card-h{align-items:center;gap:var(--space-2);display:flex}.k a.lnk{color:var(--accink)}.readout{align-items:center;gap:var(--space-2) var(--space-3);flex-wrap:wrap;display:flex}#view-shell .term{border-radius:var(--radius-m,8px);height:min(60vh,520px);overflow:auto}#shell-form{gap:var(--space-2);display:flex}.ghostwrap{flex:1;min-width:0;position:relative}#shell-cmd{box-sizing:border-box;width:100%;font-family:var(--font-mono)}#shell-ghost{white-space:pre;pointer-events:none;font-family:var(--font-mono);color:var(--muted);align-items:center;font-size:15px;display:flex;position:absolute;inset:0;overflow:hidden}#shell-ghost-typed{visibility:hidden}#view-logs .term{border-radius:var(--radius-m,8px);height:min(60vh,520px);overflow:auto}#view-logs .row-actions{gap:var(--space-2);flex-wrap:wrap;display:flex}#log-out .lv-E,#log-out .lv-F{font-weight:700}#log-out .lv-V,#log-out .lv-D{opacity:.75}.charts{gap:var(--space-4);grid-template-columns:repeat(auto-fit,minmax(min(420px,100%),1fr));display:grid}.chart{width:100%;height:auto;display:block}.cores{gap:var(--space-2) var(--space-4);grid-template-columns:repeat(auto-fill,minmax(min(220px,100%),1fr));display:grid}.core{align-items:center;gap:var(--space-2);grid-template-columns:4.5rem minmax(0,1fr) 3.5rem;font-size:13px;display:grid}.core meter{width:100%}.core .mono{text-align:right}.vhead{flex-direction:column;gap:2px;min-width:0;display:flex}.fine{color:var(--muted);margin:0;font-size:13px}.seg.scroll{align-self:flex-start;max-width:100%;overflow-x:auto}.seg a{white-space:nowrap}.tiles{gap:var(--space-3);grid-template-columns:repeat(auto-fit,minmax(min(250px,100%),1fr));display:grid}.tiles.two{grid-template-columns:repeat(2,minmax(0,1fr))}.tile{padding:var(--space-4);text-align:center;flex-direction:column;align-items:center;gap:6px;display:flex}.small-h{color:var(--muted);margin:0;font-size:14px}.minis{gap:var(--space-2);grid-template-columns:repeat(auto-fill,minmax(210px,1fr));display:grid}.mini{border:1px solid var(--line);border-radius:var(--r);flex-direction:column;align-items:flex-start;gap:4px;padding:8px 12px;font-size:13px;display:flex}.mini .mn{color:var(--muted);font-size:12px}.mini .mv{color:var(--ink);line-height:1.3}.expl summary{gap:var(--space-3)}.expl .sn{font-weight:600}.expl .sv{align-items:center;gap:var(--space-2);font-variant-numeric:tabular-nums;overflow-wrap:anywhere;flex-wrap:wrap;justify-content:flex-end;margin-left:auto;display:flex}.expl summary:after{flex:none}.acc-body{gap:var(--space-3);flex-direction:column;padding:4px 16px 16px;display:flex}.fmt{gap:var(--space-2);grid-template-columns:repeat(auto-fit,minmax(110px,1fr));display:grid}@media (width<=600px){.tiles{grid-template-columns:repeat(2,minmax(0,1fr))}.tile{padding:var(--space-3)}.view{padding:var(--space-4)}}.k .status.left h3,.k .status.left p,.k .status.left ul{text-align:left;align-self:stretch;margin:0}.k .status.left h3{margin-top:var(--space-2)}.k .status.left ul{padding-left:var(--space-5);color:var(--muted)}.k .status.left #folder-path{color:var(--ink);overflow-wrap:anywhere;font-weight:600}.btns{justify-content:center;gap:var(--space-2);margin-top:var(--space-3);flex-wrap:wrap;display:flex}.btns .btn{margin:0}#view-files .crumbs{flex-wrap:wrap;align-items:center;gap:2px;min-width:0;display:flex}#view-files .crumbs .btn{height:28px;padding:0 8px}#files-table th .btn{height:auto;text-transform:inherit;font:inherit;color:inherit;letter-spacing:inherit;background:0 0;padding:0}#files-table td.nm{overflow-wrap:anywhere}#files-table .nm .btn{text-align:left;white-space:normal;background:0 0;justify-content:flex-start;height:auto;padding:0;font-weight:500}#files-table .nm .ic{vertical-align:-4px;margin-right:6px}#files-table td.cb,#files-table th.cb{width:36px}#files-table td.r,#files-table td.dt{white-space:nowrap}#files-table .bdg{margin-left:6px}#files-table .nm .sub{color:var(--muted);font-size:12px;display:block}#files-note-text{min-height:6rem}#files-share-list{padding-left:var(--space-5);overflow-wrap:anywhere;margin:0}#files-confirm-list{padding-left:var(--space-5);text-align:left;overflow-wrap:anywhere;margin:0}#files-view-drop.drag{outline:2px dashed var(--acc);outline-offset:-6px}@media (width<=600px){.files-mod{display:none}}.center{padding:var(--space-16);justify-content:center;display:flex}</style>
 <script>
   // light, dark or follow the system, within the Fjord look; the choice is kept in this browser
   (function () {
@@ -20,7 +20,7 @@
     apply(); m.addEventListener('change', apply);
   })();
 </script>
-  <script type="module" crossorigin src="./assets/index--lpm_QUg.js"></script>
+  <script type="module" crossorigin src="./assets/index-BFTsLydQ.js"></script>
 </head>
 <body>
 <div class="k">
@@ -30,6 +30,7 @@
       <div class="pane-body">
         <a class="nav" href="#device" data-view="device" title="Device" data-i18n-title="nav.device"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><rect width="14" height="20" x="5" y="2" rx="2" ry="2"/><path d="M12 18h.01"/></svg> <span class="lbl" data-i18n="nav.device">Device</span></a>
         <a class="nav" href="#packages" data-view="packages" title="Packages" data-i18n-title="nav.packages"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></svg> <span class="lbl" data-i18n="nav.packages">Packages</span> <span class="ct" id="pkg-count"></span></a>
+        <a class="nav" href="#files" data-view="files" title="Files" data-i18n-title="nav.files"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg> <span class="lbl" data-i18n="nav.files">Files</span></a>
         <a class="nav" href="#logs" data-view="logs" title="Logs" data-i18n-title="nav.logs"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg> <span class="lbl" data-i18n="nav.logs">Logs</span></a>
         <a class="nav" href="#perf" data-view="perf" title="Performance" data-i18n-title="nav.perf"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg> <span class="lbl" data-i18n="nav.perf">Performance</span></a>
         <a class="nav" href="#shell" data-view="shell" title="Shell" data-i18n-title="nav.shell"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19h8"/><path d="m4 17 6-6-6-6"/></svg> <span class="lbl" data-i18n="nav.shell">Shell</span></a>
@@ -104,6 +105,61 @@
 
         <div class="view" id="view-perf" hidden></div>
 
+        <div class="view" id="view-files" hidden>
+          <div class="bar">
+            <div class="crumbs" id="files-crumbs" role="navigation" aria-label="Folder path" data-i18n-label="files.path"></div>
+            <div class="row-actions">
+              <button class="btn flat" id="files-up" type="button" data-i18n="files.up">Up one folder</button>
+              <button class="btn flat" id="files-refresh" type="button" data-i18n="files.refresh">Refresh</button>
+            </div>
+          </div>
+          <div class="filters">
+            <div class="fld"><label for="files-place" data-i18n="files.place">Go to</label><select id="files-place" class="inp"></select></div>
+            <form class="fld" id="files-goto-form" autocomplete="off"><label for="files-goto" data-i18n="files.goto">Go to a path</label><input id="files-goto" class="inp" type="text" spellcheck="false" autocapitalize="off" placeholder="/sdcard/Download"></form>
+            <div class="fld"><label for="files-filter" data-i18n="files.filter">Filter this folder</label><input id="files-filter" class="inp" type="search" autocomplete="off"></div>
+          </div>
+          <div class="bar">
+            <div class="row-actions">
+              <button class="btn pri" id="files-upload" type="button" data-write data-i18n="files.upload">Upload</button>
+              <button class="btn" id="files-mkdir" type="button" data-write data-i18n="files.newFolder">New folder</button>
+            </div>
+            <span class="muted" id="files-count" role="status"></span>
+          </div>
+          <div class="bar" id="files-selbar" hidden>
+            <div class="row-actions">
+              <button class="btn" id="files-details" type="button" data-one data-i18n="files.details">Details</button>
+              <button class="btn" id="files-download" type="button" data-i18n="files.download">Download</button>
+              <button class="btn" id="files-share" type="button" data-files-only hidden data-i18n="files.share">Share</button>
+              <button class="btn" id="files-rename" type="button" data-one data-write data-i18n="files.rename">Rename</button>
+              <button class="btn" id="files-move" type="button" data-write data-i18n="files.move">Move</button>
+              <button class="btn" id="files-copy" type="button" data-write data-i18n="files.copy">Copy</button>
+              <button class="btn bad" id="files-delete" type="button" data-write data-i18n="files.delete">Delete</button>
+            </div>
+            <button class="btn flat" id="files-clearsel" type="button" data-i18n="files.clearSelection">Clear selection</button>
+          </div>
+          <p class="fine" id="files-locked" data-i18n="files.locked">Browsing, details, download and share are always on. To upload, rename, move, copy, create or delete, open Preferences in the sidebar and tick Allow unsafe operations.</p>
+          <div class="fld" id="files-progress" hidden><label for="files-bar" id="files-progress-label"></label><progress id="files-bar" max="100" value="0"></progress></div>
+          <div id="files-error" class="stack"></div>
+          <div id="files-view-drop">
+            <div class="list">
+              <table class="tbl" id="files-table">
+                <thead><tr>
+                  <th class="cb"><input type="checkbox" id="files-all" aria-label="Select all shown" data-i18n-label="files.selectAll"></th>
+                  <th><button class="btn flat" type="button" data-sort="name" data-i18n="files.col.name">Name</button></th>
+                  <th class="r"><button class="btn flat" type="button" data-sort="size" data-i18n="files.col.size">Size</button></th>
+                  <th class="files-mod"><button class="btn flat" type="button" data-sort="date" data-i18n="files.col.modified">Modified</button></th>
+                </tr></thead>
+                <tbody id="files-body"></tbody>
+              </table>
+            </div>
+          </div>
+          <div class="status" id="files-empty" hidden>
+            <svg class="status-ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg>
+            <h2 id="files-empty-title" data-i18n="files.empty">This folder is empty</h2>
+          </div>
+          <input type="file" id="files-input" multiple hidden>
+        </div>
+
         <div class="view" id="view-logs" hidden>
           <p class="fine" data-i18n="logs.privacy">Phone logs can hold personal details. They are read into this page only, kept in memory, and cleared when the phone disconnects or the page is closed. Nothing is sent anywhere.</p>
           <div class="filters">
@@ -173,6 +229,38 @@
       </div>
     </section>
   </div>
+  <dialog class="dlg" id="files-detail-dlg" aria-labelledby="files-detail-t">
+    <div class="grab"></div>
+    <header class="hb"><div class="t" id="files-detail-t"></div><button class="btn pri" data-dialog-close data-i18n="action.close">Close</button></header>
+    <div class="dlg-body">
+      <div id="files-detail-body" class="stack"></div>
+      <div class="fld"><label for="files-note-text" data-i18n="files.note">Note</label><textarea id="files-note-text" class="inp"></textarea><span class="help" id="files-note-help" data-i18n="files.noteHelp">Saved in this phone's profile in the data folder. It stays on the computer; the phone never sees it.</span></div>
+      <div class="btns"><button class="btn pri" id="files-note-save" type="button" data-i18n="files.noteSave">Save note</button><button class="btn" id="files-note-remove" type="button" data-i18n="files.noteRemove">Remove note</button></div>
+    </div>
+  </dialog>
+  <dialog class="dlg" id="files-ask-dlg" aria-labelledby="files-ask-t">
+    <div class="grab"></div>
+    <form method="dialog">
+      <header class="hb"><div class="t" id="files-ask-t"></div><button class="btn" type="button" data-dialog-close data-i18n="action.cancel">Cancel</button></header>
+      <div class="dlg-body">
+        <div class="fld"><label for="files-ask-input" id="files-ask-label"></label><input id="files-ask-input" class="inp" autocomplete="off" spellcheck="false" autocapitalize="off"><span class="help" id="files-ask-help"></span></div>
+        <div class="btns"><button class="btn pri" value="ok" id="files-ask-ok"></button></div>
+      </div>
+    </form>
+  </dialog>
+  <dialog class="alert" id="files-confirm" aria-labelledby="files-confirm-t">
+    <div class="msg"><h2 id="files-confirm-t"></h2><ul id="files-confirm-list"></ul><p id="files-confirm-text"></p></div>
+    <div class="acts stack"><button class="btn" data-dialog-close value="no" id="files-confirm-no"></button><button class="btn bad" data-dialog-close value="yes" id="files-confirm-yes"></button></div>
+  </dialog>
+  <dialog class="dlg" id="files-share-dlg" aria-labelledby="files-share-t">
+    <div class="grab"></div>
+    <header class="hb"><div class="t" id="files-share-t" data-i18n="files.shareTitle">Ready to share</div><button class="btn flat" data-dialog-close data-i18n="action.close">Close</button></header>
+    <div class="dlg-body">
+      <p id="files-share-text"></p>
+      <ul id="files-share-list"></ul>
+      <div class="btns"><button class="btn pri" id="files-share-go" type="button" data-i18n="files.shareGo">Share</button><button class="btn out" id="files-share-save" type="button" data-i18n="files.shareSave">Download instead</button></div>
+    </div>
+  </dialog>
   <dialog class="dlg" id="rename-dlg" aria-labelledby="rename-t">
     <div class="grab"></div>
     <form method="dialog">
