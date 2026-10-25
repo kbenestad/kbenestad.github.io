@@ -32,3 +32,4 @@
 | v0.19.1 | 2026-10-25 | the off button in the top bar appears when Connect phone is pressed and aborts the connection attempt |
 | v0.20.0 | 2026-10-25 | Files details pane, text editor, image viewer, context menu, batch rename |
 | v0.21.0 | 2026-10-25 | Performance charts can be enlarged to full width or full page and saved as SVG or PNG;  the readings of the last 5, 15 or 60 minutes can be downloaded as CSV, HTML or text;  the 5/15/60 min switch moved next to Now/History |
+| v0.21.1 | 2026-10-25 | Logs no longer hides names like androidx.work.systemjobscheduler@com.nextcloud.client as email addresses;  clearer text for Hide personal details and the hidden values list |
