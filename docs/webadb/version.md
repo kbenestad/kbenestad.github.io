@@ -25,3 +25,4 @@
 | v0.13.1 | 2026-10-25 | Security patch status merged with latest main; Security patch shows Good (under 3 months, green), Check updates (3 to 12 months, amber) or Outdated - check updates (over 12 months, red) |
 | v0.14.0 | 2026-10-25 | Logs section with topics (crashes, app, Bluetooth, battery, Wi-Fi, mobile, USB), live view, save and copy, and optional hiding of personal details |
 | v0.15.0 | 2026-10-25 | Logs shows a list of hidden values and finds them by label;  Save as report makes an HTML log viewer with filters;  Crashes and One app filters are quieter;  Logs keep up to 300 000 lines |
+| v0.16.0 | 2026-10-25 | Performance section with live dials for CPU, memory, temperature, storage and battery, and line charts of the last 5, 15 or 60 minutes |
