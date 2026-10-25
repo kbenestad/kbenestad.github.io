@@ -34,3 +34,4 @@
 | v0.21.0 | 2026-10-25 | Performance charts can be enlarged to full width or full page and saved as SVG or PNG;  the readings of the last 5, 15 or 60 minutes can be downloaded as CSV, HTML or text;  the 5/15/60 min switch moved next to Now/History |
 | v0.21.1 | 2026-10-25 | Logs no longer hides names like androidx.work.systemjobscheduler@com.nextcloud.client as email addresses;  clearer text for Hide personal details and the hidden values list |
 | v0.21.2 | 2026-10-25 | Settings switches use the design system switch without the browser button border, help text lines up with the title, and the key, Previous and Undo sit on one line |
+| v0.21.3 | 2026-10-25 | Files details pane is wider and has Data and Comments tabs; Files path bar has no outline until you click it |
