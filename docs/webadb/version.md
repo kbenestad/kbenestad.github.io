@@ -23,3 +23,4 @@
 | v0.12.0 | 2026-10-24 | Packages can uninstall and install apps per user, act on several ticked apps at once, and filter by developer and name; Packages rows and details line up in columns, as in the sketch |
 | v0.13.0 | 2026-10-25 | Rename a developer in Packages;  the name is kept in the phone's profile |
 | v0.13.1 | 2026-10-25 | Security patch status merged with latest main; Security patch shows Good (under 3 months, green), Check updates (3 to 12 months, amber) or Outdated - check updates (over 12 months, red) |
+| v0.14.0 | 2026-10-25 | Logs section with topics (crashes, app, Bluetooth, battery, Wi-Fi, mobile, USB), live view, save and copy, and optional hiding of personal details |
