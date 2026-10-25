@@ -39,3 +39,4 @@
 | v0.22.0 | 2026-10-25 | Files double-click opens pictures in the viewer and text files in the editor |
 | v0.22.1 | 2026-10-25 | confirm dialog buttons (delete, packages, shell) are full height and sit side by side when there is room |
 | v0.22.2 | 2026-10-25 | power button on the right in every section;  top-bar search in Files, Logs, Comments and Settings as an extra filter; power button on the right in every section;  one shared top-bar search for Packages, Files, Logs, Comments and Settings |
+| v0.22.3 | 2026-10-25 | the button that hides the Files details pane is in the pane header;  the top bar shows it only while the pane is hidden |
