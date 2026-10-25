@@ -35,3 +35,4 @@
 | v0.21.1 | 2026-10-25 | Logs no longer hides names like androidx.work.systemjobscheduler@com.nextcloud.client as email addresses;  clearer text for Hide personal details and the hidden values list |
 | v0.21.2 | 2026-10-25 | Settings switches use the design system switch without the browser button border, help text lines up with the title, and the key, Previous and Undo sit on one line |
 | v0.21.3 | 2026-10-25 | Files details pane is wider and has Data and Comments tabs; Files path bar has no outline until you click it |
+| v0.21.4 | 2026-10-25 | Packages buttons are Rename app and Rename developer, side by side;  Rename developer also shows for apps with no developer |
