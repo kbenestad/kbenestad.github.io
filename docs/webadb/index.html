@@ -20,7 +20,7 @@
     apply(); m.addEventListener('change', apply);
   })();
 </script>
-  <script type="module" crossorigin src="./assets/index-CHZoibnL.js"></script>
+  <script type="module" crossorigin src="./assets/index-Cbg3D9m9.js"></script>
 </head>
 <body>
 <div class="k">
@@ -110,8 +110,10 @@
             <div class="fld"><label for="log-search" data-i18n="logs.search">Only lines containing</label><input id="log-search" class="inp" type="search" autocomplete="off"></div>
           </div>
           <p class="fine" id="log-topic-help"></p>
+          <label class="chk" id="log-system-fld" hidden><input type="checkbox" id="log-system"> <span data-i18n="logs.system">Also show system lines that mention the app</span></label>
           <label class="chk"><input type="checkbox" id="log-scrub" checked> <span data-i18n="logs.scrub">Hide personal details</span></label>
           <p class="fine" data-i18n="logs.scrubHelp">Replaces IP addresses, MAC addresses, email addresses, phone numbers, IMEI numbers, account and Wi-Fi names, GPS positions and passwords or tokens with labels like [ip-1]. The same value always gets the same label. It finds patterns only, so read the result before you share it.</p>
+          <div class="list" id="log-hidden-wrap" hidden><details><summary id="log-hidden-title"></summary><div class="acc-body" id="log-hidden-body"></div></details></div>
           <div class="bar">
             <div class="row-actions">
               <button class="btn pri" id="log-get" type="button" data-i18n="logs.get">Get log</button>
@@ -121,6 +123,7 @@
             <div class="row-actions">
               <button class="btn" id="log-copy" type="button" data-i18n="logs.copy">Copy</button>
               <button class="btn" id="log-save" type="button" data-i18n="logs.save">Save as file</button>
+              <button class="btn" id="log-report" type="button" data-i18n="logs.report">Save as report</button>
               <button class="btn" id="log-clear" type="button" data-i18n="logs.clear">Clear</button>
             </div>
           </div>
