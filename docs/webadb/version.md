@@ -41,3 +41,4 @@
 | v0.22.2 | 2026-10-25 | power button on the right in every section;  top-bar search in Files, Logs, Comments and Settings as an extra filter; power button on the right in every section;  one shared top-bar search for Packages, Files, Logs, Comments and Settings |
 | v0.22.3 | 2026-10-25 | the button that hides the Files details pane is in the pane header;  the top bar shows it only while the pane is hidden |
 | v0.23.0 | 2026-10-25 | the profile copies on the phone and the computer are merged entry by entry, using a time on every entry; the profile (app and developer names, settings snapshot) is also saved on the phone in Documents/WebADB/profile.json and read on connect;  the newer copy wins |
+| v0.23.1 | 2026-10-26 | the profile saved on the phone is read on connect even if it has no modified time |
