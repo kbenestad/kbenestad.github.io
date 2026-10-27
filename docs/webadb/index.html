@@ -20,7 +20,7 @@
     apply(); m.addEventListener('change', apply);
   })();
 </script>
-  <script type="module" crossorigin src="./assets/index-BfzJvxE0.js"></script>
+  <script type="module" crossorigin src="./assets/index-BmJDryAC.js"></script>
 </head>
 <body>
 <div class="k">
@@ -32,6 +32,7 @@
         <a class="nav" href="#packages" data-view="packages" title="Packages" data-i18n-title="nav.packages"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></svg> <span class="lbl" data-i18n="nav.packages">Packages</span> <span class="ct" id="pkg-count"></span></a>
         <a class="nav" href="#settings" data-view="settings" title="Settings" data-i18n-title="nav.settings"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 17H5"/><path d="M19 7h-9"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg> <span class="lbl" data-i18n="nav.settings">Settings</span></a>
         <a class="nav" href="#files" data-view="files" title="Files" data-i18n-title="nav.files"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg> <span class="lbl" data-i18n="nav.files">Files</span></a>
+        <a class="nav" href="#apps" data-view="apps" title="Apps" data-i18n-title="nav.apps"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg> <span class="lbl" data-i18n="nav.apps">Apps</span></a>
         <a class="nav" href="#comments" data-view="comments" title="Comments" data-i18n-title="nav.comments"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.364 13.634a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506l4.013-4.009a1 1 0 0 0-3.004-3.004z"/><path d="M14.487 7.858A1 1 0 0 1 14 7V2"/><path d="M20 19.645V20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l2.516 2.516"/><path d="M8 18h1"/></svg> <span class="lbl" data-i18n="nav.comments">Comments</span></a>
         <a class="nav" href="#logs" data-view="logs" title="Logs" data-i18n-title="nav.logs"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 22a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l3.588 3.588A2.4 2.4 0 0 1 20 8v12a2 2 0 0 1-2 2z"/><path d="M14 2v5a1 1 0 0 0 1 1h5"/><path d="M10 9H8"/><path d="M16 13H8"/><path d="M16 17H8"/></svg> <span class="lbl" data-i18n="nav.logs">Logs</span></a>
         <a class="nav" href="#perf" data-view="perf" title="Performance" data-i18n-title="nav.perf"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M22 12h-2.48a2 2 0 0 0-1.93 1.46l-2.35 8.36a.25.25 0 0 1-.48 0L9.24 2.18a.25.25 0 0 0-.48 0l-2.35 8.36A2 2 0 0 1 4.49 12H2"/></svg> <span class="lbl" data-i18n="nav.perf">Performance</span></a>
@@ -106,6 +107,24 @@
         <button class="btn pri" id="shell-run" type="submit" data-i18n="shell.run">Run</button>
         <button class="btn" id="shell-stop" type="button" hidden data-i18n="shell.stop">Stop</button>
       </form>
+        </div>
+
+        <div class="view" id="view-apps" hidden>
+          <div class="stack" id="apps-search">
+            <p class="fine" id="apps-summary"></p>
+            <div class="bar">
+              <label class="chk"><input type="checkbox" id="apps-fit" checked> <span data-i18n="apps.onlyFits">Only apps this phone can run</span></label>
+              <button class="btn" id="apps-file" type="button" data-i18n="apps.fromFile">Install an APK file</button>
+              <input type="file" id="apps-file-input" accept=".apk,application/vnd.android.package-archive" multiple hidden>
+            </div>
+          </div>
+          <div id="apps-result" class="stack" hidden aria-live="polite"></div>
+          <div id="apps-missing" class="status" hidden>
+            <h2 data-i18n="apps.missingTitle">The app catalog is not on this site yet</h2>
+            <p data-i18n="apps.missingText">It is built once a week from F-Droid and IzzyOnDroid. You can still install an APK file from your computer.</p>
+            <button class="btn pri pill" id="apps-file2" type="button" data-i18n="apps.fromFile">Install an APK file</button>
+          </div>
+          <div class="list" id="apps-list" hidden></div>
         </div>
 
         <div class="view" id="view-perf" hidden></div>
