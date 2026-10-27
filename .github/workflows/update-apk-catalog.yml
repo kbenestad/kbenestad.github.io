@@ -1,6 +1,6 @@
 # Builds the APK catalog for the webadb Apps section (webadb decision D028). Every Monday (and
 # on demand from the Actions tab) it downloads the F-Droid and IzzyOnDroid indexes, trims them
-# with scripts/build-apk-catalog.mjs from the webadb repo, and commits the result to
+# with .github/apk-catalog/build.mjs, and commits the result to
 # docs/webadb/data/apk_catalog.json. Publishing a new webadb build leaves that file alone.
 name: Update APK catalog
 
@@ -19,15 +19,9 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Get the catalog script from webadb
-        uses: actions/checkout@v4
-        with:
-          repository: kbenestad/webadb
-          path: webadb-src
-
       - name: Build the catalog
         run: |
-          node webadb-src/scripts/build-apk-catalog.mjs /tmp/apk_catalog.json
+          node .github/apk-catalog/build.mjs /tmp/apk_catalog.json
           # Refuse to publish anything that is not a believable catalog.
           node -e "const c = JSON.parse(require('fs').readFileSync('/tmp/apk_catalog.json', 'utf8')); if (c.apps.length < 1000) throw new Error('catalog is too short: ' + c.apps.length)"
           mkdir -p docs/webadb/data
