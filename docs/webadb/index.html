@@ -20,7 +20,7 @@
     apply(); m.addEventListener('change', apply);
   })();
 </script>
-  <script type="module" crossorigin src="./assets/index-cdfcLxq0.js"></script>
+  <script type="module" crossorigin src="./assets/index-CtVC0Qje.js"></script>
 </head>
 <body>
 <div class="k">
@@ -110,40 +110,54 @@
         </div>
 
         <div class="view" id="view-apps" hidden>
+          <div class="seg scroll" role="tablist" id="apps-tabs"><a href="#" role="tab" class="on" data-pane="apps-pane-lib" data-i18n="apps.tabLibrary">Local library</a><a href="#" role="tab" data-pane="apps-pane-repos" data-i18n="apps.tabRepos">Repos</a></div>
           <div id="apps-result" class="stack" hidden aria-live="polite"></div>
-          <div id="apps-nofolder" class="status" hidden>
-            <h2 data-i18n="apps.noFolderTitle">Choose a data folder first</h2>
-            <p data-i18n="apps.noFolderText">The Apps section keeps your APK files in a folder named apks inside your data folder.</p>
-            <button class="btn pri pill" id="apps-choose-folder" type="button" data-i18n="folder.choose">Choose data folder</button>
-          </div>
-          <div id="apps-library-box" class="stack" hidden>
-            <h2 class="small-h" data-i18n="apps.library">Your APK library</h2>
-            <p class="fine" id="apps-lib-summary"></p>
-            <div class="bar">
-              <div class="row-actions">
-                <button class="btn pri" id="apps-install" type="button" disabled data-i18n="apps.installSelected">Install selected</button>
-                <button class="btn" id="apps-add" type="button" data-i18n="apps.add">Add APK files</button>
-                <button class="btn flat" id="apps-rescan" type="button" data-i18n="apps.rescan">Scan folder again</button>
-                <button class="btn flat" id="apps-export" type="button" data-i18n="apps.export">Export list</button>
-                <button class="btn flat" id="apps-import" type="button" data-i18n="apps.import">Import list</button>
+
+          <div id="apps-pane-lib" class="stack">
+            <div id="apps-nofolder" class="status" hidden>
+              <h2 data-i18n="apps.noFolderTitle">Choose a data folder first</h2>
+              <p data-i18n="apps.noFolderText">The Apps section keeps your APK files in a folder named apks inside your data folder.</p>
+              <button class="btn pri pill" id="apps-choose-folder" type="button" data-i18n="folder.choose">Choose data folder</button>
+            </div>
+            <div id="apps-library-box" class="stack" hidden>
+              <p class="fine" id="apps-where"></p>
+              <div class="bar">
+                <div class="row-actions">
+                  <button class="btn pri" id="apps-install" type="button" disabled data-i18n="apps.installSelected">Install selected</button>
+                  <button class="btn" id="apps-add" type="button" data-i18n="apps.add">Add local APK files</button>
+                  <button class="btn" id="apps-rescan" type="button" data-i18n="apps.rescan">Scan folder again</button>
+                  <button class="btn" id="apps-export" type="button" data-i18n="apps.export">Export list</button>
+                  <button class="btn" id="apps-import" type="button" data-i18n="apps.import">Import list</button>
+                </div>
+                <input type="file" id="apps-add-input" accept=".apk,application/vnd.android.package-archive" multiple hidden>
+                <input type="file" id="apps-import-input" accept=".json,application/json" hidden>
               </div>
-              <input type="file" id="apps-add-input" accept=".apk,application/vnd.android.package-archive" multiple hidden>
-              <input type="file" id="apps-import-input" accept=".json,application/json" hidden>
-            </div>
-            <p class="fine" id="apps-lib-empty" data-i18n="apps.libEmpty" hidden>No APKs yet. Download some below, then add them here, or copy them into the apks folder.</p>
-            <div class="list" id="apps-library" hidden></div>
-            <p class="fine" id="apps-broken" hidden></p>
-            <div id="apps-wanted-box" class="stack" hidden>
-              <h2 class="small-h" data-i18n="apps.wanted">From an imported list, not in your folder yet</h2>
-              <div class="list" id="apps-wanted"></div>
+              <p class="fine" id="apps-lib-summary"></p>
+              <p class="fine" id="apps-lib-empty" data-i18n="apps.libEmpty" hidden>No APKs yet. Find some under Repos, save them into the folder, then scan it again.</p>
+              <div class="list" id="apps-library" hidden></div>
+              <div class="bar" id="apps-pager" hidden>
+                <button class="btn" id="apps-prev" type="button" data-i18n="apps.prev">Previous</button>
+                <span class="fine" id="apps-page"></span>
+                <button class="btn" id="apps-next" type="button" data-i18n="apps.next">Next</button>
+              </div>
+              <p class="fine" id="apps-broken" hidden></p>
+              <div id="apps-wanted-box" class="stack" hidden>
+                <h2 class="small-h" data-i18n="apps.wanted">From an imported list, not in your folder yet</h2>
+                <div class="list" id="apps-wanted"></div>
+              </div>
             </div>
           </div>
-          <div class="stack">
-            <h2 class="small-h" data-i18n="apps.find">Find apps</h2>
-            <div id="apps-find-controls" class="stack">
-              <p class="fine" id="apps-summary"></p>
-              <label class="chk"><input type="checkbox" id="apps-fit" checked> <span data-i18n="apps.onlyFits">Only apps this phone can run</span></label>
+
+          <div id="apps-pane-repos" class="stack" hidden>
+            <div class="filters">
+              <div class="fld"><label for="apps-q" data-i18n="apps.search">Search apps</label><input id="apps-q" class="inp" type="search" autocomplete="off"></div>
             </div>
+            <div class="bar">
+              <label class="chk"><input type="checkbox" id="apps-fit" checked> <span id="apps-fit-label"></span></label>
+              <button class="btn" id="apps-manage" type="button" data-dialog-open="apps-repos-dlg" data-i18n="apps.manageRepos">Manage repos</button>
+            </div>
+            <p class="fine" id="apps-where2"></p>
+            <p class="fine" id="apps-summary"></p>
             <div id="apps-missing" class="status" hidden>
               <h2 data-i18n="apps.missingTitle">The app catalog is not on this site yet</h2>
               <p data-i18n="apps.missingText">It is built once a week from F-Droid and IzzyOnDroid. You can still add APK files you downloaded yourself.</p>
@@ -460,6 +474,24 @@
   <dialog class="alert" id="shell-confirm" aria-labelledby="shell-confirm-t">
     <div class="msg"><h2 id="shell-confirm-t" data-i18n="shell.confirm.title">Run this command on the phone?</h2><p id="shell-confirm-cmd"></p><p data-i18n="shell.confirm.text">It runs exactly as typed. Nothing can be undone.</p></div>
     <div class="acts"><button class="btn" data-dialog-close value="no" data-i18n="shell.confirm.no">No</button><button class="btn bad" data-dialog-close value="yes" data-i18n="shell.confirm.yes">Yes, run it</button><button class="btn bad" data-dialog-close value="always" data-i18n="shell.confirm.always">Yes, and don't ask again this session</button></div>
+  </dialog>
+  <dialog class="dlg" id="apps-repos-dlg" aria-labelledby="apps-repos-t">
+    <div class="grab"></div>
+    <header class="hb"><div class="t" id="apps-repos-t" data-i18n="apps.reposTitle">Repos</div><button class="btn pri" data-dialog-close data-i18n="action.close">Close</button></header>
+    <div class="dlg-body">
+      <div class="list" id="apps-repos-list"></div>
+      <p class="fine" id="apps-repos-note"></p>
+      <h3 class="small-h" data-i18n="apps.addRepo">Add a repo</h3>
+      <div class="fld"><label for="apps-repo-name" data-i18n="apps.repoName">Name</label><input id="apps-repo-name" class="inp" type="text" autocomplete="off"></div>
+      <div class="fld"><label for="apps-repo-url" data-i18n="apps.repoUrl">Address of the repo folder</label><input id="apps-repo-url" class="inp" type="url" autocomplete="off" placeholder="https://example.org/fdroid/repo"></div>
+      <p class="fine" id="apps-repo-error" hidden></p>
+      <div class="btns">
+        <button class="btn pri" id="apps-repo-add" type="button" data-i18n="apps.repoAdd">Add repo</button>
+        <button class="btn" id="apps-repo-export" type="button" data-i18n="apps.repoExport">Export repo list</button>
+        <button class="btn" id="apps-repo-import" type="button" data-i18n="apps.repoImport">Import repo list</button>
+      </div>
+      <input type="file" id="apps-repo-import-input" accept=".json,application/json" hidden>
+    </div>
   </dialog>
   <dialog class="dlg" id="prefs-dlg" aria-labelledby="prefs-t">
     <div class="grab"></div>

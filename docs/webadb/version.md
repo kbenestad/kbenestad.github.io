@@ -44,3 +44,4 @@
 | v0.23.1 | 2026-10-26 | the profile saved on the phone is read on connect even if it has no modified time |
 | v0.24.0 | 2026-10-27 | Apps section to search F-Droid and IzzyOnDroid, filtered by the phone's SDK, and install APKs |
 | v0.25.0 | 2026-10-27 | Apps works from an apks folder in the data folder: reads APKs, ticks apps to install (greyed out when the phone is too old), exports and imports the list, and shows updates; Apps download opens the source link when F-Droid blocks the browser from reading it, and a failed install explains what to do |
+| v0.26.0 | 2026-10-28 | Apps has Local library and Repos tabs, shows each app's install status and source repo, pages the library, and lets you add, export and import repos |
