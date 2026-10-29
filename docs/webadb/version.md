@@ -52,3 +52,4 @@
 | v0.29.1 | 2026-10-29 | Modify swipe has a wait after waking the screen; PIN entry has a Sequence row (Wake screen, Send swipe, Press enter) |
 | v0.29.2 | 2026-10-29 | Packages debloat options are right-aligned |
 | v0.30.0 | 2026-10-29 | Apps shows apps installed for the chosen Android user and reports a failed read; Apps shows an app in several repos once, with a badge per repo;  repos can be reordered by drag or buttons, and a setting picks the newest version or the highest-ranked repo |
+| v0.31.0 | 2026-10-29 | Search archive repos also covers the F-Droid and IzzyOnDroid archives, read from a weekly archive catalog on the site; Apps shows a warning that older versions may lack security fixes while archive repos are enabled; Apps can mark a repo as an archive repo, searched only with Search archive repos, and each result lists every known version to download |

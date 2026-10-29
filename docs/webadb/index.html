@@ -20,7 +20,7 @@
     apply(); m.addEventListener('change', apply);
   })();
 </script>
-  <script type="module" crossorigin src="./assets/index-Bu65xUMH.js"></script>
+  <script type="module" crossorigin src="./assets/index-ouH3qUsq.js"></script>
 </head>
 <body>
 <div class="k">
@@ -159,8 +159,10 @@
             </div>
             <div class="bar">
               <label class="chk"><input type="checkbox" id="apps-fit" checked> <span id="apps-fit-label"></span></label>
+              <label class="chk" id="apps-archive-row" hidden><input type="checkbox" id="apps-archive"> <span data-i18n="apps.searchArchive">Search archive repos</span></label>
               <button class="btn" id="apps-manage" type="button" data-dialog-open="apps-repos-dlg" data-i18n="apps.manageRepos">Manage repos</button>
             </div>
+            <div class="co warn" id="apps-archive-warn" hidden><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><div><p data-i18n="apps.archiveWarn">You have enabled archive repos. Older versions may lack security fixes.</p></div></div>
             <p class="fine" id="apps-where2"></p>
             <p class="fine" id="apps-summary"></p>
             <div id="apps-missing" class="status" hidden>
@@ -604,6 +606,7 @@
       <h3 class="small-h" data-i18n="apps.addRepo">Add a repo</h3>
       <div class="fld"><label for="apps-repo-name" data-i18n="apps.repoName">Name</label><input id="apps-repo-name" class="inp" type="text" autocomplete="off"></div>
       <div class="fld"><label for="apps-repo-url" data-i18n="apps.repoUrl">Address of the repo folder</label><input id="apps-repo-url" class="inp" type="url" autocomplete="off" placeholder="https://example.org/fdroid/repo"></div>
+      <label class="chk"><input type="checkbox" id="apps-repo-archive"> <span data-i18n="apps.repoArchive">This is an archive repo</span></label>
       <p class="fine" id="apps-repo-error" hidden></p>
       <div class="btns">
         <button class="btn pri" id="apps-repo-add" type="button" data-i18n="apps.repoAdd">Add repo</button>
