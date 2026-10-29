@@ -49,3 +49,4 @@
 | v0.27.1 | 2026-10-28 | viewer picture no longer pushes Rename, Download and Delete out of sight |
 | v0.28.0 | 2026-10-29 | Actions section |
 | v0.29.0 | 2026-10-29 | Packages batch progress; Force stop in Packages |
+| v0.29.1 | 2026-10-29 | Modify swipe has a wait after waking the screen; PIN entry has a Sequence row (Wake screen, Send swipe, Press enter) |
