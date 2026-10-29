@@ -47,3 +47,4 @@
 | v0.26.0 | 2026-10-28 | Apps has Local library and Repos tabs, shows each app's install status and source repo, pages the library, and lets you add, export and import repos |
 | v0.27.0 | 2026-10-28 | click anywhere on a Files row to open the folder or show the file; rename, download and delete a picture while it is open in the viewer |
 | v0.27.1 | 2026-10-28 | viewer picture no longer pushes Rename, Download and Delete out of sight |
+| v0.28.0 | 2026-10-29 | Actions section |
