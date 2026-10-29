@@ -50,3 +50,4 @@
 | v0.28.0 | 2026-10-29 | Actions section |
 | v0.29.0 | 2026-10-29 | Packages batch progress; Force stop in Packages |
 | v0.29.1 | 2026-10-29 | Modify swipe has a wait after waking the screen; PIN entry has a Sequence row (Wake screen, Send swipe, Press enter) |
+| v0.29.2 | 2026-10-29 | Packages debloat options are right-aligned |
