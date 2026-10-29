@@ -1,7 +1,8 @@
 # Builds the APK catalog for the webadb Apps section (webadb decision D028). Every Monday (and
 # on demand from the Actions tab) it downloads the F-Droid and IzzyOnDroid indexes, trims them
 # with .github/apk-catalog/build.mjs, and commits the result to
-# docs/webadb/data/apk_catalog.json. Publishing a new webadb build leaves that file alone.
+# docs/webadb/data/apk_catalog.json, and the archive indexes (all old versions, gzipped) to
+# docs/webadb/data/apk_archive_catalog.json.gz, which is only committed when it changed. Publishing a new webadb build leaves that file alone.
 name: Update APK catalog
 
 on:
@@ -21,20 +22,21 @@ jobs:
 
       - name: Build the catalog
         run: |
-          node .github/apk-catalog/build.mjs /tmp/apk_catalog.json
+          node .github/apk-catalog/build.mjs /tmp/apk_catalog.json /tmp/apk_archive_catalog.json.gz
           # Refuse to publish anything that is not a believable catalog.
           node -e "const c = JSON.parse(require('fs').readFileSync('/tmp/apk_catalog.json', 'utf8')); if (c.apps.length < 1000) throw new Error('catalog is too short: ' + c.apps.length)"
           mkdir -p docs/webadb/data
           cp /tmp/apk_catalog.json docs/webadb/data/apk_catalog.json
+          cp /tmp/apk_archive_catalog.json.gz docs/webadb/data/apk_archive_catalog.json.gz
 
       - name: Commit if the catalog changed
         run: |
-          if [ -z "$(git status --porcelain docs/webadb/data/apk_catalog.json)" ]; then
-            echo "The catalog has not changed."
+          if [ -z "$(git status --porcelain docs/webadb/data)" ]; then
+            echo "The catalogs have not changed."
             exit 0
           fi
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/webadb/data/apk_catalog.json
+          git add docs/webadb/data/apk_catalog.json docs/webadb/data/apk_archive_catalog.json.gz
           git commit -m "Update APK catalog"
           git push

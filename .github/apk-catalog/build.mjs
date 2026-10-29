@@ -2,10 +2,20 @@
 // scripts/build-apk-catalog.mjs plus trimIndex and SOURCES from app/apk.js in the private
 // kbenestad/webadb repo, which a workflow here cannot check out. If the catalog format
 // changes there, change it here too.
-// Usage: node .github/apk-catalog/build.mjs <output-file>
+// Also builds the archive catalog: every version kept in the F-Droid and IzzyOnDroid archives,
+// gzipped, for the Apps section's "Search archive repos" (their servers do not let a browser read
+// the archive indexes). The archive file has no timestamp, so it is byte-for-byte the same when
+// nothing changed and the workflow commits nothing.
+// Usage: node .github/apk-catalog/build.mjs <catalog-file> <archive-catalog-file.gz>
 import { writeFile } from 'node:fs/promises';
+import { gzipSync } from 'node:zlib';
 
 const KEEP_VERSIONS = 3; // newest versions kept per app
+
+const ARCHIVES = {
+  f: { name: 'F-Droid archive', base: 'https://f-droid.org/archive' },
+  i: { name: 'IzzyOnDroid archive', base: 'https://apt.izzysoft.de/fdroid/archive' },
+};
 
 const SOURCES = {
   f: { name: 'F-Droid', base: 'https://f-droid.org/repo' },
@@ -19,7 +29,7 @@ const text = (localized) => {
 };
 
 // index-v2.json (the F-Droid repository format) to catalog entries for one source.
-function trimIndex(index, src) {
+function trimIndex(index, src, keep = KEEP_VERSIONS, withSummary = true) {
   const apps = [];
   for (const [id, pkg] of Object.entries(index.packages || {})) {
     const v = Object.values(pkg.versions || {}).map((ver) => {
@@ -37,15 +47,15 @@ function trimIndex(index, src) {
       };
     }).filter((x) => x.file && x.sha256)
       .sort((a, b) => b.code - a.code)
-      .slice(0, KEEP_VERSIONS);
+      .slice(0, keep);
     if (!v.length) continue;
     const meta = pkg.metadata || {};
-    apps.push({ id, src, name: text(meta.name) || id, summary: text(meta.summary), v });
+    apps.push({ id, src, name: text(meta.name) || id, ...(withSummary ? { summary: text(meta.summary) } : {}), v });
   }
   return apps;
 }
 
-const out = process.argv[2];
+const [out, archiveOut] = process.argv.slice(2);
 const apps = [];
 for (const [src, { base }] of Object.entries(SOURCES)) {
   const res = await fetch(`${base}/index-v2.json`);
@@ -57,3 +67,18 @@ for (const [src, { base }] of Object.entries(SOURCES)) {
 }
 await writeFile(out, JSON.stringify({ generated: new Date().toISOString(), apps }));
 console.log(`Wrote ${out}`);
+
+if (archiveOut) {
+  const archived = [];
+  for (const [src, { name, base }] of Object.entries(ARCHIVES)) {
+    const res = await fetch(`${base}/index-v2.json`);
+    if (!res.ok) throw new Error(`${res.status} ${base}/index-v2.json`);
+    const found = trimIndex(await res.json(), src, Infinity, false);
+    if (found.length < 100) throw new Error(`${name}: only ${found.length} apps, refusing to publish`);
+    console.log(`${name}: ${found.length} apps`);
+    archived.push(...found);
+  }
+  // gzip without a file name or time, so the same input gives the same bytes.
+  await writeFile(archiveOut, gzipSync(JSON.stringify({ apps: archived }), { level: 9 }));
+  console.log(`Wrote ${archiveOut}`);
+}
