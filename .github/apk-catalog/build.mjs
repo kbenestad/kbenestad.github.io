@@ -13,8 +13,8 @@ import { gzipSync } from 'node:zlib';
 const KEEP_VERSIONS = 3; // newest versions kept per app
 
 const ARCHIVES = {
-  f: { name: 'F-Droid archive', base: 'https://f-droid.org/archive' },
-  i: { name: 'IzzyOnDroid archive', base: 'https://apt.izzysoft.de/fdroid/archive' },
+  f: { name: 'F-Droid archive', base: 'https://f-droid.org/archive', min: 100 },
+  i: { name: 'IzzyOnDroid archive', base: 'https://apt.izzysoft.de/fdroid/archive', min: 1 }, // a small archive (11 apps on 2026-10-29)
 };
 
 const SOURCES = {
@@ -70,11 +70,11 @@ console.log(`Wrote ${out}`);
 
 if (archiveOut) {
   const archived = [];
-  for (const [src, { name, base }] of Object.entries(ARCHIVES)) {
+  for (const [src, { name, base, min }] of Object.entries(ARCHIVES)) {
     const res = await fetch(`${base}/index-v2.json`);
     if (!res.ok) throw new Error(`${res.status} ${base}/index-v2.json`);
     const found = trimIndex(await res.json(), src, Infinity, false);
-    if (found.length < 100) throw new Error(`${name}: only ${found.length} apps, refusing to publish`);
+    if (found.length < min) throw new Error(`${name}: only ${found.length} apps, refusing to publish`);
     console.log(`${name}: ${found.length} apps`);
     archived.push(...found);
   }
