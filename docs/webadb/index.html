@@ -20,7 +20,7 @@
     apply(); m.addEventListener('change', apply);
   })();
 </script>
-  <script type="module" crossorigin src="./assets/index-DiUp4Ihb.js"></script>
+  <script type="module" crossorigin src="./assets/index-Bu65xUMH.js"></script>
 </head>
 <body>
 <div class="k">
@@ -122,6 +122,10 @@
             </div>
             <div id="apps-library-box" class="stack" hidden>
               <p class="fine" id="apps-where"></p>
+              <div class="fld" id="apps-user-row" hidden>
+                <label for="apps-user" data-i18n="apps.user">Android user</label>
+                <select id="apps-user" class="inp"></select>
+              </div>
               <div class="bar">
                 <div class="row-actions">
                   <button class="btn pri" id="apps-install" type="button" disabled data-i18n="apps.installSelected">Install selected</button>
@@ -593,6 +597,9 @@
     <header class="hb"><div class="t" id="apps-repos-t" data-i18n="apps.reposTitle">Repos</div><button class="btn pri" data-dialog-close data-i18n="action.close">Close</button></header>
     <div class="dlg-body">
       <div class="list" id="apps-repos-list"></div>
+      <h3 class="small-h" data-i18n="apps.pickTitle">When an app is in several repos</h3>
+      <label class="chk"><input type="radio" name="apps-pick" value="newest"> <span data-i18n="apps.pickNewest">Newer version regardless of repo</span></label>
+      <label class="chk"><input type="radio" name="apps-pick" value="priority" checked> <span data-i18n="apps.pickPriority">Always fetch from higher ranked repo</span></label>
       <p class="fine" id="apps-repos-note"></p>
       <h3 class="small-h" data-i18n="apps.addRepo">Add a repo</h3>
       <div class="fld"><label for="apps-repo-name" data-i18n="apps.repoName">Name</label><input id="apps-repo-name" class="inp" type="text" autocomplete="off"></div>
