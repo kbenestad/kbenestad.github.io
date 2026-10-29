@@ -54,3 +54,4 @@
 | v0.30.0 | 2026-10-29 | Apps shows apps installed for the chosen Android user and reports a failed read; Apps shows an app in several repos once, with a badge per repo;  repos can be reordered by drag or buttons, and a setting picks the newest version or the highest-ranked repo |
 | v0.31.0 | 2026-10-29 | Search archive repos also covers the F-Droid and IzzyOnDroid archives, read from a weekly archive catalog on the site; Apps shows a warning that older versions may lack security fixes while archive repos are enabled; Apps can mark a repo as an archive repo, searched only with Search archive repos, and each result lists every known version to download |
 | v0.31.1 | 2026-10-29 | the repo list in Manage repos shows every repo in full; Apps works on Android before 9, where installed versions are not shown |
+| v0.31.2 | 2026-10-29 | Modify swipe link shows while any PIN step is ticked, with every step's value |
