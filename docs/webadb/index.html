@@ -20,7 +20,7 @@
     apply(); m.addEventListener('change', apply);
   })();
 </script>
-  <script type="module" crossorigin src="./assets/index-8t9mnwjr.js"></script>
+  <script type="module" crossorigin src="./assets/index-lJUeyP2N.js"></script>
 </head>
 <body>
 <div class="k">
@@ -32,6 +32,7 @@
         <a class="nav" href="#packages" data-view="packages" title="Packages" data-i18n-title="nav.packages"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 21.73a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73z"/><path d="M12 22V12"/><polyline points="3.29 7 12 12 20.71 7"/><path d="m7.5 4.27 9 5.15"/></svg> <span class="lbl" data-i18n="nav.packages">Packages</span> <span class="ct" id="pkg-count"></span></a>
         <a class="nav" href="#settings" data-view="settings" title="Settings" data-i18n-title="nav.settings"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14 17H5"/><path d="M19 7h-9"/><circle cx="17" cy="17" r="3"/><circle cx="7" cy="7" r="3"/></svg> <span class="lbl" data-i18n="nav.settings">Settings</span></a>
         <a class="nav" href="#actions" data-view="actions" title="Actions" data-i18n-title="nav.actions"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 14a1 1 0 0 1-.78-1.63l9.9-10.2a.5.5 0 0 1 .86.46l-1.92 6.02A1 1 0 0 0 13 10h7a1 1 0 0 1 .78 1.63l-9.9 10.2a.5.5 0 0 1-.86-.46l1.92-6.02A1 1 0 0 0 11 14z"/></svg> <span class="lbl" data-i18n="nav.actions">Actions</span></a>
+        <a class="nav" href="#provisioning" data-view="provisioning" title="Provisioning" data-i18n-title="nav.provisioning"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M13 5h8"/><path d="M13 12h8"/><path d="M13 19h8"/><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/></svg> <span class="lbl" data-i18n="nav.provisioning">Provisioning</span></a>
         <a class="nav" href="#files" data-view="files" title="Files" data-i18n-title="nav.files"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M20 20a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-7.9a2 2 0 0 1-1.69-.9L9.6 3.9A2 2 0 0 0 7.93 3H4a2 2 0 0 0-2 2v13a2 2 0 0 0 2 2Z"/></svg> <span class="lbl" data-i18n="nav.files">Files</span></a>
         <a class="nav" href="#apps" data-view="apps" title="Apps" data-i18n-title="nav.apps"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 15V3"/><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/></svg> <span class="lbl" data-i18n="nav.apps">Apps</span></a>
         <a class="nav" href="#comments" data-view="comments" title="Comments" data-i18n-title="nav.comments"><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="M14.364 13.634a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506l4.013-4.009a1 1 0 0 0-3.004-3.004z"/><path d="M14.487 7.858A1 1 0 0 1 14 7V2"/><path d="M20 19.645V20a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h8a2.4 2.4 0 0 1 1.704.706l2.516 2.516"/><path d="M8 18h1"/></svg> <span class="lbl" data-i18n="nav.comments">Comments</span></a>
@@ -177,6 +178,24 @@
 
         <div class="view" id="view-settings" hidden></div>
 
+        <div class="view" id="view-provisioning" hidden>
+          <div class="stack">
+            <p class="fine" data-i18n="prov.intro">A recording is the phone's state in a file: users, the state of every package, and every setting. Record the baseline as early as you can after a reset; record again later to see what changed.</p>
+            <div class="co warn" id="prov-nofolder" hidden><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><div><p data-i18n="prov.noFolder">No data folder is chosen, so recordings are kept only on the phone. A factory reset erases them.</p></div></div>
+            <div class="list">
+              <div class="row"><div class="tt"><div data-i18n="prov.baseline">Baseline</div><div class="fine" id="prov-baseline-info"></div></div><button class="btn go" id="prov-baseline-btn" type="button"></button></div>
+              <div class="row"><div class="tt"><div data-i18n="prov.latest">Latest</div><div class="fine" id="prov-latest-info"></div></div><button class="btn go" id="prov-latest-btn" type="button" data-i18n="prov.recordLatest">Record as latest</button></div>
+            </div>
+            <label class="chk"><input type="checkbox" id="prov-keep-ids"> <span data-i18n="prov.keepIds">Keep identifiers (no redaction)</span></label>
+            <p class="fine" data-i18n="prov.keepIdsHelp">Redaction blanks settings whose names look like identifiers or secrets. It goes by name and misses some. Without it the file holds device identifiers, and the copy on the phone can be read by apps with storage access.</p>
+            <div id="prov-result" hidden></div>
+            <h3 class="heading small-h" data-i18n="prov.changesHeading">Changed since the latest recording</h3>
+            <p class="fine" id="prov-live-info"></p>
+            <div class="list" id="prov-live-list"></div>
+            <h3 class="heading small-h" data-i18n="prov.driftHeading">Latest recording compared with the baseline</h3>
+            <div class="list" id="prov-drift-list"></div>
+          </div>
+        </div>
         <div class="view" id="view-actions" hidden>
           <div class="seg scroll" role="tablist" id="actions-tabs">
             <a href="#" role="tab" class="on" data-pane="power" data-i18n="actions.tab.power">Power</a>
@@ -569,6 +588,10 @@
   <dialog class="alert" id="pkg-confirm" aria-labelledby="pkg-confirm-t">
     <div class="msg"><h2 id="pkg-confirm-t"></h2><p id="pkg-confirm-text"></p></div>
     <div class="acts"><button class="btn" data-dialog-close value="no" data-i18n="pkg.confirm.no">No</button><button class="btn bad" id="pkg-confirm-yes" data-dialog-close value="yes"></button></div>
+  </dialog>
+  <dialog class="alert" id="prov-confirm" aria-labelledby="prov-confirm-t">
+    <div class="msg"><h2 id="prov-confirm-t" data-i18n="prov.confirm.title">Replace the baseline?</h2><p data-i18n="prov.confirm.text">The earlier baseline is overwritten. Only one baseline is kept.</p></div>
+    <div class="acts"><button class="btn" data-dialog-close value="no" data-i18n="action.cancel">Cancel</button><button class="btn pri" data-dialog-close value="yes" data-i18n="prov.confirm.yes">Replace</button></div>
   </dialog>
   <dialog class="alert" id="actions-confirm" aria-labelledby="actions-confirm-t">
     <div class="msg"><h2 id="actions-confirm-t"></h2><p id="actions-confirm-text"></p></div>
