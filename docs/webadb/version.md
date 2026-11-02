@@ -57,3 +57,4 @@
 | v0.31.2 | 2026-10-29 | Modify swipe link shows while any PIN step is ticked, with every step's value |
 | v0.32.0 | 2026-10-31 | Provisioning section with Recordings |
 | v0.33.0 | 2026-11-02 | Recordings can keep named snapshots, with compare and delete; Recordings keep provider settings unredacted, list user-installed apps and user flags; Recordings also record every system property |
+| v0.34.0 | 2026-11-02 | Preferences lists your phones with notes and change history;  data folder now keeps each phone's files in phones/<serial>/ |

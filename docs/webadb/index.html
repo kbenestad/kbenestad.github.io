@@ -20,7 +20,7 @@
     apply(); m.addEventListener('change', apply);
   })();
 </script>
-  <script type="module" crossorigin src="./assets/index-1JMdKZUH.js"></script>
+  <script type="module" crossorigin src="./assets/index-DXm7IrnT.js"></script>
 </head>
 <body>
 <div class="k">
@@ -75,8 +75,8 @@
             <h3 data-i18n="folder.title">Data folder</h3>
             <p id="folder-none" data-rich="folder.helpNone">If you wish to transfer data to/from the phone (including installing APKs), you need to set a data folder. In your chosen folder, the following sub-folders will be created:</p>
             <ul id="folder-none-list">
-              <li data-rich="folder.profiles">*profiles*: Contains the profile of each connected phone.</li>
-              <li data-rich="folder.files">*files*: This folder will be mounted as the root for WebADB. Data you wish to transfer to and from your phone will be in this folder (including APKs).</li>
+              <li data-rich="folder.phones">*phones*: One folder for each connected phone, named by its serial number, with its profile, recordings, rollbacks and downloaded files.</li>
+              <li data-rich="folder.shared">*apks*, *users* and *recipes*: Shared by all your phones: your APK library, your signing keys and your provisioning recipes.</li>
             </ul>
             <p id="folder-set" data-rich="folder.helpSet" hidden>If you wish to transfer data to/from the phone (including installing APKs), you need to set a data folder. Your current data folder is:</p>
             <p id="folder-path" hidden></p>
@@ -666,11 +666,25 @@
       <div class="fld"><label for="reviewer-email" data-i18n="review.prefEmail">Your email (for comments)</label><input id="reviewer-email" class="inp" type="email" autocomplete="email"></div>
       <span class="help" data-i18n="review.prefHelp">Added to the comments you write and signed with a key kept in the users folder of your data folder. Name and email are kept in this browser.</span>
       <button class="btn out" id="reviewer-pass" type="button" data-i18n="review.passButton">Protect or unprotect the signing key</button>
+      <h3 class="small-h" data-i18n="phones.h">Phones</h3>
+      <div class="list" id="phones-list"></div>
+      <span class="help" id="phones-help"></span>
       <h3 class="small-h" data-i18n="settings.h.unsafe">Unsafe operations</h3>
       <label class="chk"><input type="checkbox" id="allow-unsafe"> <span data-i18n="settings.unsafe">Allow unsafe operations</span></label>
       <span class="help" data-i18n="settings.unsafeHelp">Unlocks sections that can break the phone or erase data, such as Shell. Kept in this browser only.</span>
       <h3 class="small-h" data-i18n="settings.h.about">About</h3>
       <dl class="meta"><dt data-i18n="settings.version">Version</dt><dd class="mono" id="app-version"></dd><dt data-i18n="settings.updated">Last updated</dt><dd id="app-updated"></dd></dl>
+    </div>
+  </dialog>
+  <dialog class="dlg" id="phone-dlg" aria-labelledby="phone-t">
+    <div class="grab"></div>
+    <header class="hb"><button class="btn flat" data-dialog-close data-i18n="action.cancel">Cancel</button><div class="t" id="phone-t" data-i18n="phones.title">Phone details</div><button class="btn pri" id="phone-save" type="button" data-i18n="action.save">Save</button></header>
+    <div class="dlg-body">
+      <dl class="meta" id="phone-meta"></dl>
+      <div class="fld"><label for="phone-name" data-i18n="phones.name">Name</label><input id="phone-name" class="inp" autocomplete="off"></div>
+      <div class="fld"><label for="phone-notes" data-i18n="phones.notes">Notes</label><textarea id="phone-notes" class="inp"></textarea><span class="help" data-i18n="phones.notesHelp">Saved in this phone's profile, in the data folder and on the phone.</span></div>
+      <h3 class="small-h" data-i18n="phones.history">Changes made</h3>
+      <div class="list" id="phone-history"></div>
     </div>
   </dialog>
   <dialog class="dlg" id="report-dlg" aria-labelledby="report-t">
