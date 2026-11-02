@@ -20,7 +20,7 @@
     apply(); m.addEventListener('change', apply);
   })();
 </script>
-  <script type="module" crossorigin src="./assets/index-DXm7IrnT.js"></script>
+  <script type="module" crossorigin src="./assets/index-DpK5o05T.js"></script>
 </head>
 <body>
 <div class="k">
@@ -179,7 +179,14 @@
         <div class="view" id="view-settings" hidden></div>
 
         <div class="view" id="view-provisioning" hidden>
-          <div class="stack">
+          <div class="seg scroll" role="tablist" id="prov-tabs">
+            <a href="#" role="tab" class="on" data-pane="rec" data-i18n="prov.tab.rec">Recordings</a>
+            <a href="#" role="tab" data-pane="recipes" data-i18n="prov.tab.recipes">Recipes</a>
+            <a href="#" role="tab" data-pane="editor" data-i18n="prov.tab.editor">Editor</a>
+            <a href="#" role="tab" data-pane="degoogle" data-i18n="prov.tab.degoogle">De-Google</a>
+            <a href="#" role="tab" data-pane="rollbacks" data-i18n="prov.tab.rollbacks">Rollbacks</a>
+          </div>
+          <div class="stack" id="prov-pane-rec">
             <p class="fine" data-i18n="prov.intro">A recording is the phone's state in a file: users, the state of every package, and every setting. Record the baseline as early as you can after a reset; record again later to see what changed.</p>
             <div class="co warn" id="prov-nofolder" hidden><svg class="ic" viewBox="0 0 24 24" aria-hidden="true"><path d="m21.73 18-8-14a2 2 0 0 0-3.48 0l-8 14A2 2 0 0 0 4 21h16a2 2 0 0 0 1.73-3"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg><div><p data-i18n="prov.noFolder">No data folder is chosen, so recordings are kept only on the phone. A factory reset erases them.</p></div></div>
             <div class="list">
@@ -204,6 +211,10 @@
             <h3 class="heading small-h" id="prov-snap-cmp-heading" hidden></h3>
             <div class="list" id="prov-snap-cmp"></div>
           </div>
+          <div class="stack" id="prov-pane-recipes" hidden></div>
+          <div class="stack" id="prov-pane-editor" hidden></div>
+          <div class="stack" id="prov-pane-degoogle" hidden></div>
+          <div class="stack" id="prov-pane-rollbacks" hidden></div>
         </div>
         <div class="view" id="view-actions" hidden>
           <div class="seg scroll" role="tablist" id="actions-tabs">
@@ -597,6 +608,10 @@
   <dialog class="alert" id="pkg-confirm" aria-labelledby="pkg-confirm-t">
     <div class="msg"><h2 id="pkg-confirm-t"></h2><p id="pkg-confirm-text"></p></div>
     <div class="acts"><button class="btn" data-dialog-close value="no" data-i18n="pkg.confirm.no">No</button><button class="btn bad" id="pkg-confirm-yes" data-dialog-close value="yes"></button></div>
+  </dialog>
+  <dialog class="alert" id="prov-ask" aria-labelledby="prov-ask-t">
+    <div class="msg"><h2 id="prov-ask-t"></h2><p id="prov-ask-text"></p></div>
+    <div class="acts"><button class="btn" data-dialog-close value="no" data-i18n="action.cancel">Cancel</button><button class="btn pri" id="prov-ask-yes" data-dialog-close value="yes"></button></div>
   </dialog>
   <dialog class="alert" id="prov-confirm" aria-labelledby="prov-confirm-t">
     <div class="msg"><h2 id="prov-confirm-t" data-i18n="prov.confirm.title">Replace the baseline?</h2><p data-i18n="prov.confirm.text">The earlier baseline is overwritten. Only one baseline is kept.</p></div>
