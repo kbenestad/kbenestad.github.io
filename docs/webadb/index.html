@@ -20,7 +20,7 @@
     apply(); m.addEventListener('change', apply);
   })();
 </script>
-  <script type="module" crossorigin src="./assets/index-lJUeyP2N.js"></script>
+  <script type="module" crossorigin src="./assets/index-1JMdKZUH.js"></script>
 </head>
 <body>
 <div class="k">
@@ -194,6 +194,15 @@
             <div class="list" id="prov-live-list"></div>
             <h3 class="heading small-h" data-i18n="prov.driftHeading">Latest recording compared with the baseline</h3>
             <div class="list" id="prov-drift-list"></div>
+            <h3 class="heading small-h" data-i18n="prov.snapHeading">Named snapshots</h3>
+            <p class="fine" data-i18n="prov.snapHelp">Extra recordings kept under a name, for example after each step of a set-up. Recording under an existing name replaces it. Identifiers follow the box above.</p>
+            <div class="btns">
+              <div class="fld grow"><label for="prov-snap-name" data-i18n="prov.snapName">Snapshot name</label><input class="inp" id="prov-snap-name" type="text" maxlength="60" autocomplete="off" spellcheck="false"></div>
+              <button class="btn go" id="prov-snap-btn" type="button" data-i18n="prov.snapRecord">Record snapshot</button>
+            </div>
+            <div class="list" id="prov-snap-list"></div>
+            <h3 class="heading small-h" id="prov-snap-cmp-heading" hidden></h3>
+            <div class="list" id="prov-snap-cmp"></div>
           </div>
         </div>
         <div class="view" id="view-actions" hidden>
