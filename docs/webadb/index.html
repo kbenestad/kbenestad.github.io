@@ -20,7 +20,7 @@
     apply(); m.addEventListener('change', apply);
   })();
 </script>
-  <script type="module" crossorigin src="./assets/index-Bq42IA5k.js"></script>
+  <script type="module" crossorigin src="./assets/index-BeIBBbBP.js"></script>
 </head>
 <body>
 <div class="k">
@@ -615,7 +615,7 @@
     <form method="dialog">
       <header class="hb"><div class="t" id="rename-t" data-i18n="pkg.rename">Rename app</div><button class="btn" type="button" data-dialog-close data-i18n="action.cancel">Cancel</button></header>
       <div class="dlg-body">
-        <div class="fld"><label for="rename-input" id="rename-label" data-i18n="pkg.nameLabel">Name</label><input id="rename-input" class="inp" autocomplete="off"><span class="help" id="rename-help" data-i18n="pkg.nameHelp">Saved in this phone's profile in the data folder.</span></div>
+        <div class="fld"><label for="rename-input" id="rename-label" data-i18n="pkg.nameLabel">Name</label><input id="rename-input" class="inp" autocomplete="off"><datalist id="category-list"></datalist><span class="help" id="rename-help" data-i18n="pkg.nameHelp">Used in Apps and Packages. Saved in the shared package manifest in the data folder.</span></div>
         <div class="btns"><button class="btn pri" value="save" data-i18n="action.save">Save</button><button class="btn" value="reset" data-i18n="pkg.nameReset">Use the default name</button></div>
       </div>
     </form>
@@ -696,6 +696,11 @@
       <div class="fld"><label for="reviewer-email" data-i18n="review.prefEmail">Your email (for comments)</label><input id="reviewer-email" class="inp" type="email" autocomplete="email"></div>
       <span class="help" data-i18n="review.prefHelp">Added to the comments you write and signed with a key kept in the users folder of your data folder. Name and email are kept in this browser.</span>
       <button class="btn out" id="reviewer-pass" type="button" data-i18n="review.passButton">Protect or unprotect the signing key</button>
+      <h3 class="small-h" data-i18n="manifest.h">Shared package lists</h3>
+      <span class="help" data-i18n="manifest.help">App names, developer names and categories for package ids, shared by Apps and Packages. Kept in package-manifest.json in your data folder. Import adds the entries from another copy; for each entry the newer one wins.</span>
+      <span class="help" id="manifest-counts"></span>
+      <div class="btns"><button class="btn" id="manifest-export" type="button" data-i18n="manifest.export">Export</button><button class="btn" id="manifest-import" type="button" data-i18n="manifest.import">Import</button></div>
+      <input type="file" id="manifest-import-input" accept=".json,application/json" hidden>
       <h3 class="small-h" data-i18n="phones.h">Phones</h3>
       <div class="list" id="phones-list"></div>
       <span class="help" id="phones-help"></span>
