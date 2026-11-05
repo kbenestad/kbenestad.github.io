@@ -63,3 +63,4 @@
 | v0.35.2 | 2026-11-05 | Record snapshot sits in the Baseline and Latest list, aligned with the name box, snapshots listed below; Record snapshot button lines up with the Snapshot name box |
 | v0.35.3 | 2026-11-05 | buttons next to labelled fields line up with the input;  Add a link/phone/user buttons no longer stretch across the screen; buttons next to labelled text fields line up with the input box in every row (recipe editor, snapshots) |
 | v0.36.0 | 2026-11-05 | recipe editor can build a recipe from two recordings and import a Canta list |
+| v0.36.1 | 2026-11-05 | Settings table text-wrap icon uses the Lucide original; Settings All keys table layout (column widths, sticky header, one-line rows, wrap and width toggles) |
