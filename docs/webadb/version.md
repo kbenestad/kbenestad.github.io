@@ -61,3 +61,4 @@
 | v0.35.0 | 2026-11-02 | Provisioning recipes, editor, De-Google presets and rollbacks |
 | v0.35.1 | 2026-11-04 | De-Google items show the title with pills on the right, the description under it and the choice at the bottom |
 | v0.35.2 | 2026-11-05 | Record snapshot sits in the Baseline and Latest list, aligned with the name box, snapshots listed below; Record snapshot button lines up with the Snapshot name box |
+| v0.35.3 | 2026-11-05 | buttons next to labelled fields line up with the input;  Add a link/phone/user buttons no longer stretch across the screen; buttons next to labelled text fields line up with the input box in every row (recipe editor, snapshots) |
