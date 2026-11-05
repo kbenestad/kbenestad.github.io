@@ -60,3 +60,4 @@
 | v0.34.0 | 2026-11-02 | Preferences lists your phones with notes and change history;  data folder now keeps each phone's files in phones/<serial>/ |
 | v0.35.0 | 2026-11-02 | Provisioning recipes, editor, De-Google presets and rollbacks |
 | v0.35.1 | 2026-11-04 | De-Google items show the title with pills on the right, the description under it and the choice at the bottom |
+| v0.35.2 | 2026-11-05 | Record snapshot sits in the Baseline and Latest list, aligned with the name box, snapshots listed below; Record snapshot button lines up with the Snapshot name box |
