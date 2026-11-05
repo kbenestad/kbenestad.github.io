@@ -20,7 +20,7 @@
     apply(); m.addEventListener('change', apply);
   })();
 </script>
-  <script type="module" crossorigin src="./assets/index-CObPM4sJ.js"></script>
+  <script type="module" crossorigin src="./assets/index-CYYSgpp0.js"></script>
 </head>
 <body>
 <div class="k">
@@ -112,9 +112,13 @@
         </div>
 
         <div class="view" id="view-apps" hidden>
-          <div class="seg scroll" role="tablist" id="apps-tabs"><a href="#" role="tab" class="on" data-pane="apps-pane-lib" data-i18n="apps.tabLibrary">Local library</a><a href="#" role="tab" data-pane="apps-pane-repos" data-i18n="apps.tabRepos">Repos</a></div>
+          <div class="seg scroll" role="tablist" id="apps-tabs"><a href="#" role="tab" class="on" data-pane="apps-pane-lib" data-i18n="apps.tabLibrary">Local library</a><a href="#" role="tab" data-pane="apps-pane-repos" data-i18n="apps.tabRepos">Repos</a><a href="#" role="tab" data-pane="apps-pane-phone" data-i18n="apps.tabPhone">Phone</a></div>
           <div id="apps-result" class="stack" hidden aria-live="polite"></div>
 
+          <div class="fld" id="apps-user-row" hidden>
+            <label for="apps-user" data-i18n="apps.user">Android user</label>
+            <select id="apps-user" class="inp"></select>
+          </div>
           <div id="apps-pane-lib" class="stack">
             <div id="apps-nofolder" class="status" hidden>
               <h2 data-i18n="apps.noFolderTitle">Choose a data folder first</h2>
@@ -123,10 +127,6 @@
             </div>
             <div id="apps-library-box" class="stack" hidden>
               <p class="fine" id="apps-where"></p>
-              <div class="fld" id="apps-user-row" hidden>
-                <label for="apps-user" data-i18n="apps.user">Android user</label>
-                <select id="apps-user" class="inp"></select>
-              </div>
               <div class="bar">
                 <div class="row-actions">
                   <button class="btn pri" id="apps-install" type="button" disabled data-i18n="apps.installSelected">Install selected</button>
@@ -152,6 +152,20 @@
                 <div class="list" id="apps-wanted"></div>
               </div>
             </div>
+          </div>
+
+          <div id="apps-pane-phone" class="stack" hidden>
+            <p class="fine" data-i18n="apps.phoneHint">Apps with a launcher icon, and apps you installed. Tick the ones to copy.</p>
+            <p class="fine" id="apps-phone-note" hidden data-i18n="apps.phoneNoLauncher">This Android version cannot list system apps with a launcher icon, so only apps installed by a user are shown.</p>
+            <div class="bar">
+              <div class="row-actions">
+                <button class="btn pri" id="apps-pull-computer" type="button" disabled data-i18n="apps.toComputer">Save to computer</button>
+                <button class="btn" id="apps-pull-library" type="button" disabled data-i18n="apps.toLibrary">Add to local library</button>
+                <button class="btn" id="apps-phone-refresh" type="button" data-i18n="apps.phoneRefresh">Read the phone again</button>
+              </div>
+            </div>
+            <p class="fine" id="apps-phone-summary"></p>
+            <div class="list" id="apps-phone-list" hidden></div>
           </div>
 
           <div id="apps-pane-repos" class="stack" hidden>
