@@ -66,3 +66,4 @@
 | v0.36.1 | 2026-11-05 | Settings table text-wrap icon uses the Lucide original; Settings All keys table layout (column widths, sticky header, one-line rows, wrap and width toggles) |
 | v0.37.0 | 2026-11-05 | Packages can import a Canta list and select the matching installed packages; recipe steps in the editor fit on one line; status text beside buttons is centred;  recordings button lines up with the others |
 | v0.38.0 | 2026-11-05 | Apps Phone tab release without the template list button; Apps has a Phone tab to save installed apps' APKs, and a template list for Import list |
+| v0.39.0 | 2026-11-05 | Local library installs split APKs saved from the Phone tab;  Phone tab button order swapped |
