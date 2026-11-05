@@ -68,3 +68,4 @@
 | v0.38.0 | 2026-11-05 | Apps Phone tab release without the template list button; Apps has a Phone tab to save installed apps' APKs, and a template list for Import list |
 | v0.39.0 | 2026-11-05 | Local library installs split APKs saved from the Phone tab;  Phone tab button order swapped |
 | v0.40.0 | 2026-11-05 | Apps can add .apks, .xapk and .apkm bundles to the local library |
+| v0.41.0 | 2026-11-05 | Apps > Phone can uninstall the ticked apps for the chosen Android user |
