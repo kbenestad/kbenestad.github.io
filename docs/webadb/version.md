@@ -70,3 +70,4 @@
 | v0.40.0 | 2026-11-05 | Apps can add .apks, .xapk and .apkm bundles to the local library |
 | v0.41.0 | 2026-11-05 | Apps > Phone can uninstall the ticked apps for the chosen Android user |
 | v0.42.0 | 2026-11-05 | shared package manifest (names, developers, categories) for Apps and Packages, library grouped by category, export/import in Preferences |
+| v0.42.1 | 2026-11-23 | Shell gains interactive adb shell, adb pull for folders and adb bugreport; Shell accepts adb install, push, pull, uninstall, reboot, logcat, devices, root, tcpip and more;  explains the ones a browser cannot do |
